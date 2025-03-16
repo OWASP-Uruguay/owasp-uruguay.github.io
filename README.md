@@ -18,4 +18,4 @@ yarn dev
 
 ## How to deploy
 
-(Coming soon ...) By pushing to the main branch, the site will be deployed automatically.
+By pushing to the main branch, the site will be deployed automatically.
