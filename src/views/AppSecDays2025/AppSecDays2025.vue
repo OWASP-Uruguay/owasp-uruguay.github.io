@@ -1,29 +1,28 @@
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
-const { t } = useI18n();
 
 // components
-import Navbar from "@/components/navbars/Navbar.vue";
-import Header from "@/components/Header.vue";
-// import FilledInfoCard from "../../examples/cards/infoCards/FilledInfoCard.vue";
-import Footer from "@/components/footers/Footer.vue";
+import MaterialBadge from "@/components/MaterialBadge.vue";
+import GoogleMaps from "@/components/GoogleMaps.vue";
 
 // sections
-import Counter from "../../components/Counter.vue";
-import OWASPUYLink from "@/components/sections/OWASPUYLink.vue";
-import CallFor from "@/components/sections/CallFor.vue";
-// import PresentationExample from "../../examples/Sections/PresentationExample.vue";
-// import data from "../../examples/Sections/Data/designBlocksData";
-// import PresentationInformation from "../../examples/Sections/PresentationInformation.vue";
+import Navbar from "@/sections/navbars/Navbar.vue";
+import Header from "@/sections/Header.vue";
+import Counter from "@/sections/Counter.vue";
+import CallToAction from "@/sections/CallToAction.vue";
+import AntelTower from "@/sections/AntelTower.vue";
+import Footer from "@/sections/footers/Footer.vue";
 
 // images
 import headerBackgroundImage from "@/assets/img/owasp-appsec-days-uruguay-2025.png";
-import callForPapersImage from "@/assets/img/call-for-papers.jpeg";
+import callForPresentationsImage from "@/assets/img/call-for-papers.jpeg";
 import callForTrainersImage from "@/assets/img/call-for-trainers.jpeg";
-import MaterialBadge from "@/examples/MaterialBadge.vue";
+import callForSponsorsImage from "@/assets/img/call-for-sponsors.jpeg";
+import owaspUYLogo from "@/assets/img/owasp-uy.png";
 
-// hooks
+const { t } = useI18n();
+
 const body = document.getElementsByTagName("body")[0];
 onMounted(() => {
   body.classList.add("presentation-page");
@@ -34,23 +33,50 @@ onUnmounted(() => {
   body.classList.remove("bg-gray-200");
 });
 
-const registerActionButton = {
+const registerActionButton = computed(() => ({
   color: "bg-gradient-success",
   label: t("register"),
   route: "",
-}
-const callForPapers = {
-  name: t("callForPapers"),
-  description: t("callForPapersDescription"),
-  logo: callForPapersImage,
-  buttonText: t("callForPapersButton")
-};
-const callForTrainers = {
-  name: t("callForTrainers"),
+}));
+const callToRegistration = computed(() => ({
+  class: "p-4",
+  dark: true,
+  title: t("callToRegistration"),
+  buttonText: t("callToRegistrationButton"),
+  route: "",
+}));
+const callForPresentations = computed(() => ({
+  title: t("callForPresentations"),
+  description: t("callForPresentationsDescription"),
+  logo: callForPresentationsImage,
+  buttonText: t("callForPresentationsButton"),
+  route: "",
+}));
+const callForTrainers = computed(() => ({
+  dark: true,
+  title: t("callForTrainers"),
   description: t("callForTrainersDescription"),
   logo: callForTrainersImage,
-  buttonText: t("callForTrainersButton")
-};
+  buttonText: t("callForTrainersButton"),
+  route: "",
+}));
+const callForSponsors = computed(() => ({
+  title: t("callForSponsors"),
+  logo: callForSponsorsImage,
+  buttonText: t("callForSponsorsButton"),
+  route:
+    "https://drive.google.com/file/d/1LMugRj522_1X1q8St5RURl_I2ja5oxci/view?usp=drive_link",
+}));
+const callToOWASPUY = computed(() => ({
+  class: "",
+  dark: true,
+  title: t("organizer"),
+  subtitle: t("organizerFounded"),
+  description: "",
+  logo: owaspUYLogo,
+  buttonText: t("visitSite"),
+  route: "https://owasp.org/uruguay",
+}));
 </script>
 
 <template>
@@ -82,22 +108,35 @@ const callForTrainers = {
     >
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 text-center mx-auto position-relative">
-
-          </div>
+          <div class="col-lg-7 text-center mx-auto position-relative"></div>
         </div>
       </div>
     </div>
   </Header>
 
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-    <CallFor id="cfp" :call-for="callForPapers"/>
-    <CallFor id="cft" :call-for="callForTrainers"/>
-
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n5 mb-n5">
     <Counter />
+  </div>
 
-    <OWASPUYLink />
+  <CallToAction id="cfr" :call-for="callToRegistration" />
 
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
+    <CallToAction id="cfp" :call-for="callForPresentations" />
+    <CallToAction id="cft" :call-for="callForTrainers" />
+    <CallToAction id="call4sponsors" :call-for="callForSponsors" />
+  </div>
+
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-3 border-radius-xl" style="background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));">
+    <AntelTower />
+  </div>
+
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-3 border-radius-xl">
+    <GoogleMaps/>
+  </div>
+
+  <CallToAction id="call2owaspuy" :call-for="callToOWASPUY" />
+
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-5 border-radius-xl">
     <section class="my-5 py-5">
       <div class="container">
         <div class="row">
@@ -115,61 +154,6 @@ const callForTrainers = {
         </div>
       </div>
     </section>
-
-    <!--
-    <PresentationInformation />
-    <PresentationExample :data="data" />
-    -->
-
-    <!--
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <FilledInfoCard
-            class="p-4"
-            :color="{ text: 'white', background: 'bg-gradient-success' }"
-            :icon="{ component: 'flag', color: 'white' }"
-            title="Getting Started"
-            description="Check the possible ways of working with our product and the necessary files for building your own project."
-            :action="{
-              route:
-                'https://www.creative-tim.com/learning-lab/vue/overview/material-kit/',
-              label: { text: 'Let\'s start', color: 'white' }
-            }"
-          />
-        </div>
-        <div class="col-lg-4">
-          <FilledInfoCard
-            class="px-lg-1 mt-lg-0 mt-4 p-4"
-            height="h-100"
-            :icon="{ component: 'precision_manufacturing', color: 'success' }"
-            title="Plugins"
-            description="Get inspiration and have an overview about the plugins that we
-                used to create the Material Kit."
-            :action="{
-              route:
-                'https://www.creative-tim.com/learning-lab/vue/input/material-kit/',
-              label: { text: 'Read more' }
-            }"
-          />
-        </div>
-        <div class="col-lg-4">
-          <FilledInfoCard
-            class="px-lg-1 mt-lg-0 mt-4 p-4"
-            :icon="{ component: 'receipt_long', color: 'success' }"
-            title="Utility Classes"
-            description="Material Kit is giving you a lot of pre-made elements. For those
-                who want flexibility, we included many utility classes."
-            :action="{
-              route:
-                'https://www.creative-tim.com/learning-lab/vue/utilities/material-kit/',
-              label: { text: 'Read more' }
-            }"
-          />
-        </div>
-      </div>
-    </div>
-    -->
   </div>
 
   <Footer />
