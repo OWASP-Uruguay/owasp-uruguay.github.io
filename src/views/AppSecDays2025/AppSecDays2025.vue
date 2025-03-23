@@ -12,6 +12,7 @@ import Header from "@/sections/Header.vue";
 import Counter from "@/sections/Counter.vue";
 import CallToAction from "@/sections/CallToAction.vue";
 import AntelTower from "@/sections/AntelTower.vue";
+import GeneralInformation from "@/sections/GeneralInformation.vue";
 import Footer from "@/sections/footers/Footer.vue";
 
 // images
@@ -33,10 +34,23 @@ onUnmounted(() => {
   body.classList.remove("bg-gray-200");
 });
 
+const getStyle = (dark) => {
+  if (dark) {
+    return { background: 'linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25))' };
+  } else {
+    return { background: '' };
+  }
+};
+
 const registerActionButton = computed(() => ({
   color: "bg-gradient-success",
   label: t("register"),
   route: "",
+}));
+const aboutEvent = computed(() => ({
+  title: t("aboutEventTitle"),
+  subtitle: "",
+  text: "aboutEventText",
 }));
 const callToRegistration = computed(() => ({
   class: "p-4",
@@ -77,6 +91,11 @@ const callToOWASPUY = computed(() => ({
   buttonText: t("visitSite"),
   route: "https://owasp.org/uruguay",
 }));
+const codeOfConduct = computed(() => ({
+  title: t("codeOfConductTitle"),
+  subtitle: "",
+  text: "codeOfConductText",
+}));
 </script>
 
 <template>
@@ -104,7 +123,6 @@ const callToOWASPUY = computed(() => ({
     <div
       class="page-header min-vh-75"
       :style="`background-image: url(${headerBackgroundImage}); background-repeat: no-repeat; background-size: 100% 100%;`"
-      loading="lazy"
     >
       <div class="container">
         <div class="row">
@@ -114,33 +132,39 @@ const callToOWASPUY = computed(() => ({
     </div>
   </Header>
 
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n5 mb-n5">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-n5 mb-n5">
     <Counter />
+    <GeneralInformation :information="aboutEvent"/>
   </div>
+
 
   <CallToAction id="cfr" :call-for="callToRegistration" />
 
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
     <CallToAction id="cfp" :call-for="callForPresentations" />
     <CallToAction id="cft" :call-for="callForTrainers" />
     <CallToAction id="call4sponsors" :call-for="callForSponsors" />
   </div>
 
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-3 border-radius-xl" style="background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-3 border-radius-xl" style="background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));">
     <AntelTower />
   </div>
 
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-3 border-radius-xl">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-3 border-radius-xl">
     <GoogleMaps/>
   </div>
 
   <CallToAction id="call2owaspuy" :call-for="callToOWASPUY" />
 
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-sm-5 border-radius-xl">
-    <section class="my-5 py-5">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4">
+    <GeneralInformation :information="codeOfConduct"/>
+  </div>
+
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-5 border-radius-xl" :style="getStyle(true)">
+    <section>
       <div class="container">
         <div class="row">
-          <div class="row justify-content-center text-center my-sm-5">
+          <div class="row justify-content-center text-center text-white my-sm-5">
             <div class="col-lg-6">
               <MaterialBadge color="warning" class="mb-3">
                 {{ $t("comingSoon") }}

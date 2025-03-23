@@ -65,7 +65,7 @@ const getStyle = () => {
             <div class="text-center">
               <h3 :class="getTextColor()">{{ callFor.title }}</h3>
               <h4 v-if="callFor.subtitle !== ''" :class="getTextColor()">{{ callFor.subtitle }}</h4>
-              <h6 v-if="callFor.description !== ''" :class="getTextColor()">{{ callFor.description }}</h6>
+              <p v-if="callFor.description !== ''" class="h5" :class="getTextColor()">{{ callFor.description }}</p>
               <a
                 v-if="callFor.route !== ''"
                 :href="callFor.route"

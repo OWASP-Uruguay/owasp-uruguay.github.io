@@ -80,6 +80,11 @@
   margin-bottom: 0;
 }
 
+.card-text {
+  max-width: 1250px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .card-text:last-child {
   margin-bottom: 0;
 }
@@ -189,7 +194,7 @@
     // to display properly.
     > .card {
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
-      flex: 1 0 0%;
+      flex: 1 0 0;
       margin-bottom: 0;
 
       + .card {

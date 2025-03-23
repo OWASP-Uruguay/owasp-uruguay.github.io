@@ -14,20 +14,20 @@ import antelAuditoriumImage from "@/assets/img/antel-auditorium.jpg";
       <h3 class="h0 text-center" style="color: #F7F7F7;">Guatemala 1075, Montevideo, Uruguay</h3>
     </div>
   </div>
-  <div class="text-white p-4">
-    <h4 class="text-white">{{ $t("venueDescription1") }}</h4>
-    <h4 class="text-white">{{ $t("venueDescription2") }}</h4>
-    <h4 class="text-white">{{ $t("venueDescription3") }}</h4>
-    <h4 class="text-white">{{ $t("venueDescription4") }}</h4>
+  <div class="text-white pt-4 card-text">
+    <h5 class="text-white">{{ $t("venueDescription1") }}</h5>
+    <h5 class="text-white">{{ $t("venueDescription2") }}</h5>
+    <h5 class="text-white">{{ $t("venueDescription3") }}</h5>
+    <h5 class="text-white">{{ $t("venueDescription4") }}</h5>
     <ul class="text-lg">
-      <li><h4 class="text-white">{{ $t("venueDescription5") }}</h4></li>
-      <li><h4 class="text-white">{{ $t("venueDescription6") }}</h4></li>
-      <li><h4 class="text-white">{{ $t("venueDescription7") }}</h4></li>
-      <li><h4 class="text-white">{{ $t("venueDescription8") }}</h4></li>
-      <li><h4 class="text-white">{{ $t("venueDescription9") }}</h4></li>
-      <li><h4 class="text-white">{{ $t("venueDescription10") }}</h4></li>
+      <li><h5 class="text-white">{{ $t("venueDescription5") }}</h5></li>
+      <li><h5 class="text-white">{{ $t("venueDescription6") }}</h5></li>
+      <li><h5 class="text-white">{{ $t("venueDescription7") }}</h5></li>
+      <li><h5 class="text-white">{{ $t("venueDescription8") }}</h5></li>
+      <li><h5 class="text-white">{{ $t("venueDescription9") }}</h5></li>
+      <li><h5 class="text-white">{{ $t("venueDescription10") }}</h5></li>
     </ul>
-    <h4 class="text-white">{{ $t("venueDescription11") }}</h4>
+    <h5 class="text-white">{{ $t("venueDescription11") }}</h5>
   </div>
 </template>
 
