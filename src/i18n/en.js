@@ -45,36 +45,36 @@ export const en = {
 
   codeOfConductTitle: "Code of Conduct",
   codeOfConductText:
-    "El presente Código de Conducta establece las normas de comportamiento que deben seguir todos los participantes en OWASP Río de la Plata, incluyendo asistentes, ponentes, organizadores y patrocinadores. Este código se basa en los principios fundamentales de respeto, inclusión y profesionalismo que promueve OWASP Global.\n" +
-    "*b*Nuestro compromiso:\n" +
-    "***Respeto: Trata a todos los participantes con respeto, independientemente de su género, orientación sexual, identidad de género, discapacidad, apariencia, religión, etnia, edad, nacionalidad, o cualquier otra característica personal.\n" +
-    "***Inclusión: Fomenta un ambiente inclusivo donde todas las voces sean escuchadas y valoradas. Evita cualquier forma de discriminación o acoso.\n" +
-    "***Profesionalismo: Actúa de manera profesional en todas tus interacciones. Evita el lenguaje ofensivo, las bromas inapropiadas y cualquier comportamiento que pueda ser interpretado como hostil o amenazante.\n" +
-    "***Integridad: Sé honesto y transparente en todas tus comunicaciones. Evita cualquier conflicto de intereses y respeta la propiedad intelectual de los demás.\n" +
-    "***Aprendizaje: Aprovecha al máximo la oportunidad de aprender y compartir conocimientos. Respeta las diferentes perspectivas y opiniones.\n" +
-    "*b*Conducta inaceptable:\n" +
-    "Se considera conducta inaceptable cualquier acción que viole los principios mencionados anteriormente, incluyendo pero no limitado a:\n" +
-    "***Acoso: El acoso en cualquier forma, incluyendo el acoso sexual, es inaceptable. Esto incluye comentarios no deseados de naturaleza sexual, avances sexuales no solicitados, contacto físico no deseado, y cualquier otra conducta sexual de naturaleza intimidante, hostil u ofensiva.\n" +
-    "***Discriminación: La discriminación basada en cualquier característica personal es inaceptable.\n" +
-    "***Violencia: Cualquier forma de violencia, ya sea física o verbal, es inaceptable.\n" +
-    "***Vandalismo: El daño a la propiedad de otros es inaceptable.\n" +
-    "***Publicación de material no autorizado: La publicación de material confidencial o sin autorización es inaceptable.\n" +
-    "*b*Informar incidentes:\n" +
-    "Si presencias o eres víctima de alguna conducta que viole este código, te pedimos que lo reportes de inmediato a los organizadores. Puedes hacerlo de forma anónima si así lo deseas.\n" +
-    "*b*Consecuencias:\n" +
-    "Los organizadores tomarán las medidas necesarias para abordar cualquier violación de este código de conducta. Las consecuencias pueden incluir, pero no se limitan a:\n" +
-    "***Advertencia verbal: En casos leves.\n" +
-    "***Expulsión del evento: En casos más graves.\n" +
-    "***Prohibición de participar en futuros eventos: En casos de violaciones repetidas o graves.\n" +
-    "*b*Compromiso de los organizadores:\n" +
-    "Los organizadores se comprometen a:\n" +
-    "***Promover este código de conducta: Dando a conocer este código a todos los participantes antes y durante el evento.\n" +
-    "***Crear un ambiente seguro: Estableciendo un ambiente donde todos los participantes se sientan seguros y respetados.\n" +
-    "***Investigar las denuncias: Investigando de manera rápida y justa todas las denuncias de violaciones a este código.\n" +
-    "***Tomar medidas: Imponiendo las sanciones correspondientes en caso de que se compruebe una violación.\n" +
-    "*b*Trabajando juntos para crear un evento inclusivo y respetuoso\n" +
-    "Al adherirse a este código de conducta, todos los participantes contribuyen a crear un ambiente positivo y productivo para el aprendizaje y el intercambio de ideas.\n" +
-    "*b*Este código de conducta está sujeto a cambios sin previo aviso.",
+    "This Code of Conduct sets forth the standards of conduct to be followed by all participants in OWASP Río de la Plata, including attendees, speakers, organizers, and sponsors. This Code is based on the fundamental principles of respect, inclusion and professionalism promoted by OWASP Global.\n" +
+    "*b*Our Commitment:\n" +
+    "***Respect: Treat all participants with respect regardless of gender, sexual orientation, gender identity, disability, appearance, religion, ethnicity, age, nationality, or any other personal characteristic.\n" +
+    "***Inclusion: Promote an inclusive environment where all voices are heard and valued. Avoid any form of discrimination or harassment.\n" +
+    "***Professionalism: Behave professionally in all your interactions. Avoid offensive language, inappropriate jokes and any behaviour that could be interpreted as hostile or threatening.\n" +
+    "***Integrity: Be honest and transparent in all communications. Avoid conflicts of interest and respect the intellectual property of others.\n" +
+    "***Learning: Take advantage of opportunities to learn and share knowledge. Respect diverse perspectives and opinions.\n" +
+    "*b*Unacceptable behaviour:\n" +
+    "Any action that violates the above principles is considered unacceptable behaviour, including but not limited to\n" +
+    "***Harassment: Harassment in any form, including sexual harassment, is unacceptable. This includes unwelcome comments of a sexual nature, unwelcome sexual advances, unwelcome physical contact and any other sexual behaviour that is intimidating, hostile or offensive.\n" +
+    "***Discrimination: Discrimination on the basis of any personal characteristic is unacceptable.\n" +
+    "***Violence: Any form of violence, whether physical or verbal, is unacceptable.\n" +
+    "***Vandalism: Damage to other people's property is unacceptable.\n" +
+    "***Publication of unauthorised material: Posting confidential or unauthorised material is unacceptable.\n" +
+    "*b*Reporting incidents:\n" +
+    "If you witness or are the victim of conduct that violates this Code, we ask that you report it immediately to the organisers. You can do this anonymously if you wish.\n" +
+    "*b*Consequences:\n" +
+    "The organizer will take appropriate action to deal with any breach of this Code. Consequences may include, but are not limited to\n" +
+    "***Verbal warning: In minor cases.\n" +
+    "***Expulsion from the event: In more serious cases.\n" +
+    "***Banning from future events: For repeated or serious offences.\n" +
+    "Commitment of the organisers:\n" +
+    "The organisers undertake to:\n" +
+    "***Promote this Code of Conduct: Communicate this Code to all participants before and during the event.\n" +
+    "***Create a safe environment: Create an environment where all participants feel safe and respected.\n" +
+    "***Investigate complaints: Investigating promptly and fairly all reports of violations of this Code.\n" +
+    "***Taking Action: Impose appropriate sanctions when a violation is proven.\n" +
+    "*b*Working together to create an inclusive and respectful event\n" +
+    "By adhering to this Code of Conduct, all participants will help create a positive and productive environment for learning and sharing ideas.\n" +
+    "This Code of Conduct is subject to change without notice.",
 
   comingSoon: "Coming Soon!",
   comingSoonDetails: "More details to follow in the coming months",
