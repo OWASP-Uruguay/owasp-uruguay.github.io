@@ -45,7 +45,7 @@ export const en = {
 
   codeOfConductTitle: "Code of Conduct",
   codeOfConductText:
-    "This Code of Conduct sets forth the standards of conduct to be followed by all participants in OWASP Río de la Plata, including attendees, speakers, organizers, and sponsors. This Code is based on the fundamental principles of respect, inclusion and professionalism promoted by OWASP Global.\n" +
+    "This Code of Conduct sets forth the standards of conduct to be followed by all participants in OWASP AppSecDays Uruguay, including attendees, speakers, organizers, and sponsors. This Code is based on the fundamental principles of respect, inclusion and professionalism promoted by OWASP Global.\n" +
     "*b*Our Commitment:\n" +
     "***Respect: Treat all participants with respect regardless of gender, sexual orientation, gender identity, disability, appearance, religion, ethnicity, age, nationality, or any other personal characteristic.\n" +
     "***Inclusion: Promote an inclusive environment where all voices are heard and valued. Avoid any form of discrimination or harassment.\n" +

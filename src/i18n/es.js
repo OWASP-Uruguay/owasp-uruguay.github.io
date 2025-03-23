@@ -45,7 +45,7 @@ export const es = {
 
   codeOfConductTitle: "Código de Conducta",
   codeOfConductText:
-    "El presente Código de Conducta establece las normas de comportamiento que deben seguir todos los participantes en OWASP Río de la Plata, incluyendo asistentes, ponentes, organizadores y patrocinadores. Este código se basa en los principios fundamentales de respeto, inclusión y profesionalismo que promueve OWASP Global.\n" +
+    "El presente Código de Conducta establece las normas de comportamiento que deben seguir todos los participantes en OWASP AppSecDays Uruguay, incluyendo asistentes, ponentes, organizadores y patrocinadores. Este código se basa en los principios fundamentales de respeto, inclusión y profesionalismo que promueve OWASP Global.\n" +
     "*b*Nuestro compromiso:\n" +
     "***Respeto: Trata a todos los participantes con respeto, independientemente de su género, orientación sexual, identidad de género, discapacidad, apariencia, religión, etnia, edad, nacionalidad, o cualquier otra característica personal.\n" +
     "***Inclusión: Fomenta un ambiente inclusivo donde todas las voces sean escuchadas y valoradas. Evita cualquier forma de discriminación o acoso.\n" +
