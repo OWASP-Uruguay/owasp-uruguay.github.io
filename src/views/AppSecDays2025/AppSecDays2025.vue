@@ -16,7 +16,7 @@ import GeneralInformation from "@/sections/GeneralInformation.vue";
 import Footer from "@/sections/footers/Footer.vue";
 
 // images
-import headerBackgroundImage from "@/assets/img/owasp-appsec-days-uruguay-2025.png";
+import headerBackgroundImageLogo from "@/assets/img/owasp-appsec-days-uruguay-2025-logo.jpeg";
 import callForPresentationsImage from "@/assets/img/call-for-papers.jpeg";
 import callForTrainersImage from "@/assets/img/call-for-trainers.jpeg";
 import callForSponsorsImage from "@/assets/img/call-for-sponsors.jpeg";
@@ -122,7 +122,7 @@ const codeOfConduct = computed(() => ({
   >
     <div
       class="page-header min-vh-75"
-      :style="`background-image: url(${headerBackgroundImage}); background-repeat: no-repeat; background-size: 100% 100%;`"
+      :style="`background-image: url(${headerBackgroundImageLogo}); background-repeat: no-repeat; background-size: 100% 100%;`"
     >
       <div class="container">
         <div class="row">
@@ -132,7 +132,7 @@ const codeOfConduct = computed(() => ({
     </div>
   </Header>
 
-  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-n5 mb-n5">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-n4 mb-n5">
     <Counter />
     <GeneralInformation :information="aboutEvent"/>
   </div>
