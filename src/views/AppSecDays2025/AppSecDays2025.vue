@@ -64,7 +64,7 @@ const callForPresentations = computed(() => ({
   description: t("callForPresentationsDescription"),
   logo: callForPresentationsImage,
   buttonText: t("callForPresentationsButton"),
-  route: "",
+  route: "https://sessionize.com/owasp-appsec-days-uruguay-2025/",
 }));
 const callForTrainers = computed(() => ({
   dark: true,
@@ -72,7 +72,7 @@ const callForTrainers = computed(() => ({
   description: t("callForTrainersDescription"),
   logo: callForTrainersImage,
   buttonText: t("callForTrainersButton"),
-  route: "",
+  route: "https://sessionize.com/owasp-appsec-training-days-uruguay-2025/",
 }));
 const callForSponsors = computed(() => ({
   title: t("callForSponsors"),
