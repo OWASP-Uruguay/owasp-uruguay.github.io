@@ -59,21 +59,21 @@ const callToRegistration = computed(() => ({
   buttonText: t("callToRegistrationButton"),
   route: "https://www.eventbrite.com/e/owasp-appsec-days-uruguay-2025-tickets-1415284527119?aff=oddtdtcreator",
 }));
-const callForPresentations = computed(() => ({
-  title: t("callForPresentations"),
-  description: t("callForPresentationsDescription"),
-  logo: callForPresentationsImage,
-  buttonText: t("callForPresentationsButton"),
-  route: "https://sessionize.com/owasp-appsec-days-uruguay-2025/",
-}));
-const callForTrainers = computed(() => ({
-  dark: true,
-  title: t("callForTrainers"),
-  description: t("callForTrainersDescription"),
-  logo: callForTrainersImage,
-  buttonText: t("callForTrainersButton"),
-  route: "https://sessionize.com/owasp-appsec-training-days-uruguay-2025/",
-}));
+// const callForPresentations = computed(() => ({
+//   title: t("callForPresentations"),
+//   description: t("callForPresentationsDescription"),
+//   logo: callForPresentationsImage,
+//   buttonText: t("callForPresentationsButton"),
+//   route: "https://sessionize.com/owasp-appsec-days-uruguay-2025/",
+// }));
+// const callForTrainers = computed(() => ({
+//   dark: true,
+//   title: t("callForTrainers"),
+//   description: t("callForTrainersDescription"),
+//   logo: callForTrainersImage,
+//   buttonText: t("callForTrainersButton"),
+//   route: "https://sessionize.com/owasp-appsec-training-days-uruguay-2025/",
+// }));
 const callForSponsors = computed(() => ({
   title: t("callForSponsors"),
   logo: callForSponsorsImage,
@@ -141,8 +141,8 @@ const codeOfConduct = computed(() => ({
   <CallToAction id="cfr" :call-for="callToRegistration" />
 
   <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
-    <CallToAction id="cfp" :call-for="callForPresentations" />
-    <CallToAction id="cft" :call-for="callForTrainers" />
+<!--    <CallToAction id="cfp" :call-for="callForPresentations" />-->
+<!--    <callForPresentationsCallToAction id="cft" :call-for="callForTrainers" />-->
     <CallToAction id="call4sponsors" :call-for="callForSponsors" />
   </div>
 
