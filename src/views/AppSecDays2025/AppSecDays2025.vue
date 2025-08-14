@@ -49,7 +49,7 @@ const registerActionButton = computed(() => ({
 }));
 const aboutEvent = computed(() => ({
   title: t("aboutEventTitle"),
-  subtitle: "",
+  subtitle: "19-20 Nov",
   text: "aboutEventText",
 }));
 const callToRegistration = computed(() => ({
@@ -57,7 +57,7 @@ const callToRegistration = computed(() => ({
   dark: true,
   title: t("callToRegistration"),
   buttonText: t("callToRegistrationButton"),
-  route: "",
+  route: "https://www.eventbrite.com/e/owasp-appsec-days-uruguay-2025-tickets-1415284527119?aff=oddtdtcreator",
 }));
 const callForPresentations = computed(() => ({
   title: t("callForPresentations"),
