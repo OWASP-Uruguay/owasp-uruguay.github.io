@@ -15,7 +15,7 @@ export const es = {
     "¡Asegurá tu lugar!",
 
   callToRegistration: "¡No te lo pierdas! Consigue tu entrada",
-  callToRegistrationButton: "Tickets en Eventbrite - Próximamente",
+  callToRegistrationButton: "Tickets en Eventbrite",
 
   callForPresentations: "Convocatoria de presentaciones",
   callForPresentationsDescription: "La conferencia OWASP AppSec Days es una conferencia sobre la seguridad de las aplicaciones. Incluye temas dirigidos a profesionales de TI especializados tanto en seguridad como en desarrollo, pruebas, explotación o gestión y gobernanza.",
