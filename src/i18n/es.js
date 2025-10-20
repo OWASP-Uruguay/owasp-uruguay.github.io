@@ -78,4 +78,62 @@ export const es = {
 
   comingSoon: "¡Próximamente!",
   comingSoonDetails: "En los próximos meses se darán más detalles",
+
+
+  trainingAbrahamDescription: "Learn about Android and IoT app security by improving your mobile security testing kung-fu. Ideal for Penetration Testers, Mobile Developers and everybody interested in mobile app security. \n" +
+    "A 100% hands-on deep dive into the OWASP Mobile Security Testing Guide (MSTG), OWASP Mobile Application Security Verification Standard (MASVS), beyond the OWASP Mobile Top Ten.\n" +
+    "Get a FREE taste for this training, including completely free access to video recordings, slides and vulnerable apps to play with!\n" +
+    "***1 hour workshop - https://7asecurity.com/free-workshop-mobile-deeplinks-xss \n" +
+    "***4 hour workshop - https://7asecurity.com/free-workshop-mobile-practical \n" +
+    "Ask any questions: https://7asecurity.com/#contact \n" +
+    "All action, no fluff, improve your security analysis workflow and immediately apply these gained skills in your workplace, packed with exercises, extra mile challenges and CTF, self-paced and suitable for all skill levels, with continued education via unlimited email support and lifetime access to training portal with step-by-step video recordings and interesting apps to practice, including all future updates for free.\n",
+
+  trainingAramDescription: "Application security has become synonymous with a vulnerability management program driven primarily by tools. This view is flawed. As many teams and organizations have already found out, tools often end up creating more problems than solutions. Any decent application security program starts with people knowing their roles and responsibilities. The team is then given friction-free processes to work with. Tools are brought in to streamline those processes and provide additional guardrails.\n" +
+    "This is precisely what OWASP’s Software Assurance Maturity Model (SAMM) provides as a high-level solution. This three-part interactive training aims to provide an in-depth exploration of SAMM, showing participants how to apply it in real-world scenarios. Through expert-led sessions and hands-on exercises, you will gain insights into how to embed security into every phase of the software development lifecycle.\n" +
+    "Participants will leave the training with:\n" +
+    "***A comprehensive understanding of OWASP SAMM and its application in real-world organizations and teams.\n" +
+    "***Practical experience performing SAMM assessments, setting improvement targets, and prioritizing those improvements.\n" +
+    "***Insights into scoring and benchmarking to demonstrate progress and align efforts with organizational objectives.\n" +
+    "***An engaging learning experience through hands-on exercises.\n" +
+    "Whether you work in QA, write code, run a business unit, or direct the application security program, this training will give you the expertise and confidence to take on today’s most challenging application security issues.\"",
+
+  trainingFabioDescription:
+    "As LLMs become embedded in everything from chatbots to internal dev tools and customer-facing platforms, they introduce a new class of security risks—prompt injection, data leakage, unintended behavior, and more. This full-day workshop teaches engineers and AppSec professionals how to design, build, and test LLM applications with security in mind.\n" +
+    "Participants will gain a practical understanding of secure coding principles tailored for LLM-driven architectures, drawing from real-world case studies, OWASP guidance, and hands-on lab scenarios.",
+
+  trainingJoseDescription: "En un mundo donde los desarrolladores luchan por crear aplicaciones seguras y los equipos de seguridad implementan controles avanzados, a menudo olvidamos al eslabón más débil (y más importante): el usuario final. Esta sesión se centra en la necesidad crítica de incluir el asesoramiento, formación y concientización del cliente/usuario final como una capa esencial en la estrategia de seguridad de cualquier aplicación web.\n" +
+    "A través de ejemplos reales, buenas prácticas y ejercicios participativos, aprenderás a diseñar estrategias y mensajes efectivos para que el usuario final comprenda cómo usar la aplicación de manera segura, reduciendo riesgos como phishing, mal uso de contraseñas, configuración errónea de perfiles, y exposición innecesaria de datos.",
+
+  trainingAngelDescription: "Quién debería asistir?\n" +
+    "Este workshop es para quienes ya han explorado el mundo del modelado de amenazas y también para quienes quieren dar sus primeros pasos y entender los fundamentos desde cero.\n" +
+    "No tengo experiencia en Modelado de Amenazas...\n" +
+    "Aquí no hace falta experiencia previa, solo ganas de aprender. Hemos preparado herramientas y ejemplos pensados para que entiendas todo paso a paso.",
+
+
+  conferenceAdityaDescription: "Modern security defenses increasingly rely on device fingerprinting for fraud detection and authentication. However, most existing techniques focus on easily spoofable software-based attributes. In this talk, we introduce a new approach that leverages persistent, hardware- and network-level fingerprints, making device tracking and authentication significantly more resilient to manipulation.\n" +
+    "In this talk, we present a new generation of resilient fingerprinting methods that leverage hardware-level quirks and network-layer anomalies—such as RTC drift, packet timing, JA4 signatures, Bluetooth/Wi-Fi signals, and even favicon caching without JavaScript. These methods work even when users employ privacy tools like VPNs or anti-fingerprinting browsers. We’ll demonstrate how organizations can use these techniques for fraud detection and authentication, while also revealing how adversaries can exploit them for stealth tracking.",
+
+  conferenceAramDescription: "Security teams love metrics. Beautiful dashboards, filled with vulnerability counts, alert volumes, SLA compliance for fix times, training hours logged, etc. However, do any of these metrics actually make organizations more secure? The uncomfortable truth is that most security metrics are questionable, at least from a scientific perspective.\n" +
+    "In this talk, I will focus on the science behind meaningful security metrics. I will introduce a framework that helps define metrics based on organization-specific goals, as opposed to creating purpose around whatever metrics we have lying around. From there, I will break down what are the key qualities of a good metric. Finally, I will briefly present the different data analysis methods and the common validity threats when going from metric values back to supporting your goals.\n" +
+    "\"If you can't measure it, you can't improve it\". However, if your security strategy is built on questionable metrics, you might not be improving the right things. This talk will challenge industry assumptions and provide scientific backing to the fact that many widely used security metrics in the industry might be vanity numbers.",
+
+  conferenceAugustDescription: "Apps run on ads. Ad networks and analytics companies require an SDK to be installed in the app to run. These SDKs are riddled with exploits, vulnerabilities, unsolicitated tracking, and disgusting behaviours. In this talk, we'll go through some of those techniques and explain how everyone in this industry does not care about you: the actual users.",
+
+  conferenceAxelDescription: "La Inteligencia Artificial está revolucionando la ciberseguridad como nunca antes. En esta charla, descubrirás cómo el proyecto PentestGPT está redefiniendo el pentesting al automatizar análisis avanzados y detectar vulnerabilidades con precisión asombrosa. Conoce cómo la IA está transformando nuestras estrategias defensivas y marcando un nuevo estándar en la lucha contra las ciberamenazas. Deja que el Junior haga el Pentest y el Senior te dé más valor.",
+
+  conferenceDanishDescription: "This research explores how infostealer malware turns into an early-stage access vector for corporate breaches. The focus is on how stealer logs, which are publicly available in various Telegram channels and marketplaces, contain data that attackers can use to identify and target businesses. Logs are collected from infected personal and unmanaged devices. Once the data is extracted, it typically contains a mix of credentials, cookies, tokens, and browser-stored artifacts. + Working and defense from common infostealers like Raccoon, Redline, and LummaC2.\n" +
+    "The research shows how credentials for internal portals, cloud dashboards, developer platforms, and communication tools are exposed through this process. The goal is to help security teams understand what gets leaked, how it's organized for resale or sharing, and how organizations can monitor public channels for signs of risk.",
+
+  conferenceEvaDescription: "The role of cryptography in the tech world is undeniable, but… how is it possible that encryption methods dating back to 1900 BC are so important in the 21st century? How can a random number, defeating the Nazis, and quantum computers be related?\n" +
+    "In this talk, we’ll take a trip back in time, not only to understand the value and workings of cryptography but also to discover how we can send secret love messages, encrypted, on a simple little piece of paper.",
+
+  conferenceJoseDescription: "¿Estás desarrollando o usando inteligencia artificial en tus aplicaciones? Entonces necesitas más que un modelo inteligente: necesitas un modelo seguro.\n" +
+    "En esta charla descubrirás cómo aplicar el ciclo de vida de desarrollo de software (SDLC) orientado a IA, integrando controles clave del OWASP Top 10, modelado de amenazas, y herramientas prácticas para prevenir ataques como envenenamiento de datos, evasión de modelos y fuga de información.\n" +
+    "Exploraremos cómo asegurar cada fase del SDLC —desde la planificación hasta el mantenimiento— con un enfoque realista, ágil y alineado con las amenazas actuales.\n" +
+    "Te llevarás ejemplos reales, frameworks efectivos, métricas de seguridad y una hoja de ruta para implementar defensas robustas en tus soluciones basadas en IA.\n" +
+    "Una sesión imperdible para desarrolladores, arquitectos, analistas de seguridad y líderes técnicos que quieren construir confianza, cumplimiento y resiliencia en sus proyectos de IA.",
+
+  conferenceMiguelDescription: "En un entorno donde las aplicaciones empresariales impulsan procesos clave y almacenan información sensible, las vulnerabilidades no son solo errores técnicos: son riesgos estratégicos. Esta charla presenta casos reales y técnicas avanzadas utilizadas para explotar debilidades en aplicaciones empresariales.\n" +
+    "Exploraremos vectores de ataque como la manipulación de lógica de negocio y APIs. Además, discutiremos cómo los atacantes combinan errores de configuración, malas prácticas de desarrollo y falta de controles compensatorios para comprometer entornos críticos.\n" +
+    "Esta charla está dirigida a profesionales de ciberseguridad ofensiva, desarrolladores y arquitectos de software que buscan una comprensión más profunda de los riesgos reales y cómo prevenirlos en la práctica.",
 };

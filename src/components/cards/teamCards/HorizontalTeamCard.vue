@@ -1,48 +1,48 @@
 <script setup>
-defineProps({
-  image: {
-    type: String,
-    required: true,
-  },
+import MaterialAvatar from "@/components/MaterialAvatar.vue";
+import {computed} from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+const props = defineProps({
   profile: {
     type: Object,
     required: true,
     name: String,
-    link: String,
+    image: String,
   },
-  position: {
+  conference: {
     type: Object,
-    label: String,
+    level: String,
+    title: String,
     color: String,
+    description: String,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
+});
+
+const informationArray =  computed (() => {
+  return t(props.conference.description).split("\n");
 });
 </script>
 <template>
   <div class="card card-profile">
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-12 mt-n5">
-        <a :href="profile.link">
+      <div class="col-lg-4 col-md-3 col-12">
           <div class="p-3 pe-md-0">
-            <img
-              class="w-100 border-radius-md shadow-lg"
-              :src="image"
-              :alt="profile.name"
-            />
+            <MaterialAvatar :alt="profile.name" :image="profile.image"/>
           </div>
-        </a>
       </div>
-      <div class="col-lg-8 col-md-6 col-12 my-auto">
+      <div class="col-lg-8 col-md-9 col-12 my-auto">
         <div class="card-body ps-lg-0">
-          <h5 class="mb-0">{{ profile.name }}</h5>
-          <h6 :class="`text-${position.color}`">{{ position.label }}</h6>
-          <p class="mb-0">
-            {{ description }}
-          </p>
+          <h5 class="mb-0">{{ conference.title }}</h5>
+          <h6 class="mb-0">{{ profile.name }}</h6>
+          <h6 :class="`text-${conference.color}`">{{ conference.level }}</h6>
+          <div v-for="item in informationArray">
+            <li v-if="item.startsWith('***')" class="mb-2">{{ item.replace("***", "") }}</li>
+            <p class="mb-2" v-else>{{ item }}</p>
+          </div>
         </div>
       </div>
     </div>

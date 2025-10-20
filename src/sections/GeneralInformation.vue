@@ -26,10 +26,9 @@ const informationArray =  computed (() => {
       <h3 v-if="information.subtitle !== ''" class="h2 text-center" style="color: royalblue;">{{ information.subtitle }}</h3>
     </div>
     <div v-for="item in informationArray">
-      <p v-if="item.type === 'paragraph'">{{ item.content }}</p>
       <h4 v-if="item.startsWith('*b*')" class="mb-3">{{ item.replace("*b*", "") }}</h4>
       <li v-else-if="item.startsWith('***')" class="mb-3 h5">{{ item.replace("***", "") }}</li>
-      <h5 v-else class="mb-3">{{ item }}</h5>
+      <p class="mb-3 h5" v-else>{{ item }}</p>
     </div>
   </div>
 </template>
