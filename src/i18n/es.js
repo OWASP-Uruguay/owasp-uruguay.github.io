@@ -104,7 +104,7 @@ export const es = {
   trainingJoseDescription: "En un mundo donde los desarrolladores luchan por crear aplicaciones seguras y los equipos de seguridad implementan controles avanzados, a menudo olvidamos al eslabón más débil (y más importante): el usuario final. Esta sesión se centra en la necesidad crítica de incluir el asesoramiento, formación y concientización del cliente/usuario final como una capa esencial en la estrategia de seguridad de cualquier aplicación web.\n" +
     "A través de ejemplos reales, buenas prácticas y ejercicios participativos, aprenderás a diseñar estrategias y mensajes efectivos para que el usuario final comprenda cómo usar la aplicación de manera segura, reduciendo riesgos como phishing, mal uso de contraseñas, configuración errónea de perfiles, y exposición innecesaria de datos.",
 
-  trainingAngelDescription: "Quién debería asistir?\n" +
+  conferenceAngelDescription: "Quién debería asistir?\n" +
     "Este workshop es para quienes ya han explorado el mundo del modelado de amenazas y también para quienes quieren dar sus primeros pasos y entender los fundamentos desde cero.\n" +
     "No tengo experiencia en Modelado de Amenazas...\n" +
     "Aquí no hace falta experiencia previa, solo ganas de aprender. Hemos preparado herramientas y ejemplos pensados para que entiendas todo paso a paso.",

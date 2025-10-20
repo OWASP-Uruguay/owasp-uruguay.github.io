@@ -104,7 +104,7 @@ export const en = {
   trainingJoseDescription: "In a world where developers strive to create secure applications and security teams implement advanced controls, we often forget the weakest (and most important) link: the end user. This session focuses on the critical need to include end-user/customer advice, training, and awareness as an essential layer in the security strategy of any web application.\n" +
     "Through real-world examples, best practices, and participatory exercises, you will learn how to design effective strategies and messages so that end users understand how to use the application safely, reducing risks such as phishing, password misuse, incorrect profile configuration, and unnecessary data exposure.",
 
-  trainingAngelDescription: "Who should attend?\n" +
+  conferenceAngelDescription: "Who should attend?\n" +
     "This workshop is for those who have already explored the world of threat modeling and also for those who want to take their first steps and understand the basics from scratch.\n" +
     "I have no experience in Threat Modeling...\n" +
     "No previous experience is necessary here, just a desire to learn. We have prepared tools and examples designed to help you understand everything step by step.",
