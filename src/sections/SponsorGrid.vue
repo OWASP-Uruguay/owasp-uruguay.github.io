@@ -6,7 +6,7 @@ import sponsorImage2 from "@/assets/img/sponsors/Lugapel-logo.jpeg"
 import sponsorImage3 from "@/assets/img/sponsors/Tilsor-logo.svg"
 import sponsorImage4 from "@/assets/img/sponsors/Xygeni-logo.png"
 import communitySponsorImage1 from "@/assets/img/sponsors/InfoSecMap-logo.png"
-import venueSponsorImage1 from "@/assets/img/sponsors/Antel-Logo.png"
+import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 </script>
 
 <template>
