@@ -24,7 +24,7 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
       <div class="row">
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-4"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Aditya Singh', image: `${speakerImg1}` }"
               :conference="{ title: 'Ghost in the Machine: Exploiting Hardware & Network Fingerprints for Tracking', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAdityaDescription' }"
@@ -32,17 +32,15 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-lg-4 mt-5"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg2}` }"
               :conference="{ title: 'Your Security Dashboard is Lying to You: The Science of Metrics', level: 'Introductory and overview', color: 'success',
                 description: 'conferenceAramDescription' }"
           />
         </div>
-      </div>
-      <div class="row mt-4">
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-4 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'August Joseph', image: `${speakerImg3}` }"
               :conference="{ title: 'The Birthplace of Lies: Hacking Analytics SDKs', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAugustDescription' }"
@@ -50,17 +48,15 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-lg-4 mt-5 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Axel Labruna', image: `${speakerImg4}` }"
               :conference="{ title: 'Desafiando las fronteras del Pentesting - La era de la IA', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAxelDescription' }"
           />
         </div>
-      </div>
-      <div class="row mt-4">
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-4 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Danish Tariq', image: `${speakerImg5}` }"
               :conference="{ title: 'Zero to Owned: Mapping the Lifecycle of a Credential Stealer to Corporate Breach', level: 'Introductory and overview', color: 'success',
                 description: 'conferenceDanishDescription' }"
@@ -68,17 +64,15 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-lg-4 mt-5 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Eva Ferreira', image: `${speakerImg6}` }"
               :conference="{ title: 'Cryptography for lovers 💘', level: 'Intermediate', color: 'warning',
                 description: 'conferenceEvaDescription' }"
           />
         </div>
-      </div>
-      <div class="row mt-4">
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-4 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Jose Angel Sevilla', image: `${speakerImg7}` }"
               :conference="{ title: 'Amenazas y Contramedidas en SDLC para IA: OWASP Top 10 y Más Allá', level: 'Intermediate', color: 'warning',
                 description: 'conferenceJoseDescription' }"
@@ -86,7 +80,7 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-lg-4 mt-5 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Miguel Alonso Lopez Abarca', image: `${speakerImg8}` }"
               :conference="{ title: '¿Seguro que tu app es segura? Lecciones desde el lado ofensivo', level: 'Intermediate', color: 'warning',
                 description: 'conferenceMiguelDescription' }"
@@ -96,7 +90,7 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
 <!--      <div class="row mt-4">-->
 <!--        <div class="col-lg-6 col-12">-->
 <!--          <HorizontalTeamCard-->
-<!--              class="mt-4 z-index-2"-->
+class="mt-lg-4 mt-4"
 <!--              :profile="{ name: 'Angel Santa Cruz', image: `${speakerImg5}` }"-->
 <!--              :conference="{ title: 'Security Threat Modeling Workshop', level: 'Advanced', color: 'danger',-->
 <!--                description: 'conferenceAngelDescription' }"-->

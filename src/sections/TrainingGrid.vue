@@ -1,11 +1,10 @@
 <script setup>
 import HorizontalTeamCard from "@/components/cards/teamCards/HorizontalTeamCard.vue"
 
-import speakerImg1 from "@/assets/img/speakers/Abraham_Aranguren.png"
-import speakerImg2 from "@/assets/img/speakers/Aram_Hovsepyan.jpg"
+import speakerImg1 from "@/assets/img/speakers/Aram_Hovsepyan.jpg"
+import speakerImg2 from "@/assets/img/speakers/Nariman_Aga_Tagiyev.jpg"
 import speakerImg3 from "@/assets/img/speakers/Fabio_Cerullo.png"
 import speakerImg4 from "@/assets/img/speakers/Jose_Luis_Zamora.png"
-import speakerImg5 from "@/assets/img/speakers/Angel_Santa_Cruz.jpg"
 </script>
 
 <template>
@@ -29,23 +28,22 @@ import speakerImg5 from "@/assets/img/speakers/Angel_Santa_Cruz.jpg"
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
-              class="mt-4 z-index-2"
+              class="mt-lg-4 mt-4"
               :profile="{ name: 'Jose Luis Zamora', image: `${speakerImg4}` }"
               :conference="{ title: 'Capacitador Experto en Ciberseguridad', level: 'Introductory and overview', color: 'success',
                 description: 'trainingJoseDescription' }"
           />
         </div>
       </div>
-      <div class="row mt-4">
         <div class="col-lg-12 col-12">
           <HorizontalTeamCard
-              class="mt-4"
-              :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg2}` }"
+              class="mt-lg-4 mt-4"
+              :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg1}` }"
+              :profile2="{ name: 'Nariman Aga-Tagiyev', image: `${speakerImg2}` }"
               :conference="{ title: 'OWASP SAMM in Practice', level: 'Introductory and overview', color: 'success',
                 description: 'trainingAramDescription' }"
           />
         </div>
-      </div>
     </div>
   </section>
 </template>

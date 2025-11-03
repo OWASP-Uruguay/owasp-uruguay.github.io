@@ -3,7 +3,6 @@ import { onMounted, onUnmounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
 
 // components
-import MaterialBadge from "@/components/MaterialBadge.vue";
 import GoogleMaps from "@/components/GoogleMaps.vue";
 
 // sections
@@ -17,12 +16,11 @@ import Footer from "@/sections/footers/Footer.vue";
 
 // images
 import headerBackgroundImageLogo from "@/assets/img/owasp-appsec-days-uruguay-2025-logo.jpeg";
-// import callForPresentationsImage from "@/assets/img/call-for-papers.jpeg";
-// import callForTrainersImage from "@/assets/img/call-for-trainers.jpeg";
 import callForSponsorsImage from "@/assets/img/call-for-sponsors.jpeg";
 import owaspUYLogo from "@/assets/img/owasp-uy.png";
 import TrainingGrid from "@/sections/TrainingGrid.vue";
 import SpeakersGrid from "@/sections/SpeakersGrid.vue";
+import SponsorGrid from "@/sections/SponsorGrid.vue";
 
 const { t } = useI18n();
 
@@ -61,21 +59,6 @@ const callToRegistration = computed(() => ({
   buttonText: t("callToRegistrationButton"),
   route: "https://www.eventbrite.com/e/owasp-appsec-days-uruguay-2025-tickets-1415284527119?aff=oddtdtcreator",
 }));
-// const callForPresentations = computed(() => ({
-//   title: t("callForPresentations"),
-//   description: t("callForPresentationsDescription"),
-//   logo: callForPresentationsImage,
-//   buttonText: t("callForPresentationsButton"),
-//   route: "https://sessionize.com/owasp-appsec-days-uruguay-2025/",
-// }));
-// const callForTrainers = computed(() => ({
-//   dark: true,
-//   title: t("callForTrainers"),
-//   description: t("callForTrainersDescription"),
-//   logo: callForTrainersImage,
-//   buttonText: t("callForTrainersButton"),
-//   route: "https://sessionize.com/owasp-appsec-training-days-uruguay-2025/",
-// }));
 const callForSponsors = computed(() => ({
   title: t("callForSponsors"),
   logo: callForSponsorsImage,
@@ -91,7 +74,7 @@ const callToOWASPUY = computed(() => ({
   description: "",
   logo: owaspUYLogo,
   buttonText: t("visitSite"),
-  route: "https://owasp.org/uruguay",
+  route: "https://owasp.org/www-chapter-uruguay/",
 }));
 const codeOfConduct = computed(() => ({
   title: t("codeOfConductTitle"),
@@ -141,6 +124,10 @@ const codeOfConduct = computed(() => ({
 
   <CallToAction id="cfr" :call-for="callToRegistration" />
 
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
+    <SponsorGrid id="sponsorGrid" />
+  </div>
+
   <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));">
     <TrainingGrid/>
   </div>
@@ -150,8 +137,6 @@ const codeOfConduct = computed(() => ({
   </div>
 
   <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
-    <!--    <CallToAction id="cfp" :call-for="callForPresentations" />-->
-    <!--    <callForPresentationsCallToAction id="cft" :call-for="callForTrainers" />-->
     <CallToAction id="call4sponsors" :call-for="callForSponsors" />
   </div>
 
@@ -168,26 +153,6 @@ const codeOfConduct = computed(() => ({
   <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4">
     <GeneralInformation :information="codeOfConduct"/>
   </div>
-
-<!--  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-5 border-radius-xl" :style="getStyle(true)">-->
-<!--    <section>-->
-<!--      <div class="container">-->
-<!--        <div class="row">-->
-<!--          <div class="row justify-content-center text-center text-white my-sm-5">-->
-<!--            <div class="col-lg-6">-->
-<!--              <MaterialBadge color="warning" class="mb-3">-->
-<!--                {{ $t("comingSoon") }}-->
-<!--              </MaterialBadge>-->
-
-<!--              <p class="lead">-->
-<!--                {{ $t("comingSoonDetails") }}-->
-<!--              </p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
-<!--  </div>-->
 
   <Footer />
 </template>
