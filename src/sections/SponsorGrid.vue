@@ -10,11 +10,11 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 </script>
 
 <template>
-  <section class="pb-5 position-relative bg-gradient-dark mx-n3">
+  <section class="pb-5 position-relative mx-n3">
     <div class="container">
       <div class="row">
         <div class="col-md-8 text-start mt-5">
-          <h3 class="text-white z-index-1 position-relative">
+          <h3 class="z-index-1 position-relative">
             Sponsors
           </h3>
         </div>
@@ -22,7 +22,7 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 
       <div class="row">
         <div class="col-md-8 text-start mt-5">
-          <h4 class="text-white z-index-1 position-relative">
+          <h4 class="z-index-1 position-relative">
             Silver
           </h4>
         </div>
@@ -52,7 +52,7 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 
       <div class="row">
         <div class="col-md-8 text-start mt-6">
-          <h5 class="text-white z-index-1 position-relative">
+          <h5 class="z-index-1 position-relative">
             Community
           </h5>
         </div>
@@ -67,7 +67,7 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 
       <div class="row">
         <div class="col-md-8 text-start mt-6">
-          <h5 class="text-white z-index-1 position-relative">
+          <h5 class="z-index-1 position-relative">
             Venue
           </h5>
         </div>
