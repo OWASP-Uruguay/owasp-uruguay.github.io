@@ -87,16 +87,6 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
           />
         </div>
       </div>
-<!--      <div class="row mt-4">-->
-<!--        <div class="col-lg-6 col-12">-->
-<!--          <HorizontalTeamCard-->
-class="mt-lg-4 mt-4"
-<!--              :profile="{ name: 'Angel Santa Cruz', image: `${speakerImg5}` }"-->
-<!--              :conference="{ title: 'Security Threat Modeling Workshop', level: 'Advanced', color: 'danger',-->
-<!--                description: 'conferenceAngelDescription' }"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
   </section>
 </template>
