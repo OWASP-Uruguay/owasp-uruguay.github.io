@@ -99,7 +99,7 @@ const codeOfConduct = computed(() => ({
   <Header
     class="min-vh-85"
     style="
-      background-color: rgb(5, 5, 46);
+      background-color: #131329;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -107,7 +107,7 @@ const codeOfConduct = computed(() => ({
   >
     <div
       class="page-header min-vh-75"
-      :style="`background-image: url(${headerBackgroundImageLogo}); background-repeat: no-repeat; background-size: 100% 100%;`"
+      :style="`background-image: url(${headerBackgroundImageLogo}); background-repeat: no-repeat; background-size: contain; background-position: center;`"
     >
       <div class="container">
         <div class="row">
