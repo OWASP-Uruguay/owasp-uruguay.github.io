@@ -1,10 +1,12 @@
 <script setup>
 import ImageCard from "@/components/cards/imageCard/ImageCard.vue"
 
-import sponsorImage1 from "@/assets/img/sponsors/Grant_Thornton-logo.png"
-import sponsorImage2 from "@/assets/img/sponsors/Lugapel-logo.jpeg"
+import sponsorImage1 from "@/assets/img/sponsors/Lugapel-logo.jpeg"
+import sponsorImage2 from "@/assets/img/sponsors/Nextfense-logo.svg"
 import sponsorImage3 from "@/assets/img/sponsors/Tilsor-logo.svg"
 import sponsorImage4 from "@/assets/img/sponsors/Xygeni-logo.png"
+import otherSponsorImage1 from "@/assets/img/sponsors/Grant_Thornton-logo.png"
+import otherSponsorImage2 from "@/assets/img/sponsors/UCU-logo.png"
 import communitySponsorImage1 from "@/assets/img/sponsors/InfoSecMap-logo.png"
 import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 </script>
@@ -31,12 +33,12 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
         <ImageCard
             class="mt-lg-4 mt-5"
             :class="`card card-profile col-lg-4 col-md-3 col-12 mr-1`"
-            :sponsor="{ name: 'Grant Thornton', image: `${sponsorImage1}`, link: 'https://www.grantthornton.com.uy/' }"
+            :sponsor="{ name: 'Lugapel', image: `${sponsorImage1}`, link: 'https://lugapel.com/' }"
         />
         <ImageCard
             class="mt-lg-4 mt-5"
-            :class="`card card-profile col-lg-4 col-md-3 col-12 mr-1`"
-            :sponsor="{ name: 'Lugapel', image: `${sponsorImage2}`, link: 'https://lugapel.com/' }"
+            :class="`card card-profile col-lg-4 col-md-3 col-12`"
+            :sponsor="{ name: 'Nextfense', image: `${sponsorImage2}`, link: 'https://nextfense.com/' }"
         />
         <ImageCard
             class="mt-lg-4 mt-5"
@@ -47,6 +49,26 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
             class="mt-lg-4 mt-5"
             :class="`card card-profile col-lg-4 col-md-3 col-12 mr-1`"
             :sponsor="{ name: 'Xygeni', image: `${sponsorImage4}`, link: 'https://xygeni.io/es/' }"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 text-start mt-5">
+          <h4 class="z-index-1 position-relative">
+            Other Sponsorships
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        <ImageCard
+            class="mt-lg-4 mt-5"
+            :class="`card card-profile col-lg-4 col-md-3 col-12 mr-1`"
+            :sponsor="{ name: 'Grant Thornton', image: `${otherSponsorImage1}`, link: 'https://www.grantthornton.com.uy/' }"
+        />
+        <ImageCard
+            class="mt-lg-4 mt-5"
+            :class="`card card-profile col-lg-4 col-md-3 col-12`"
+            :sponsor="{ name: 'Universidad Católica del Uruguay', image: `${otherSponsorImage2}`, link: 'https://www.ucu.edu.uy/' }"
         />
       </div>
 
