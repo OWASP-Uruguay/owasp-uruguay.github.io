@@ -101,6 +101,21 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
             :sponsor="{ name: 'ANTEL', image: `${venueSponsorImage1}`, link: 'https://www.antel.com.uy/' }"
         />
       </div>
+
+      <div class="row">
+        <div class="col-md-8 text-start mt-6">
+          <h5 class="z-index-1 position-relative">
+            Trainings Venue
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <ImageCard
+            class="mt-lg-4 mt-5"
+            :class="`card card-profile col-lg-4 col-md-3 col-12`"
+            :sponsor="{ name: 'Grant Thornton', image: `${otherSponsorImage1}`, link: 'https://www.grantthornton.com.uy/' }"
+        />
+      </div>
     </div>
   </section>
 </template>

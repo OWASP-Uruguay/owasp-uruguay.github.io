@@ -40,8 +40,9 @@ import speakerImg4 from "@/assets/img/speakers/Jose_Luis_Zamora.png"
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg1}` }"
               :profile2="{ name: 'Nariman Aga-Tagiyev', image: `${speakerImg2}` }"
-              :conference="{ title: 'OWASP SAMM in Practice', level: 'Introductory and overview', color: 'success',
+              :conference="{ title: 'OWASP SAMM in Practice (English)', level: 'Introductory and overview', color: 'success',
                 description: 'trainingAramDescription' }"
+              :dualSpace=true
           />
         </div>
     </div>

@@ -2,13 +2,16 @@
 import HorizontalTeamCard from "@/components/cards/teamCards/HorizontalTeamCard.vue"
 
 import speakerImg1 from "@/assets/img/speakers/Aditya_Singh.jpg"
-import speakerImg2 from "@/assets/img/speakers/Aram_Hovsepyan.jpg"
-import speakerImg3 from "@/assets/img/speakers/August_Joseph.jpg"
-import speakerImg4 from "@/assets/img/speakers/Axel_Labruna.jpg"
-import speakerImg5 from "@/assets/img/speakers/Danish_Tariq.jpeg"
+import speakerImg2 from "@/assets/img/speakers/Andres_Gomez.jpg"
+import speakerImg3 from "@/assets/img/speakers/Aram_Hovsepyan.jpg"
+import speakerImg4 from "@/assets/img/speakers/August_Joseph.jpg"
+import speakerImg5 from "@/assets/img/speakers/Axel_Labruna.jpg"
+import speakerImg51 from "@/assets/img/speakers/Matias_Armandola.jpg"
 import speakerImg6 from "@/assets/img/speakers/Eva_Ferreira.jpg"
 import speakerImg7 from "@/assets/img/speakers/Jose_Sevilla.jpg"
-import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
+import speakerImg71 from "@/assets/img/speakers/Angel_Santa_Cruz.jpg"
+
+import speakerImg8 from "@/assets/img/speakers/Mauro_Flores.jpg"
 </script>
 
 <template>
@@ -26,40 +29,41 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Aditya Singh', image: `${speakerImg1}` }"
-              :conference="{ title: 'Ghost in the Machine: Exploiting Hardware & Network Fingerprints for Tracking', level: 'Intermediate', color: 'warning',
+              :conference="{ title: 'Ghost in the Machine: Exploiting Hardware & Network Fingerprints for Tracking (English)', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAdityaDescription' }"
           />
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
-              :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg2}` }"
-              :conference="{ title: 'Your Security Dashboard is Lying to You: The Science of Metrics', level: 'Introductory and overview', color: 'success',
+              :profile="{ name: 'Andrés Gómez', image: `${speakerImg2}` }"
+              :conference="{ title: 'Pentesting like a Ransomware Gang', level: 'Advanced', color: 'danger',
+                description: 'conferenceAndresDescription' }"
+          />
+        </div>
+        <div class="col-lg-6 col-12">
+          <HorizontalTeamCard
+              class="mt-lg-4 mt-4"
+              :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg3}` }"
+              :conference="{ title: 'Your Security Dashboard is Lying to You: The Science of Metrics (English)', level: 'Introductory and overview', color: 'success',
                 description: 'conferenceAramDescription' }"
           />
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
-              :profile="{ name: 'August Joseph', image: `${speakerImg3}` }"
-              :conference="{ title: 'The Birthplace of Lies: Hacking Analytics SDKs', level: 'Intermediate', color: 'warning',
+              :profile="{ name: 'August Joseph', image: `${speakerImg4}` }"
+              :conference="{ title: 'The Birthplace of Lies: Hacking Analytics SDKs (English)', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAugustDescription' }"
           />
         </div>
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
-              :profile="{ name: 'Axel Labruna', image: `${speakerImg4}` }"
+              :profile="{ name: 'Axel Labruna', image: `${speakerImg5}` }"
+              :profile2="{ name: 'Matias_Armandola', image: `${speakerImg51}` }"
               :conference="{ title: 'Desafiando las fronteras del Pentesting - La era de la IA', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAxelDescription' }"
-          />
-        </div>
-        <div class="col-lg-6 col-12">
-          <HorizontalTeamCard
-              class="mt-lg-4 mt-4"
-              :profile="{ name: 'Danish Tariq', image: `${speakerImg5}` }"
-              :conference="{ title: 'Zero to Owned: Mapping the Lifecycle of a Credential Stealer to Corporate Breach', level: 'Introductory and overview', color: 'success',
-                description: 'conferenceDanishDescription' }"
           />
         </div>
         <div class="col-lg-6 col-12">
@@ -74,6 +78,7 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Jose Angel Sevilla', image: `${speakerImg7}` }"
+              :profile2="{ name: 'Angel Santa Cruz', image: `${speakerImg71}` }"
               :conference="{ title: 'Amenazas y Contramedidas en SDLC para IA: OWASP Top 10 y Más Allá', level: 'Intermediate', color: 'warning',
                 description: 'conferenceJoseDescription' }"
           />
@@ -81,9 +86,9 @@ import speakerImg8 from "@/assets/img/speakers/Miguel_Alonso_Lopez_Abarca.jpg"
         <div class="col-lg-6 col-12">
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
-              :profile="{ name: 'Miguel Alonso Lopez Abarca', image: `${speakerImg8}` }"
-              :conference="{ title: '¿Seguro que tu app es segura? Lecciones desde el lado ofensivo', level: 'Intermediate', color: 'warning',
-                description: 'conferenceMiguelDescription' }"
+              :profile="{ name: 'Mauro Flores', image: `${speakerImg8}` }"
+              :conference="{ title: 'DevSecOps Real Life Challenges', level: 'Intermediate', color: 'warning',
+                description: 'conferenceMauroDescription' }"
           />
         </div>
       </div>

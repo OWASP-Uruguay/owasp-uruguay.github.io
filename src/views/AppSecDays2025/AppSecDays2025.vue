@@ -49,7 +49,7 @@ const registerActionButton = computed(() => ({
 }));
 const aboutEvent = computed(() => ({
   title: t("aboutEventTitle"),
-  subtitle: "19-20 Nov",
+  subtitle: "19 Nov Trainings & 20 Nov Conferences",
   text: "aboutEventText",
 }));
 const callToRegistration = computed(() => ({

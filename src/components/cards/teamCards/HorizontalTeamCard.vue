@@ -28,23 +28,28 @@ const props = defineProps({
     required: false,
     default: { title: "" },
   },
+  dualSpace: {
+    type: Boolean,
+    required: false,
+    default: false,
+  }
 });
 
 const informationArray =  computed (() => {
   return t(props.conference.description).split("\n");
 });
 const classImages = computed(() => {
-  if (props.profile2.name === '') {
-    return "col-lg-4 col-md-3 col-12";
-  } else {
+  if (props.dualSpace) {
     return "col-lg-2 col-md-3 col-12";
+  } else {
+    return "col-lg-4 col-md-3 col-12";
   }
 });
 const classConference = computed(() => {
-  if (props.profile2.name === '') {
-    return "col-lg-8 col-md-9 col-12 my-auto";
-  } else {
+  if (props.dualSpace) {
     return "col-lg-10 col-md-9 col-12 my-auto";
+  } else {
+    return "col-lg-8 col-md-9 col-12 my-auto";
   }
 });
 </script>
@@ -68,7 +73,7 @@ const classConference = computed(() => {
           <h6 :class="`text-${conference.color}`">{{ conference.level }}</h6>
           <div v-for="item in informationArray">
             <li v-if="item.startsWith('***')" class="mb-2">{{ item.replace("***", "") }}</li>
-            <p class="mb-2" v-else>{{ item }}</p>
+            <p v-else class="mb-2">{{ item }}</p>
           </div>
         </div>
       </div>
