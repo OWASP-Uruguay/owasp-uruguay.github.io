@@ -55,7 +55,7 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
       <div class="row">
         <div class="col-md-8 text-start mt-5">
           <h4 class="z-index-1 position-relative">
-            Other Sponsorships
+            Track Sponsorships
           </h4>
         </div>
       </div>
