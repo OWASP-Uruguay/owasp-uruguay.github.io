@@ -10,8 +10,8 @@ export const es = {
   daysDescription: "Dos días de puro aprendizaje sobre desarrollo seguro.",
 
   aboutEventTitle: "Sobre la Conferencia",
-  aboutEventText:
-    "OWASP AppSec Days Uruguay es el evento de referencia en seguridad de aplicaciones para desarrolladores y profesionales de la seguridad en la región. Únete a nosotros y descubre las últimas tendencias, mejores prácticas y herramientas para proteger tus aplicaciones de las amenazas más recientes.\n" +
+  aboutEventDate: "Trainings - Miércoles 19, Conferencias - Jueves 20",
+  aboutEventText:  "OWASP AppSec Days Uruguay es el evento de referencia en seguridad de aplicaciones para desarrolladores y profesionales de la seguridad en la región. Únete a nosotros y descubre las últimas tendencias, mejores prácticas y herramientas para proteger tus aplicaciones de las amenazas más recientes.\n" +
     "¡Asegurá tu lugar!",
 
   callToRegistration: "¡No te lo pierdas! Consigue tu entrada",
@@ -118,6 +118,11 @@ export const es = {
     "Te llevarás ejemplos reales, frameworks efectivos, métricas de seguridad y una hoja de ruta para implementar defensas robustas en tus soluciones basadas en IA.\n" +
     "Una sesión imperdible para desarrolladores, arquitectos, analistas de seguridad y líderes técnicos que quieren construir confianza, cumplimiento y resiliencia en sus proyectos de IA.",
 
-  conferenceMiguelDescription: "La implementación de DevSecOps en organizaciones implica mucho mas que la incorporación de herramientas y tecnologías. Se trata de un cambio en la forma de concebir el proceso de construcción del software y que en sus primeras etapas genera desafíos importantes a nivel de procesos y el SDLC.\n" +
+  conferenceMauroDescription: "La implementación de DevSecOps en organizaciones implica mucho mas que la incorporación de herramientas y tecnologías. Se trata de un cambio en la forma de concebir el proceso de construcción del software y que en sus primeras etapas genera desafíos importantes a nivel de procesos y el SDLC.\n" +
     "Basado en experiencias reales, esta presentación busca compartir los principales desafíos que surgen al incorporar un esquema de DevSecOps y plantear alternativas para abordarlos.\n",
+
+  registration: "Registro",
+  welcoming: "Bienvenida e introducción a OWASP",
+  lunch: "Almuerzo + Networking",
+  ending: "Cierre",
 };

@@ -17232,8 +17232,8 @@ textarea.form-control-lg {
 }
 
 .avatar-xxl {
-  width: 110px !important;
-  height: 110px !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 .avatar-xxl.avatar-raised {
   margin-top: -55px;

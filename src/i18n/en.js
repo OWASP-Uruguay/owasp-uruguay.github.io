@@ -10,8 +10,8 @@ export const en = {
   daysDescription: "Two days of learning the ins and outs of secure development.",
 
   aboutEventTitle: "About the Conference",
-  "aboutEventText":
-    "OWASP AppSec Days Uruguay is the reference event in application security for developers and security professionals in the region. Join us and discover the latest trends, best practices, and tools to protect your applications from the latest threats.\n" +
+  aboutEventDate: "Trainings - Wednesday 19, Conferences - Thursday 20",
+  aboutEventText: "OWASP AppSec Days Uruguay is the reference event in application security for developers and security professionals in the region. Join us and discover the latest trends, best practices, and tools to protect your applications from the latest threats.\n" +
     "Secure your spot!",
 
   callToRegistration: "Don't miss out! Buy your tickets",
@@ -120,4 +120,9 @@ export const en = {
 
   conferenceMauroDescription: "Implementing DevSecOps in organizations involves much more than incorporating tools and technologies. It is a change in the way the software development process is conceived, and in its early stages it generates significant challenges in terms of processes and the SDLC.\n" +
     "Based on real experiences, this presentation seeks to share the main challenges that arise when incorporating a DevSecOps framework and propose alternatives to address them.\n",
+
+  registration: "Registration",
+  welcoming: "Welcoming and introduction to OWASP",
+  lunch: "Lunch + Networking",
+  ending: "Closing",
 };

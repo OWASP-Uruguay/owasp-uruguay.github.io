@@ -58,11 +58,9 @@ const classConference = computed(() => {
   <div class="card card-profile">
     <div class="row">
       <div :class="classImages" style="text-align: center;">
-        <div class="p-3 pe-md-0">
-          <MaterialAvatar :alt="profile.name" :image="profile.image"/>
-        </div>
-        <div v-if="profile2.name !== ''" class="p-3 pe-md-0">
-          <MaterialAvatar :alt="profile2.name" :image="profile2.image"/>
+        <div>
+          <MaterialAvatar class="p-3" :alt="profile.name" :image="profile.image"/>
+          <MaterialAvatar v-if="profile2.name !== ''" class="p-3" :alt="profile2.name" :image="profile2.image"/>
         </div>
       </div>
       <div :class="classConference">
