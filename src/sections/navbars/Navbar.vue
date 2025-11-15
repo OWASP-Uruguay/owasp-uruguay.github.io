@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import { useI18n } from "vue-i18n";
 
 import { useWindowsWidth } from "@/assets/js/useWindowsWidth";
@@ -86,6 +86,11 @@ function changeLanguage(lang) {
     locale.value = "es";
   }
 }
+
+onMounted(() => {
+  document.getElementById("translate").click();
+});
+
 </script>
 <template>
   <nav

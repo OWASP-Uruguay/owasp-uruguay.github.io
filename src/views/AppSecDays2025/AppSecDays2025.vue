@@ -27,7 +27,6 @@ const body = document.getElementsByTagName("body")[0];
 onMounted(() => {
   body.classList.add("presentation-page");
   body.classList.add("bg-gray-200");
-  document.getElementById("translate").click();
 });
 onUnmounted(() => {
   body.classList.remove("presentation-page");
