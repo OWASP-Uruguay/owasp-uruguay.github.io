@@ -116,7 +116,7 @@ const codeOfConduct = computed(() => ({
     <TrainingGrid/>
   </div>
 
-  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="background: linear-gradient(195deg, rgb(25, 25, 25), rgb(66, 66, 74));">
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0px !important;">
     <SpeakersGrid/>
   </div>
 
