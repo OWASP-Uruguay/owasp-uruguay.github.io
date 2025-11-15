@@ -202,6 +202,7 @@ onMounted(() => {
           aria-expanded="false"
           style="display: flex; flex-direction:column; align-items:center"
           @click="changeLanguage('en')"
+          id="translate"
         >
           <i
             class="fa-solid fa-language"
