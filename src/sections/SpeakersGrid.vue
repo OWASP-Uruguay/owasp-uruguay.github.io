@@ -167,7 +167,7 @@ const OWASPUY = "OWASP UY";
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Felipe Zipitria', image: `${speakerImg4}` }"
               :profile2="{ name: 'Augustín De León', image: `${speakerImg41}` }"
-              :conference="{ title: 'The Birthplace of Lies: Hacking Analytics SDKs (English)', level: 'Intermediate', color: 'warning',
+              :conference="{ title: 'Towards the next generation OWASP CRS ruleset language', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAugustinZDescription' }"
               :dualSpace=true
           />
