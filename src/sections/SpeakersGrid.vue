@@ -4,16 +4,16 @@ const { t } = useI18n();
 
 import HorizontalTeamCard from "@/components/cards/teamCards/HorizontalTeamCard.vue"
 
-import owaspUYLogo from "@/assets/img/owasp-uy.png";
-import speakerImg1 from "@/assets/img/speakers/Aditya_Singh.png"
+import owaspUYLogo from "@/assets/img/owasp-uy.png"
+import speakerImg1 from "@/assets/img/speakers/Matias_Ferreira.png"
 import speakerImg2 from "@/assets/img/speakers/Andres_Gomez.jpg"
 import speakerImg3 from "@/assets/img/speakers/Aram_Hovsepyan.jpg"
-import speakerImg4 from "@/assets/img/speakers/August_Joseph.jpg"
+import speakerImg4 from "@/assets/img/speakers/Felipe_Zipitria.jpg"
+import speakerImg41 from "@/assets/img/speakers/Agustin_DeLeon.jpg"
 import speakerImg5 from "@/assets/img/speakers/Axel_Labruna.png"
 import speakerImg51 from "@/assets/img/speakers/Matias_Armandola.jpg"
 import speakerImg6 from "@/assets/img/speakers/Eva_Ferreira.jpg"
 import speakerImg7 from "@/assets/img/speakers/Jose_Sevilla.jpg"
-import speakerImg71 from "@/assets/img/speakers/Angel_Santa_Cruz.jpg"
 
 import speakerImg8 from "@/assets/img/speakers/Mauro_Flores.jpg"
 import MaterialAvatar from "@/components/MaterialAvatar.vue";
@@ -77,7 +77,7 @@ const OWASPUY = "OWASP UY";
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Axel Labruna', image: `${speakerImg5}` }"
-              :profile2="{ name: 'Matias_Armandola', image: `${speakerImg51}` }"
+              :profile2="{ name: 'Matias Armandola', image: `${speakerImg51}` }"
               :conference="{ title: 'Desafiando las fronteras del Pentesting - La era de la IA', level: 'Intermediate', color: 'warning',
                 description: 'conferenceAxelDescription' }"
               :dualSpace=true
@@ -122,7 +122,6 @@ const OWASPUY = "OWASP UY";
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Jose Angel Sevilla', image: `${speakerImg7}` }"
-              :profile2="{ name: 'Angel Santa Cruz', image: `${speakerImg71}` }"
               :conference="{ title: 'Amenazas y Contramedidas en SDLC para IA: OWASP Top 10 y Más Allá', level: 'Intermediate', color: 'warning',
                 description: 'conferenceJoseDescription' }"
               :dualSpace=true
@@ -138,9 +137,9 @@ const OWASPUY = "OWASP UY";
         <div class="col-lg-9 col-12">
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
-              :profile="{ name: 'Aditya Singh', image: `${speakerImg1}` }"
-              :conference="{ title: 'Ghost in the Machine: Exploiting Hardware & Network Fingerprints for Tracking (English)', level: 'Intermediate', color: 'warning',
-                description: 'conferenceAdityaDescription' }"
+              :profile="{ name: 'Matias Ferriera', image: `${speakerImg1}` }"
+              :conference="{ title: 'Fast and Furious: Reto DevSecOps', level: 'Introductory and overview', color: 'success',
+                description: 'conferenceMatoDescription' }"
               :dualSpace=true
           />
         </div>
@@ -166,9 +165,10 @@ const OWASPUY = "OWASP UY";
         <div class="col-lg-9 col-12">
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
-              :profile="{ name: 'August Joseph', image: `${speakerImg4}` }"
+              :profile="{ name: 'Felipe Zipitria', image: `${speakerImg4}` }"
+              :profile2="{ name: 'Augustín De León', image: `${speakerImg41}` }"
               :conference="{ title: 'The Birthplace of Lies: Hacking Analytics SDKs (English)', level: 'Intermediate', color: 'warning',
-                description: 'conferenceAugustDescription' }"
+                description: 'conferenceAugustinZDescription' }"
               :dualSpace=true
           />
         </div>

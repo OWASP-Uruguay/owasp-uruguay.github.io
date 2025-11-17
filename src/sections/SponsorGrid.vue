@@ -113,7 +113,7 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
         <ImageCard
             class="mt-lg-4 mt-5"
             :class="`card card-profile col-lg-4 col-md-3 col-12`"
-            :sponsor="{ name: 'Grant Thornton', image: `${otherSponsorImage1}`, link: 'https://www.grantthornton.com.uy/' }"
+            :sponsor="{ name: 'Lugapel', image: `${sponsorImage1}`, link: 'https://lugapel.com/' }"
         />
       </div>
     </div>

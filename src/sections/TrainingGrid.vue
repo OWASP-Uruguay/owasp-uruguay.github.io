@@ -3,8 +3,9 @@ import HorizontalTeamCard from "@/components/cards/teamCards/HorizontalTeamCard.
 
 import speakerImg1 from "@/assets/img/speakers/Aram_Hovsepyan.jpg"
 import speakerImg2 from "@/assets/img/speakers/Nariman_Aga_Tagiyev.jpg"
-import speakerImg3 from "@/assets/img/speakers/Fabio_Cerullo.png"
 import speakerImg4 from "@/assets/img/speakers/Jose_Luis_Zamora.png"
+
+import GoogleMapsTraining from "@/components/GoogleMapsTraining.vue";
 </script>
 
 <template>
@@ -20,17 +21,10 @@ import speakerImg4 from "@/assets/img/speakers/Jose_Luis_Zamora.png"
       <div class="row">
         <div class="col-lg-2 col-12 text-center">
           <div class="card mt-lg-4 mt-4">
-            <h3>09:00 - 17:00</h3>
+            <h3>09:00 - 13:00</h3>
           </div>
         </div>
         <div class="col-lg-9 col-12">
-          <HorizontalTeamCard
-              class="mt-lg-4 mt-4"
-              :profile="{ name: 'Fabio Cerullo', image: `${speakerImg3}` }"
-              :conference="{ title: 'Secure Coding for Large Language Model Applications', level: 'Intermediate', color: 'warning',
-                description: 'trainingFabioDescription' }"
-              :dualSpace=true
-          />
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Jose Luis Zamora', image: `${speakerImg4}` }"
@@ -38,7 +32,14 @@ import speakerImg4 from "@/assets/img/speakers/Jose_Luis_Zamora.png"
                 description: 'trainingJoseDescription' }"
               :dualSpace=true
           />
-          <HorizontalTeamCard
+        </div>
+        <div class="col-lg-2 col-12 text-center">
+          <div class="card mt-lg-4 mt-4">
+            <h3>09:00 - 17:00</h3>
+          </div>
+        </div>
+        <div class="col-lg-9 col-12">
+        <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Aram Hovsepyan', image: `${speakerImg1}` }"
               :profile2="{ name: 'Nariman Aga-Tagiyev', image: `${speakerImg2}` }"
@@ -49,5 +50,9 @@ import speakerImg4 from "@/assets/img/speakers/Jose_Luis_Zamora.png"
         </div>
       </div>
     </div>
+
+    <h5 class="text-white z-index-1 position-relative mt-lg-5">Training Venue: Sala Dakar, Planta Baja, WTC Free Zone, Torre 1 (Luis Bonavita 1294)</h5>
+
+    <GoogleMapsTraining/>
   </section>
 </template>
