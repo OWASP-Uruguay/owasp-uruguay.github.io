@@ -6,7 +6,8 @@ import sponsorImage2 from "@/assets/img/sponsors/Nextfense-logo.svg"
 import sponsorImage3 from "@/assets/img/sponsors/Tilsor-logo.svg"
 import sponsorImage4 from "@/assets/img/sponsors/Xygeni-logo.png"
 import otherSponsorImage1 from "@/assets/img/sponsors/Grant_Thornton-logo.png"
-import otherSponsorImage2 from "@/assets/img/sponsors/UCU-logo.png"
+import otherSponsorImage2 from "@/assets/img/sponsors/UCU-logo.jpeg"
+import lunchSponsorImage from "@/assets/img/sponsors/Nexa-logo.webp"
 import communitySponsorImage1 from "@/assets/img/sponsors/InfoSecMap-logo.png"
 import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 </script>
@@ -75,6 +76,21 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
       <div class="row">
         <div class="col-md-8 text-start mt-6">
           <h5 class="z-index-1 position-relative">
+            Lunch Sponsor
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <ImageCard
+            class="mt-lg-4 mt-5"
+            :class="`card card-profile col-lg-4 col-md-3 col-12`"
+            :sponsor="{ name: 'Nexa', image: `${lunchSponsorImage}`, link: 'https://wearenexa.com/' }"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 text-start mt-6">
+          <h5 class="z-index-1 position-relative">
             Community
           </h5>
         </div>
@@ -90,7 +106,7 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
       <div class="row">
         <div class="col-md-8 text-start mt-6">
           <h5 class="z-index-1 position-relative">
-            Venue
+            Conference Venue
           </h5>
         </div>
       </div>
