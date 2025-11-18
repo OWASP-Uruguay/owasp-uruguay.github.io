@@ -7,7 +7,7 @@ import sponsorImage3 from "@/assets/img/sponsors/Tilsor-logo.svg"
 import sponsorImage4 from "@/assets/img/sponsors/Xygeni-logo.png"
 import otherSponsorImage1 from "@/assets/img/sponsors/Grant_Thornton-logo.png"
 import otherSponsorImage2 from "@/assets/img/sponsors/UCU-logo.jpeg"
-import lunchSponsorImage from "@/assets/img/sponsors/Nexa-logo.webp"
+import lunchSponsorImage from "@/assets/img/sponsors/Nexa-logo.png"
 import communitySponsorImage1 from "@/assets/img/sponsors/InfoSecMap-logo.png"
 import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
 </script>
