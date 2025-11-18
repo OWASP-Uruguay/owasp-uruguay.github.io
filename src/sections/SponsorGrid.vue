@@ -54,6 +54,21 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
       </div>
 
       <div class="row">
+        <div class="col-md-8 text-start mt-6">
+          <h5 class="z-index-1 position-relative">
+            Lunch Sponsor
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <ImageCard
+            class="mt-lg-4 mt-5"
+            :class="`card card-profile col-lg-4 col-md-3 col-12`"
+            :sponsor="{ name: 'Nexa', image: `${lunchSponsorImage}`, link: 'https://wearenexa.com/' }"
+        />
+      </div>
+
+      <div class="row">
         <div class="col-md-8 text-start mt-5">
           <h4 class="z-index-1 position-relative">
             Track
@@ -70,21 +85,6 @@ import venueSponsorImage1 from "@/assets/img/sponsors/Antel-logo.png"
             class="mt-lg-4 mt-5"
             :class="`card card-profile col-lg-4 col-md-3 col-12`"
             :sponsor="{ name: 'Universidad Católica del Uruguay', image: `${otherSponsorImage2}`, link: 'https://www.ucu.edu.uy/' }"
-        />
-      </div>
-
-      <div class="row">
-        <div class="col-md-8 text-start mt-6">
-          <h5 class="z-index-1 position-relative">
-            Lunch Sponsor
-          </h5>
-        </div>
-      </div>
-      <div class="row">
-        <ImageCard
-            class="mt-lg-4 mt-5"
-            :class="`card card-profile col-lg-4 col-md-3 col-12`"
-            :sponsor="{ name: 'Nexa', image: `${lunchSponsorImage}`, link: 'https://wearenexa.com/' }"
         />
       </div>
 
