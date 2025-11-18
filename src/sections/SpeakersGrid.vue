@@ -166,9 +166,9 @@ const OWASPUY = "OWASP UY";
           <HorizontalTeamCard
               class="mt-lg-4 mt-4"
               :profile="{ name: 'Felipe Zipitria', image: `${speakerImg4}` }"
-              :profile2="{ name: 'Augustín De León', image: `${speakerImg41}` }"
+              :profile2="{ name: 'Agustín De León', image: `${speakerImg41}` }"
               :conference="{ title: 'Towards the next generation OWASP CRS ruleset language', level: 'Intermediate', color: 'warning',
-                description: 'conferenceAugustinZDescription' }"
+                description: 'conferenceAgustinZDescription' }"
               :dualSpace=true
           />
         </div>
