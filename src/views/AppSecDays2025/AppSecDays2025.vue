@@ -16,6 +16,7 @@ import Footer from "@/sections/footers/Footer.vue";
 
 // images
 import headerBackgroundImageLogo from "@/assets/img/owasp-appsec-days-uruguay-2025-logo.jpeg";
+import callForSponsorsImage from "@/assets/img/call-for-sponsors.jpeg";
 import owaspUYLogo from "@/assets/img/owasp-uy.png";
 import TrainingGrid from "@/sections/TrainingGrid.vue";
 import SpeakersGrid from "@/sections/SpeakersGrid.vue";
@@ -49,6 +50,13 @@ const callToRegistration = computed(() => ({
   title: t("callToRegistration"),
   buttonText: t("callToRegistrationButton"),
   route: "https://www.eventbrite.com/e/owasp-appsec-days-uruguay-2025-tickets-1415284527119?aff=oddtdtcreator",
+}));
+const callForSponsors = computed(() => ({
+  title: t("callForSponsors"),
+  logo: callForSponsorsImage,
+  buttonText: t("callForSponsorsButton"),
+  route:
+      "https://drive.google.com/file/d/1LMugRj522_1X1q8St5RURl_I2ja5oxci/view?usp=drive_link",
 }));
 const callToOWASPUY = computed(() => ({
   class: "",
@@ -118,6 +126,10 @@ const codeOfConduct = computed(() => ({
 
   <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0px !important;">
     <SpeakersGrid/>
+  </div>
+
+  <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-4 border-radius-xl"  style="padding: 0 !important;">
+    <CallToAction id="call4sponsors" :call-for="callForSponsors" />
   </div>
 
   <div class="card card-body blur shadow-blur align-items-center mx-3 mx-md-4 mt-sm-3 border-radius-xl" style="background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));">
