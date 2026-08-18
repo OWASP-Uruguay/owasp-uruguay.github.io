@@ -16,7 +16,7 @@
     "vue": "3.5.41",
     "vue-clipboard3": "2.0.0",
     "vue-count-to": "1.0.13",
-    "vue-i18n": "9",
+    "vue-i18n": "9.14.5",
     "vue-prism-editor": "2.0.0-alpha.2",
     "vue-router": "4.0.15",
     "vue3-google-map": "^0.21.1"
