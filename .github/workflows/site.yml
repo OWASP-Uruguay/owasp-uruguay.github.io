@@ -1,0 +1,57 @@
+# Compila, prueba y publica el sitio en GitHub Pages.
+# Requisito: Settings → Pages → Source = "GitHub Actions".
+name: Sitio web
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  # Todos los días a las 06:00 de Montevideo: cierra el CFS, cambia la portada después del evento,
+  # mueve eventos de "próximos" a "pasados".
+  schedule:
+    - cron: '0 9 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      # Las variables de prueba nunca llegan a producción.
+      - name: Sin variables de prueba
+        run: |
+          if [ -n "${SHOW_HIDDEN}${NOW}" ]; then echo "SHOW_HIDDEN o NOW están definidas"; exit 1; fi
+      - run: npm ci
+      - run: npm run test:unit
+      - run: npm run check
+      - run: npm run build
+      - run: npm run test:dist
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
