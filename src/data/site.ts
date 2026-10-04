@@ -14,12 +14,12 @@ export const disclaimer = {
 };
 
 // Favicon: 'avispa' (avispa con mate) u 'owasp-uy' (logo circular). Archivos en public/favicons/.
-export const favicon: 'avispa' | 'owasp-uy' = 'avispa';
+export const favicon: 'avispa' | 'owasp-uy' = 'owasp-uy';
 
 // Redes del capítulo. `icon` elige el SVG en components/SocialIcon.astro.
 export const social = [
   { label: 'Meetup', url: 'https://www.meetup.com/OWASP-Uruguay-Chapter', icon: 'meetup' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/groups/3673287/', icon: 'linkedin' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/company/owasp-uruguay-chapter/', icon: 'linkedin' },
   { label: 'YouTube', url: 'https://www.youtube.com/@owasp_uy', icon: 'youtube' },
   { label: 'GitHub', url: 'https://github.com/OWASP-Uruguay', icon: 'github' },
   { label: 'X (Twitter)', url: 'https://twitter.com/owasp_uy', icon: 'x' },
@@ -30,7 +30,7 @@ export const joinLinks = {
   slackInvite: 'https://owasp.org/slack/invite',
   googleGroup: 'https://groups.google.com/a/owasp.org/forum/#!forum/uruguay-chapter',
   membership: 'https://owasp.org/membership/',
-  codeOfConduct: 'https://owasp.org/www-policy/operational/code-of-conduct',
+  codeOfConduct: 'https://owasp.org/policy/code-of-conduct',
 };
 
 // Ítem del menú. `mobileOnly` lo oculta en escritorio.
