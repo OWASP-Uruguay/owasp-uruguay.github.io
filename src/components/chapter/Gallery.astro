@@ -1,0 +1,103 @@
+---
+// Galería de fotos: miniaturas enlazadas a la versión grande. Sin JS funciona como enlaces;
+// con JS abre un visor <dialog> con anterior/siguiente, flechas del teclado, Esc y deslizar.
+import type { ImageMetadata } from 'astro';
+import { Image, getImage } from 'astro:assets';
+
+interface Props { photos: ImageMetadata[]; title: string }
+const { photos, title } = Astro.props;
+const large = await Promise.all(
+  photos.map((p) => getImage({ src: p, width: Math.min(1600, p.width), format: 'webp', quality: 80 })),
+);
+const total = photos.length;
+---
+<ul class="gallery" role="list" data-gallery>
+  {photos.map((p, i) => (
+    <li>
+      <a class="gallery__item" href={large[i].src} data-index={i} data-w={large[i].attributes.width} data-h={large[i].attributes.height}>
+        <Image src={p} alt={`Foto ${i + 1} de ${total}: ${title}`} widths={[360, 720]}
+          sizes="(max-width: 720px) 50vw, (max-width: 1080px) 33vw, 300px" format="webp" loading="lazy" />
+      </a>
+    </li>
+  ))}
+</ul>
+
+<dialog class="lightbox" aria-label={`Fotos: ${title}`}>
+  <div class="lightbox__frame">
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" alt="" />
+      <figcaption class="lightbox__count" aria-live="polite"></figcaption>
+    </figure>
+    <button class="lightbox__btn lightbox__close" type="button" data-close aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__prev" type="button" data-step="-1" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__next" type="button" data-step="1" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</dialog>
+
+<script>
+  // Visor de fotos. Mejora progresiva: sin JS, cada miniatura abre la imagen grande.
+  const list = document.querySelector<HTMLElement>('[data-gallery]');
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+  if (list && dialog && typeof dialog.showModal === 'function') {
+    const links = [...list.querySelectorAll<HTMLAnchorElement>('a.gallery__item')];
+    const img = dialog.querySelector<HTMLImageElement>('.lightbox__img')!;
+    const count = dialog.querySelector<HTMLElement>('.lightbox__count')!;
+    let current = 0;
+
+    const show = (i: number) => {
+      current = (i + links.length) % links.length;
+      const a = links[current];
+      img.src = a.href;
+      img.width = Number(a.dataset.w);
+      img.height = Number(a.dataset.h);
+      img.alt = a.querySelector('img')?.alt ?? '';
+      count.textContent = `${current + 1} / ${links.length}`;
+      // Precarga la siguiente y la anterior.
+      [1, -1].forEach((d) => { new Image().src = links[(current + d + links.length) % links.length].href; });
+    };
+
+    list.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a.gallery__item');
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      show(Number(a.dataset.index));
+      dialog.showModal();
+      document.documentElement.classList.add('has-lightbox');
+    });
+
+    dialog.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      const step = t.closest<HTMLElement>('[data-step]');
+      if (step) return show(current + Number(step.dataset.step));
+      if (t.closest('[data-close]') || t === dialog || t.classList.contains('lightbox__frame')) dialog.close();
+    });
+
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+    });
+
+    // Deslizar en pantallas táctiles.
+    let x0: number | null = null;
+    dialog.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    dialog.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+
+    // Al cerrar (botón, clic afuera o Esc) el foco vuelve a la miniatura.
+    dialog.addEventListener('close', () => {
+      document.documentElement.classList.remove('has-lightbox');
+      img.removeAttribute('src');
+      links[current]?.focus();
+    });
+  }
+</script>

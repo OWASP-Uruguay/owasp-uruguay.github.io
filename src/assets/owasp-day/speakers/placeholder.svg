@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <title>Foto de orador (placeholder)</title>
+  <!-- Neutral greyscale silhouette, a stand-in for a B/W photo.
+       Replace with a real square photo file (the site renders any photo in B/W). -->
+  <defs>
+    <radialGradient id="head" cx=".38" cy=".3" r=".85">
+      <stop offset="0" stop-color="#b8b8b8"/>
+      <stop offset=".55" stop-color="#707070"/>
+      <stop offset="1" stop-color="#3a3a3a"/>
+    </radialGradient>
+    <linearGradient id="body" x1=".1" y1="0" x2=".45" y2="1">
+      <stop offset="0" stop-color="#909090"/>
+      <stop offset=".55" stop-color="#4c4c4c"/>
+      <stop offset="1" stop-color="#242424"/>
+    </linearGradient>
+  </defs>
+  <path d="M200 236c-92 0-152 60-164 164h328c-12-104-72-164-164-164z" fill="url(#body)"/>
+  <ellipse cx="200" cy="158" rx="70" ry="80" fill="url(#head)"/>
+</svg>

@@ -1,0 +1,10 @@
+---
+import EventCard from './EventCard.astro';
+import type { EventEntry } from '~/lib/events';
+
+interface Props { events: EventEntry[]; level?: 'h2' | 'h3' | 'h4'; class?: string }
+const { events, level = 'h3', class: cls } = Astro.props;
+---
+<ul class:list={['ev-grid', cls]} role="list">
+  {events.map((e) => <li data-kind={e.data.kind}><EventCard entry={e} level={level} /></li>)}
+</ul>

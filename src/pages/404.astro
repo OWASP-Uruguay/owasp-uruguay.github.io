@@ -1,0 +1,25 @@
+---
+// Página 404 (GitHub Pages la sirve para cualquier ruta inexistente).
+import Page from '~/components/chapter/Page.astro';
+import Arrow from '~/components/Arrow.astro';
+import { url } from '~/lib/events';
+---
+<Page title="Página no encontrada" description="La página que buscás no existe o cambió de lugar." noindex>
+  <section class="nf" aria-labelledby="nf-title">
+    <span class="nf__corner" aria-hidden="true"></span>
+    <span class="nf__dots" aria-hidden="true"></span>
+    <div class="container nf__inner">
+      <p class="nf__code" aria-hidden="true"><span>4</span><span class="nf__zero"></span><span>4</span></p>
+      <div>
+        <p class="eyebrow">Error 404</p>
+        <span class="bar" aria-hidden="true"></span>
+        <h1 class="section-title" id="nf-title">Esta página <span class="hl-blue">no existe</span></h1>
+        <p class="nf__text">Puede que el enlace esté roto o que la página haya cambiado de lugar.</p>
+        <div class="nf__ctas">
+          <a class="btn btn--yellow" href={url('/')}>Ir al inicio <Arrow /></a>
+          <a class="btn btn--outline-white" href={url('/eventos/')}>Ver eventos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>

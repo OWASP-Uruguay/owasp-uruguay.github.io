@@ -1,0 +1,37 @@
+/* OWASP Day 2026: ajustes propios de /owasp-day-2026/ (el resto está en global.css). */
+
+/* El menú del evento suma "OWASP Uruguay": ítems sin corte y separación algo menor
+   para que entre en el mismo ancho que el menú original. */
+.theme-owasp-day .site-nav ul a { white-space: nowrap; }
+@media (min-width: 901px) {
+  .theme-owasp-day .site-nav { gap: calc(28 * var(--u)); }
+  .theme-owasp-day .site-nav ul { gap: calc(26 * var(--u)); }
+}
+
+/* Sponsors con logo: sin el borde punteado del lugar reservado; el enlace ocupa toda la tarjeta. */
+.sponsor:has(img) { border: 1px solid #e3e3e3; }
+.sponsor:has(> a) { padding: 0; }
+.sponsor > a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 44px; border-radius: 2px; }
+.sponsor img { width: auto; height: auto; max-height: 70%; max-width: 80%; }
+
+/* ---------- Hero del evento ---------- */
+.hero--event .hero__inner { height: auto; min-height: calc(800 * var(--u)); }
+.hero--event .hero__text { padding-bottom: calc(60 * var(--u)); }
+.hero__mark { width: calc(72 * var(--u)); min-width: 48px; height: auto; margin-bottom: calc(20 * var(--u)); }
+.hero__facts { margin: calc(28 * var(--u)) 0 calc(36 * var(--u)); font-size: max(16px, calc(24 * var(--u))); line-height: 1.5; }
+.hero__facts li:first-child { font-weight: 700; color: var(--c-yellow); }
+.hero__facts li:first-child::first-letter { text-transform: uppercase; }
+.countdown { margin-top: 20px; color: var(--c-grey); font-size: .95rem; min-height: 1.6em; }
+
+/* ---------- Call for speakers ---------- */
+.topics { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 20px; }
+.topics li { border: 1px solid #ccc; border-radius: var(--radius-pill); padding: 4px 12px; font-size: .85rem; }
+.cta-card__deadline { font-weight: 700; color: var(--c-black); }
+
+/* ---------- Código de conducta ---------- */
+.conduct__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(28px, 5vw, 80px); align-items: start; }
+@media (max-width: 900px) { .conduct__inner { grid-template-columns: 1fr; } }
+
+/* Secciones visibles solo por SHOW_HIDDEN (nunca en producción) */
+.dev-hidden { position: relative; outline: 3px dashed #e5484d; outline-offset: -3px; }
+.dev-hidden::before { content: attr(data-label); position: absolute; top: 8px; right: 8px; z-index: 5; background: #e5484d; color: #fff; font: 700 .75rem/1 var(--f-body); padding: 6px 10px; border-radius: 4px; }

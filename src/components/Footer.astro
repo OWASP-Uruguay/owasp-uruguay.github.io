@@ -1,0 +1,53 @@
+---
+import Brand from './Brand.astro';
+import SocialIcon from './SocialIcon.astro';
+import { url } from '~/lib/events';
+import { chapter, disclaimer, social, joinLinks, nav } from '~/data/site';
+
+interface Props {
+  photoCredit?: boolean;
+  eventNav?: { label: string; href: string }[];   // página del evento: anclas a sus secciones
+}
+const { photoCredit = false, eventNav = [] } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <Brand as="p" />
+      <p>{chapter.tagline}</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Pie de página">
+      <p class="site-footer__heading">{eventNav.length > 0 ? 'Evento' : 'Sitio'}</p>
+      <ul>
+        {eventNav.length > 0
+          ? eventNav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)
+          : [{ label: 'Inicio', href: '/' }, ...nav].map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="site-footer__nav">
+      <p class="site-footer__heading">OWASP</p>
+      <ul>
+        <li><a href={chapter.owaspPage} rel="noopener">Sitio oficial del capítulo</a></li>
+        <li><a href={joinLinks.membership} rel="noopener">Hacete miembro</a></li>
+        <li><a href={joinLinks.codeOfConduct} rel="noopener">Código de conducta</a></li>
+        <li><a href="https://owasp.org/" rel="noopener">owasp.org</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="site-footer__heading">Seguinos</p>
+      <ul class="social">
+        {social.map((s) => (
+          <li><a href={s.url} rel="noopener" aria-label={s.label}><SocialIcon name={s.icon} /></a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__legal">
+    <p>{disclaimer.text} La información oficial está en <a href={chapter.owaspPage} rel="noopener">owasp.org/chapters/uruguay</a>.</p>
+    <p>© {year} OWASP Uruguay. OWASP® es una marca registrada de la OWASP Foundation. Contenido bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>.</p>
+    {photoCredit && (
+      <p>Foto: “La Plaza Independencia y el Palacio Salvo, Montevideo, Uruguay” por rodoluca (Panoramio), vía <a href="https://commons.wikimedia.org/wiki/File:La_Plaza_Independencia_y_el_Palacio_Salvo,_Montevideo,_Uruguay_-_panoramio.jpg" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>. Convertida a B/N y editada.</p>
+    )}
+  </div>
+</footer>

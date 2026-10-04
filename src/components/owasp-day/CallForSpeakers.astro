@@ -1,0 +1,42 @@
+---
+// Banda amarilla: call for speakers y registro. Los estados dependen de la fecha y de event.yaml.
+import type { CollectionEntry } from 'astro:content';
+import Arrow from '~/components/Arrow.astro';
+import { NOW } from '~/lib/env';
+import { isOver } from '~/lib/when';
+import { inline, longDate } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { callForSpeakers: c, cfp, registration } = Astro.props.event;
+const cfpClosed = isOver(cfp.deadline, NOW);
+---
+<section class="cta-band" id="cfs" aria-labelledby="cfs-title">
+  <span class="deco deco--cta-quarter" aria-hidden="true"></span>
+  <span class="deco deco--cta-dots" aria-hidden="true"></span>
+  <div class="container">
+    <p class="eyebrow eyebrow--dark">Participá</p>
+    <span class="bar bar--black" aria-hidden="true"></span>
+    <h2 class="section-title" id="cfs-title" set:html={inline(c.title, { hl: '' })} />
+    <div class="cta-band__grid">
+      <article class="cta-card" id="call-for-speakers">
+        <h3>{cfpClosed ? 'Convocatoria cerrada' : 'Mandá tu charla'}</h3>
+        {cfpClosed ? <p>{c.closedText}</p> : (
+          <>
+            <p>{c.text}</p>
+            <p>{c.format}</p>
+            <ul class="topics" aria-label="Temas">{c.topics.map((t) => <li>{t}</li>)}</ul>
+            <p class="cta-card__deadline">Cierra el {longDate(cfp.deadline)} a las 23:59 (hora de Uruguay).</p>
+            <a class="btn btn--black" href={cfp.url} rel="noopener" data-cta="cfp">Postulá tu charla <Arrow /></a>
+          </>
+        )}
+      </article>
+      <article class="cta-card" id="registro">
+        <h3>Registro gratuito</h3>
+        <p>La entrada es libre y sin costo. El registro se hace en {registration.provider}.</p>
+        {registration.url
+          ? <a class="btn btn--black" href={registration.url} rel="noopener" data-cta="registration">Registrarme <Arrow /></a>
+          : <span class="btn btn--outline-black is-disabled" aria-disabled="true" data-cta="registration">Próximamente</span>}
+      </article>
+    </div>
+  </div>
+</section>

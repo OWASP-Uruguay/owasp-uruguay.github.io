@@ -1,35 +1,32 @@
 {
-  "name": "owasp-appsec-days-uruguay-2025",
-  "version": "2.0.0",
+  "name": "owasp-uruguay-site",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview --port 4173",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "dev": "astro dev",
+    "dev:all": "SHOW_HIDDEN=all astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:unit": "node --test 'tests/unit/*.test.ts'",
+    "test:dist": "node --test 'tests/dist/*.test.ts'",
+    "test": "npm run test:unit && npm run build && npm run test:dist",
+    "verify": "sh scripts/verify.sh"
   },
   "dependencies": {
-    "@popperjs/core": "2.11.5",
-    "bootstrap": "5.1.3",
-    "pinia": "2.0.14",
-    "prismjs": "1.30.0",
-    "typed.js": "2.0.12",
-    "vue": "3.5.41",
-    "vue-clipboard3": "2.0.0",
-    "vue-count-to": "1.0.13",
-    "vue-i18n": "9.14.5",
-    "vue-prism-editor": "2.0.0-alpha.2",
-    "vue-router": "4.0.15",
-    "vue3-google-map": "^0.21.1"
+    "@astrojs/markdown-satteri": "^0.4.2",
+    "@astrojs/mdx": "^8.0.2",
+    "astro": "^7.3.5",
+    "js-yaml": "^4.3.2",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "1.1.0",
-    "@vitejs/plugin-vue": "5.2.4",
-    "@vue/eslint-config-prettier": "7.0.0",
-    "eslint": "8.57.1",
-    "eslint-plugin-vue": "9.33.0",
-    "prettier": "2.5.1",
-    "sass": "1.102.0",
-    "sass-loader": "13.0.0",
-    "vite": "6.4.3"
+    "@astrojs/check": "^0.9.10",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.19.0",
+    "typescript": "^6.0.3"
   }
 }

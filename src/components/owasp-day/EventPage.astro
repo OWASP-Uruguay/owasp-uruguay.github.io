@@ -1,0 +1,57 @@
+---
+// Página completa del OWASP Day 2026. La usan /owasp-day-2026/ y la portada mientras el evento no pasó.
+// Las secciones apagadas en event.yaml (sections) no se renderizan.
+import { getEntry } from 'astro:content';
+import Base from '~/layouts/Base.astro';
+import '~/styles/chapter.css';
+import '~/styles/owasp-day.css';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import CallForSpeakers from './CallForSpeakers.astro';
+import Speakers from './Speakers.astro';
+import Agenda from './Agenda.astro';
+import Venue from './Venue.astro';
+import Sponsors from './Sponsors.astro';
+import Faq from './Faq.astro';
+import Conduct from './Conduct.astro';
+import Hidden from './Hidden.astro';
+import { NOW, SHOW_HIDDEN } from '~/lib/env';
+import { heroCtas } from '~/lib/when';
+import { resolveSections } from '~/lib/flags';
+
+interface Props { canonicalPath?: string }
+const entry = await getEntry('owaspDay', 'event');
+if (!entry) throw new Error('Falta src/content/owasp-day-2026/event.yaml');
+const event = entry.data;
+const { on, forced } = resolveSections(event.sections, SHOW_HIDDEN);
+
+const [cta] = heroCtas({ cfpUrl: event.cfp.url, cfpDeadline: event.cfp.deadline, registrationUrl: event.registration.url, now: NOW });
+const anchors = [
+  { label: 'Acerca de', href: '#acerca' },
+  { label: 'Participá', href: '#cfs' },
+  ...(on.speakers ? [{ label: 'Oradores', href: '#oradores' }] : []),
+  ...(on.agenda ? [{ label: 'Agenda', href: '#agenda' }] : []),
+  { label: 'Sede', href: '#sede' },
+  ...(on.faq ? [{ label: 'FAQ', href: '#faq', mobileOnly: true }] : []),
+];
+---
+<Base
+  title={event.title}
+  description={event.description}
+  variant="owasp-day"
+  headerNav={[...anchors, { label: 'Eventos', href: '/eventos/' }]}
+  headerCta={{ label: cta.label, href: cta.href, disabled: cta.disabled }}
+  eventNav={anchors}
+  canonicalPath={Astro.props.canonicalPath}
+  photoCredit
+>
+  <Hero event={event} />
+  <About event={event} />
+  <CallForSpeakers event={event} />
+  {on.speakers && <Hidden forced={forced.has('speakers')}><Speakers event={event} /></Hidden>}
+  {on.agenda && <Hidden forced={forced.has('agenda')}><Agenda event={event} /></Hidden>}
+  <Venue event={event} />
+  {on.sponsors && <Hidden forced={forced.has('sponsors')}><Sponsors event={event} /></Hidden>}
+  {on.faq && <Hidden forced={forced.has('faq')}><Faq event={event} /></Hidden>}
+  <Conduct />
+</Base>

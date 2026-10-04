@@ -1,0 +1,41 @@
+---
+// Lista de charlas de un evento: título, oradores, diapositivas, video y enlaces extra.
+import Arrow from '~/components/Arrow.astro';
+import type { EventEntry } from '~/lib/events';
+
+interface Props { talks: EventEntry['data']['talks'] }
+const { talks } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+<ol class="talks" role="list">
+  {talks.map((t, i) => (
+    <li class="talk">
+      <span class="talk__n" aria-hidden="true">{pad(i + 1)}</span>
+      <div class="talk__body">
+        <h3 class="talk__title">{t.title}</h3>
+        {t.speakers.length > 0 && (
+          <p class="talk__speakers">
+            <span class="visually-hidden">Oradores: </span>
+            {t.speakers.map((s, j) => (
+              <>
+                {j > 0 && <span class="talk__sep" aria-hidden="true"> · </span>}
+                <span class="talk__speaker">
+                  {s.url ? <a href={s.url} rel="noopener">{s.name}</a> : s.name}
+                  {s.org && <span class="talk__org"> ({s.org})</span>}
+                </span>
+              </>
+            ))}
+          </p>
+        )}
+        {t.note && <p class="talk__note">{t.note}</p>}
+        {(t.slides || t.video || t.links.length > 0) && (
+          <ul class="talk__links" role="list">
+            {t.slides && <li><a class="btn btn--sm btn--outline-black" href={t.slides} rel="noopener" aria-label={`Diapositivas: ${t.title}`}>Diapositivas <Arrow /></a></li>}
+            {t.video && <li><a class="btn btn--sm btn--outline-black" href={t.video} rel="noopener" aria-label={`Video: ${t.title}`}>Video <Arrow /></a></li>}
+            {t.links.map((l) => <li><a class="btn btn--sm btn--ghost" href={l.url} rel="noopener">{l.label} <Arrow /></a></li>)}
+          </ul>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>

@@ -1,0 +1,41 @@
+# OWASP Day 2026: patrocinadores. Se agrupan por nivel; dentro de cada nivel, en el orden de la lista.
+#
+# Campos de cada sponsor:
+#   tier   nivel: platino, oro, plata o comunidad
+#   name   nombre de la marca (texto alternativo del logo)
+#   logo   archivo del logo, ej. ./sponsors/marca.svg (opcional).
+#          Sin logo se muestra un recuadro punteado con el nombre (sirve de lugar reservado).
+#   url    sitio web de la marca (opcional)
+# Un nivel sin sponsors no se muestra.
+
+- tier: platino
+  name: Tu logo aquí
+- tier: platino
+  name: Tu logo aquí
+
+- tier: oro
+  name: Logo
+- tier: oro
+  name: Logo
+- tier: oro
+  name: Logo
+
+- tier: plata
+  name: Logo
+- tier: plata
+  name: Logo
+- tier: plata
+  name: Logo
+- tier: plata
+  name: Logo
+
+- tier: comunidad
+  name: Comunidad
+- tier: comunidad
+  name: Comunidad
+- tier: comunidad
+  name: Universidad
+- tier: comunidad
+  name: Meetup
+- tier: comunidad
+  name: Comunidad

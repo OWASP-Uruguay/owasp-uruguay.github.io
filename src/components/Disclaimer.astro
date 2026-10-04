@@ -1,0 +1,10 @@
+---
+// Aviso de sitio no oficial, arriba de todas las páginas.
+import { chapter, disclaimer } from '~/data/site';
+---
+<aside class="disclaimer" aria-label="Aviso">
+  <p class="container">
+    {disclaimer.short}
+    <a href={chapter.owaspPage} rel="noopener">{disclaimer.linkLabel}</a>
+  </p>
+</aside>

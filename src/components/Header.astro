@@ -1,0 +1,37 @@
+---
+import Brand from './Brand.astro';
+import { url } from '~/lib/events';
+import { nav as siteNav, type NavItem } from '~/data/site';
+interface Props {
+  nav?: NavItem[];
+  cta?: { label: string; href?: string; ariaLabel?: string; disabled?: boolean };
+}
+const { nav = siteNav, cta } = Astro.props;
+const here = Astro.url.pathname;
+const isCurrent = (href: string) => {
+  if (href.includes('#')) return false;
+  const target = url(href);
+  return href === '/' ? here === target : here.startsWith(target);
+};
+---
+<header class="site-header" id="top">
+  <div class="site-header__inner">
+    <Brand href={url('/')} />
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Abrir menú</span>
+    </button>
+    <nav class="site-nav" id="menu-principal" aria-label="Principal">
+      <ul>
+        {nav.map((item) => (
+          <li class:list={{ 'nav-mobile-only': item.mobileOnly }}>
+            <a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      {cta && (cta.disabled || !cta.href
+        ? <span class="btn btn--yellow btn--nav is-disabled" aria-disabled="true">{cta.label}</span>
+        : <a class="btn btn--yellow btn--nav" href={url(cta.href)} aria-label={cta.ariaLabel}>{cta.label}</a>)}
+    </nav>
+  </div>
+</header>

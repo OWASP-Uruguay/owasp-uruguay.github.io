@@ -1,0 +1,27 @@
+---
+// FAQ: src/content/owasp-day/faq.yaml (details/summary, sin JS).
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { inline, paragraphs } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { faq } = Astro.props.event;
+const questions = (await getCollection('owaspDayFaq')).sort((a, b) => a.id.localeCompare(b.id));
+---
+<section class="section section--dark faq" id="faq" aria-labelledby="faq-title">
+  <div class="container faq__grid">
+    <div>
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <span class="bar" aria-hidden="true"></span>
+      <h2 class="section-title" id="faq-title">FAQ</h2>
+      {faq.intro && <p class="faq__intro" set:html={inline(faq.intro, { hl: false })} />}
+    </div>
+    <div class="faq__list">
+      {questions.map(({ data }) => (
+        <details>
+          <summary>{data.q}</summary>
+          {paragraphs(data.a).map((p) => <p set:html={p} />)}
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

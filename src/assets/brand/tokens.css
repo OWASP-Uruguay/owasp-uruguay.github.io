@@ -1,0 +1,27 @@
+/* OWASP Day Uruguay — brand tokens (Option 3: Editorial event direction).
+   Shared by the website, social posts and roll-up banner. */
+@import url("fonts/fonts.css");
+
+:root {
+  /* Palette */
+  --c-yellow: #FFCC01;
+  --c-blue:   #75AADC;
+  --c-blue-ink: #2F6FB0;   /* blue for text on white/paper (5.2:1); brand blue is for black backgrounds and shapes */
+  --c-black:  #000000;
+  --c-white:  #FFFFFF;
+  --c-ink-2:  #111111;   /* raised black surface */
+  --c-ink-3:  #1C1C1C;
+  --c-grey:   #B8B8B8;   /* secondary text on black */
+  --c-paper:  #F1F1F1;   /* light surface (style tile) */
+
+  /* Type */
+  --f-display: "Montserrat", "Helvetica Neue", Arial, sans-serif;   /* 800–900, tight */
+  --f-body:    "Montserrat", "Helvetica Neue", Arial, sans-serif;   /* 400–600 */
+  --f-cond:    "Oswald", "Arial Narrow", sans-serif;                /* 300–400, MONTEVIDEO URUGUAY */
+  --tracking-wide: 0.32em;                                          /* spaced caps labels */
+
+  /* Shape */
+  --radius-pill: 999px;
+  --accent-bar-w: 32px;
+  --accent-bar-h: 6px;
+}

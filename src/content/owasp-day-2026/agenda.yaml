@@ -1,0 +1,91 @@
+# OWASP Day 2026: agenda. Cada elemento es una franja horaria, en orden.
+#
+# Campos de cada franja:
+#   time       hora de inicio, entre comillas: "09:30"
+#   kind       session (charlas), break (pausa) o mate (mate break)
+#   sessions   una o dos sesiones en paralelo. Cada sesión:
+#                track   sala: main (Sala principal), lab (Taller), keynote o panel.
+#                        No hace falta en las pausas.
+#                title   título
+#                by      quién la da (opcional)
+
+- time: "08:30"
+  kind: break
+  sessions:
+    - title: Acreditación y café
+
+- time: "09:15"
+  sessions:
+    - track: main
+      title: "Bienvenida: OWASP Uruguay"
+      by: Equipo del capítulo
+
+- time: "09:30"
+  sessions:
+    - track: keynote
+      title: "El nuevo OWASP Top 10: qué cambió y por qué importa"
+      by: Lucía Fernández
+
+- time: "10:20"
+  sessions:
+    - track: main
+      title: "ASVS en la práctica: requisitos de seguridad que sí se usan"
+      by: Martín Pereira
+    - track: lab
+      title: Threat modeling express con OWASP Threat Dragon
+      by: Comunidad OWASP Uruguay
+
+- time: "11:05"
+  kind: mate
+  sessions:
+    - title: Mate break
+      by: Café, mate y networking
+
+- time: "11:30"
+  sessions:
+    - track: main
+      title: "API Security Top 10: atacando y defendiendo APIs"
+      by: Sofía Rodríguez
+
+- time: "12:15"
+  sessions:
+    - track: main
+      title: "OWASP SAMM: medir y mejorar tu programa de AppSec"
+      by: Diego Martínez
+
+- time: "13:00"
+  kind: break
+  sessions:
+    - title: Almuerzo
+
+- time: "14:15"
+  sessions:
+    - track: main
+      title: "Cadena de suministro de software: SBOM, CycloneDX y dependencias"
+      by: Valentina Silva
+    - track: lab
+      title: "OWASP Juice Shop: CTF para todos los niveles"
+      by: Comunidad OWASP Uruguay
+
+- time: "15:00"
+  sessions:
+    - track: main
+      title: "Seguridad en IA: OWASP Top 10 para aplicaciones con LLMs"
+      by: Nicolás Sosa
+
+- time: "15:45"
+  kind: mate
+  sessions:
+    - title: Mate break
+      by: Café, mate y networking
+
+- time: "16:15"
+  sessions:
+    - track: panel
+      title: "AppSec en Uruguay: desafíos y oportunidades"
+      by: Oradores invitados
+
+- time: "17:15"
+  kind: break
+  sessions:
+    - title: Cierre, sorteos y after
