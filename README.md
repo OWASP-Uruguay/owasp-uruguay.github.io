@@ -84,3 +84,9 @@ magick mogrify -resize '1600x1600>' -quality 75 -strip *.jpg
 ## Publicación
 
 `.github/workflows/site.yml` corre tests y build en cada pull request, y en cada push a `main` (más una vez por día) también publica. La primera vez hay que poner **Settings → Pages → Source** en "GitHub Actions".
+
+## Licencias
+
+El código del sitio es MIT (ver `LICENSE`). Los textos, fotos y materiales de los eventos son CC BY-SA 4.0, la misma licencia que usa owasp.org para su contenido. Las fuentes Montserrat y Oswald son SIL OFL 1.1 (`src/assets/brand/fonts/OFL.txt`). Los logos de OWASP y del evento son marcas y no entran en ninguna de esas licencias.
+
+Las dependencias de npm se usan para compilar y no se suben al repo ni al sitio publicado, así que sus licencias (MIT, Apache 2.0, MPL 2.0 y LGPL de libvips en `sharp`) no condicionan las de arriba.

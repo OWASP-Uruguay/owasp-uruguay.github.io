@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2022 Creative Tim
+Copyright (c) 2026 OWASP Uruguay contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+This license covers the source code of this site. It does not cover:
+
+- Site content (texts in src/content/, event photos and materials): CC BY-SA 4.0,
+  https://creativecommons.org/licenses/by-sa/4.0/
+- Fonts in src/assets/brand/fonts/: SIL Open Font License 1.1, see OFL.txt in that folder.
+- The OWASP name and logos and the event logo: trademarks, not licensed here.
+- Palacio Salvo photo (src/assets/hero-salvo.webp): rodoluca via Wikimedia Commons, CC BY-SA 3.0.
