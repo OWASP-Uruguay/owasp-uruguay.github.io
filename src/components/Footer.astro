@@ -9,7 +9,6 @@ interface Props {
   eventNav?: { label: string; href: string }[];   // página del evento: anclas a sus secciones
 }
 const { photoCredit = false, eventNav = [] } = Astro.props;
-const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container site-footer__grid">
@@ -45,7 +44,7 @@ const year = new Date().getFullYear();
   </div>
   <div class="container site-footer__legal">
     <p>{disclaimer.text} La información oficial está en <a href={chapter.owaspPage} rel="noopener">owasp.org/chapters/uruguay</a>.</p>
-    <p>© {year} OWASP Uruguay. OWASP® es una marca registrada de la OWASP Foundation. Contenido bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>.</p>
+    <p>OWASP y el logo de OWASP son marcas registradas de la OWASP Foundation, Inc. Código del sitio bajo licencia MIT y textos bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. Las fotos y los logos no están incluidos.</p>
     {photoCredit && (
       <p>Foto: “La Plaza Independencia y el Palacio Salvo, Montevideo, Uruguay” por rodoluca (Panoramio), vía <a href="https://commons.wikimedia.org/wiki/File:La_Plaza_Independencia_y_el_Palacio_Salvo,_Montevideo,_Uruguay_-_panoramio.jpg" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="noopener">CC BY-SA 3.0</a>. Convertida a B/N y editada.</p>
     )}
