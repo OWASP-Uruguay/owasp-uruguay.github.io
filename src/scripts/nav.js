@@ -9,6 +9,9 @@
   var outside = [document.getElementById('contenido'), document.querySelector('.site-footer'), document.querySelector('.skip-link')];
 
   function setOpen(open) {
+    // El panel es fixed: arranca donde termina el header, que baja si el aviso de arriba está visible.
+    if (open) nav.style.top = Math.round(header.getBoundingClientRect().bottom) + 'px';
+    else nav.style.top = '';
     toggle.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
     document.body.classList.toggle('menu-open', open);
