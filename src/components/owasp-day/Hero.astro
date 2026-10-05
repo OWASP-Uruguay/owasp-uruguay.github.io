@@ -1,10 +1,10 @@
 ---
-// Hero del evento: fecha, sede, horario, botones (CFS y registro) y cuenta regresiva.
+// Hero del evento: el logo (avispa con mate) es la imagen principal.
+// Texto: nombre, fecha, sede, horario, botones (CFS y registro) y cuenta regresiva.
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import Arrow from '~/components/Arrow.astro';
-import hero from '~/assets/hero-salvo.webp';
-import avispa from '~/assets/brand/avispa-blanca.svg';
+import avispa from '~/assets/brand/avispa-negra.svg';
 import { NOW } from '~/lib/env';
 import { heroCtas, startOf, timeLabel } from '~/lib/when';
 import { longDate } from './format';
@@ -14,50 +14,50 @@ const { event } = Astro.props;
 const ctas = heroCtas({ cfpUrl: event.cfp.url, cfpDeadline: event.cfp.deadline, registrationUrl: event.registration.url, now: NOW });
 const start = startOf(event.date, event.time);
 ---
-<section class="hero hero--event" aria-labelledby="hero-title">
-  <div class="hero__inner">
-  <div class="hero__text">
-    <Image class="hero__mark" src={avispa} alt="" width={72} height={72} loading="eager" />
-    <h1 class="hero__title" id="hero-title">
-      <span class="hero__owasp">OWASP</span>
-      <span class="hero__day">DAY</span>
-      <span class="visually-hidden">Uruguay 2026</span>
-    </h1>
-    <p class="hero__city">{event.hero.city}</p>
-    <span class="bar" aria-hidden="true"></span>
-    <ul class="hero__facts">
-      <li><time datetime={event.date}>{longDate(event.date)}</time></li>
-      <li>{event.venue.name}</li>
-      <li data-time>{timeLabel(event.time)}</li>
-    </ul>
-    <div class="hero__ctas">
-      {ctas.map((c, i) => c.disabled
-        ? <span class="btn btn--lg btn--outline-white is-disabled" aria-disabled="true" data-cta={c.id}>{c.label}</span>
-        : <a class:list={['btn', 'btn--lg', i === 0 ? 'btn--yellow' : 'btn--outline-white']} href={c.href} rel="noopener" data-cta={c.id}>{c.label} <Arrow /></a>)}
+<section class="event-hero" aria-labelledby="hero-title">
+  <div class="container event-hero__grid">
+    <div class="event-hero__art">
+      <span class="event-hero__sun" aria-hidden="true"></span>
+      <span class="event-hero__quarter" aria-hidden="true"></span>
+      <span class="event-hero__dots" aria-hidden="true"></span>
+      <Image class="event-hero__logo" src={avispa} alt={`Logo de ${event.title}: una avispa con un mate`} width={560} height={560} loading="eager" />
     </div>
-    <p class="countdown" data-countdown={start.toISOString()} aria-live="off"></p>
-  </div>
 
-  <div class="hero__art">
-    <span class="shape shape--blue-half" aria-hidden="true"></span>
-    <span class="shape shape--sun" aria-hidden="true"></span>
-    <span class="hero__photo">
-      <Image src={hero} alt={event.hero.photoAlt} widths={[640, 1025, 1280]} sizes="(max-width: 900px) 100vw, 1025px" loading="eager" fetchpriority="high" />
-    </span>
-    <span class="shape shape--blue-corner" aria-hidden="true"></span>
-    <span class="shape shape--dots" aria-hidden="true"></span>
-  </div>
+    <div class="event-hero__text">
+      <p class="eyebrow">Capítulo OWASP Uruguay</p>
+      <h1 class="event-hero__title" id="hero-title">{event.title}</h1>
+      <p class="event-hero__tagline">{event.hero.tagline}</p>
+      <span class="bar" aria-hidden="true"></span>
+      <ul class="event-hero__facts">
+        <li class="event-hero__date"><time datetime={event.date}>{longDate(event.date)}</time></li>
+        <li>{event.venue.name}, {event.venue.place}</li>
+        <li>{timeLabel(event.time)}</li>
+      </ul>
+      <div class="hero__ctas">
+        {ctas.map((c, i) => c.disabled
+          ? <span class="btn btn--lg btn--outline-white is-disabled" aria-disabled="true" data-cta={c.id}>{c.label}</span>
+          : <a class:list={['btn', 'btn--lg', i === 0 ? 'btn--yellow' : 'btn--outline-white']} href={c.href} rel="noopener" data-cta={c.id}>{c.label} <Arrow /></a>)}
+      </div>
+      <p class="countdown" data-countdown={start.toISOString()} data-precise={event.time ? "" : undefined}></p>
+    </div>
   </div>
 </section>
 
 <script>
   // Cuenta regresiva. Sin JS no se muestra nada: la fecha ya está arriba.
+  // Sin horario confirmado (sin data-precise) cuenta solo días hasta el día del evento.
   const el = document.querySelector<HTMLElement>('[data-countdown]');
   if (el) {
     const target = new Date(el.dataset.countdown!).valueOf();
+    const precise = 'precise' in el.dataset;
     const tick = () => {
       const ms = target - Date.now();
       if (ms <= 0) { el.textContent = ''; return; }
+      if (!precise) {
+        const d = Math.ceil(ms / 864e5);
+        el.textContent = d === 1 ? 'Es mañana' : `Faltan ${d} días`;
+        return;
+      }
       const d = Math.floor(ms / 864e5);
       const h = Math.floor((ms % 864e5) / 36e5);
       const m = Math.floor((ms % 36e5) / 6e4);

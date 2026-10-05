@@ -1,6 +1,5 @@
 ---
-// Sede: event.yaml (venue). El botón busca venue.mapQuery en OpenStreetMap.
-// El mapa es una ilustración estática, sin servicios de terceros.
+// Sede: event.yaml (venue). Mapa de OpenStreetMap con marcador en venue.lat / venue.lon.
 import Arrow from '~/components/Arrow.astro';
 import { inline, longDate } from './format';
 import { timeLabel } from '~/lib/when';
@@ -8,7 +7,11 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props { event: CollectionEntry<'owaspDay'>['data'] }
 const { venue, date, time } = Astro.props.event;
-const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(venue.mapQuery)}`;
+const { lat, lon } = venue;
+const bbox = [lon - 0.006, lat - 0.0035, lon + 0.006, lat + 0.0035].map((n) => n.toFixed(6)).join(',');
+const embed = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+const osm = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`;
+const directions = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
 ---
 <section class="section section--dark venue" id="sede" aria-labelledby="sede-title">
   <div class="container venue__grid">
@@ -19,7 +22,7 @@ const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(
       <dl class="venue__list">
         <div>
           <dt>Lugar</dt>
-          <dd>{venue.name}</dd>
+          <dd>{venue.name}<span class="venue__place">{venue.place}</span></dd>
         </div>
         <div>
           <dt>Dirección</dt>
@@ -36,36 +39,14 @@ const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(
           </div>
         )}
       </dl>
-      <a class="btn btn--yellow" href={mapUrl} rel="noopener">Ver en mapa <Arrow /></a>
+      <div class="venue__links">
+        <a class="btn btn--yellow" href={directions} rel="noopener">Cómo llegar <Arrow /></a>
+        <a class="link-arrow" href={osm} rel="noopener">Ver en OpenStreetMap</a>
+      </div>
     </div>
 
-    <figure class="map" aria-label="Mapa ilustrativo de Montevideo">
-      <svg viewBox="0 0 600 480" role="img" aria-labelledby="map-title">
-        <title id="map-title">Mapa ilustrativo de Montevideo, junto al Río de la Plata</title>
-        <rect width="600" height="480" fill="#111"/>
-        <g stroke="#2a2a2a" stroke-width="10" fill="none" stroke-linecap="round">
-          <path d="M-20 90 L620 150"/><path d="M-20 200 L620 250"/><path d="M-20 300 L420 330"/>
-          <path d="M90 -20 L140 500"/><path d="M250 -20 L270 500"/><path d="M420 -20 L400 360"/>
-          <path d="M520 -20 L560 300"/>
-        </g>
-        <g stroke="#3a3a3a" stroke-width="4" fill="none">
-          <path d="M-20 40 L620 100"/><path d="M-20 145 L620 200"/><path d="M-20 250 L620 290"/>
-          <path d="M30 -20 L70 500"/><path d="M180 -20 L205 500"/><path d="M335 -20 L340 500"/><path d="M480 -20 L480 360"/>
-        </g>
-        <path d="M-10 380 C 120 350, 220 400, 330 370 S 520 330, 610 350 L610 490 L-10 490 Z" fill="#75AADC"/>
-        <text x="40" y="440" fill="#000" font-family="Oswald, sans-serif" font-size="20" letter-spacing="6">RÍO DE LA PLATA</text>
-        <g transform="translate(300 215)">
-          <circle r="64" fill="#FFCC01" opacity=".18"/>
-          <circle r="34" fill="#FFCC01" opacity=".35"/>
-          <path d="M0 18 C -18 -6, -26 -14, -26 -30 A 26 26 0 1 1 26 -30 C 26 -14, 18 -6, 0 18 Z" fill="#FFCC01"/>
-          <circle cy="-30" r="10" fill="#000"/>
-        </g>
-        <g fill="#fff" opacity=".85">
-          <circle cx="470" cy="150" r="3"/><circle cx="492" cy="150" r="3"/><circle cx="514" cy="150" r="3"/><circle cx="536" cy="150" r="3"/>
-          <circle cx="470" cy="172" r="3"/><circle cx="492" cy="172" r="3"/><circle cx="514" cy="172" r="3"/><circle cx="536" cy="172" r="3"/>
-          <circle cx="470" cy="194" r="3"/><circle cx="492" cy="194" r="3"/><circle cx="514" cy="194" r="3"/><circle cx="536" cy="194" r="3"/>
-        </g>
-      </svg>
+    <figure class="venue__map">
+      <iframe src={embed} title={`Mapa: ${venue.name}, ${venue.place}, ${venue.address}`} loading="lazy" referrerpolicy="no-referrer"></iframe>
     </figure>
   </div>
 </section>

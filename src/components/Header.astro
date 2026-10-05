@@ -1,12 +1,14 @@
 ---
+// Header del sitio. En la página del evento suma una segunda barra (amarilla) con sus secciones
+// y su botón, para que no se mezclen con el menú general del sitio.
+import { Image } from 'astro:assets';
 import Brand from './Brand.astro';
+import avispa from '~/assets/brand/avispa-negra.svg';
 import { url } from '~/lib/events';
-import { nav as siteNav, type NavItem } from '~/data/site';
-interface Props {
-  nav?: NavItem[];
-  cta?: { label: string; href?: string; ariaLabel?: string; disabled?: boolean };
-}
-const { nav = siteNav, cta } = Astro.props;
+import { nav as siteNav, type Cta, type EventBar, type NavItem } from '~/data/site';
+
+interface Props { nav?: NavItem[]; cta?: Cta; eventBar?: EventBar }
+const { nav = siteNav, cta, eventBar } = Astro.props;
 const here = Astro.url.pathname;
 const isCurrent = (href: string) => {
   if (href.includes('#')) return false;
@@ -14,7 +16,7 @@ const isCurrent = (href: string) => {
   return href === '/' ? here === target : here.startsWith(target);
 };
 ---
-<header class="site-header" id="top">
+<header class:list={['site-header', { 'site-header--event': eventBar }]} id="top">
   <div class="site-header__inner">
     <Brand href={url('/')} />
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
@@ -34,4 +36,20 @@ const isCurrent = (href: string) => {
         : <a class="btn btn--yellow btn--nav" href={url(cta.href)} aria-label={cta.ariaLabel}>{cta.label}</a>)}
     </nav>
   </div>
+  {eventBar && (
+    <nav class="event-bar" aria-label={`Secciones de ${eventBar.title}`}>
+      <div class="event-bar__inner">
+        <a class="event-bar__title" href="#top">
+          <Image src={avispa} alt="" width={32} height={32} />
+          <span>{eventBar.title}</span>
+        </a>
+        <ul class="event-bar__items">
+          {eventBar.items.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+        {eventBar.cta && (eventBar.cta.disabled || !eventBar.cta.href
+          ? <span class="btn btn--black btn--sm event-bar__cta is-disabled" aria-disabled="true">{eventBar.cta.label}</span>
+          : <a class="btn btn--black btn--sm event-bar__cta" href={eventBar.cta.href} rel="noopener">{eventBar.cta.label}</a>)}
+      </div>
+    </nav>
+  )}
 </header>

@@ -131,7 +131,7 @@ const owaspDay = defineCollection({
       sponsors: z.boolean().default(false),
       faq: z.boolean().default(false),
     }),
-    hero: z.object({ city: z.string(), tagline: z.string(), photoAlt: z.string() }),
+    hero: z.object({ tagline: z.string() }),
     about: z.object({
       title: z.string(),
       lead: z.string(),
@@ -157,10 +157,12 @@ const owaspDay = defineCollection({
     agenda: z.object({ title: z.string(), note: z.string().optional() }),
     venue: z.object({
       title: z.string(),
-      name: z.string(),
+      name: z.string(),                 // sala: "Auditorio Mario Benedetti"
+      place: z.string(),                // edificio: "Torre de las Telecomunicaciones de ANTEL"
       address: z.string(),
       accessibility: z.string().optional(),
-      mapQuery: z.string(),
+      lat: z.number(),                  // coordenadas del marcador del mapa
+      lon: z.number(),
     }),
     sponsors: z.object({ title: z.string(), button: z.string(), url: z.string() }),
     faq: z.object({ intro: z.string().optional() }),

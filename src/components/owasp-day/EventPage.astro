@@ -32,18 +32,16 @@ const anchors = [
   ...(on.speakers ? [{ label: 'Oradores', href: '#oradores' }] : []),
   ...(on.agenda ? [{ label: 'Agenda', href: '#agenda' }] : []),
   { label: 'Sede', href: '#sede' },
-  ...(on.faq ? [{ label: 'FAQ', href: '#faq', mobileOnly: true }] : []),
+  ...(on.faq ? [{ label: 'FAQ', href: '#faq' }] : []),
 ];
 ---
 <Base
   title={event.title}
   description={event.description}
   variant="owasp-day"
-  headerNav={[...anchors, { label: 'Eventos', href: '/eventos/' }]}
-  headerCta={{ label: cta.label, href: cta.href, disabled: cta.disabled }}
+  eventBar={{ title: 'OWASP Day 2026', items: anchors, cta: { label: cta.label, href: cta.href, disabled: cta.disabled } }}
   eventNav={anchors}
   canonicalPath={Astro.props.canonicalPath}
-  photoCredit
 >
   <Hero event={event} />
   <About event={event} />

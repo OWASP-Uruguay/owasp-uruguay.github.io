@@ -5,7 +5,7 @@ import Disclaimer from '~/components/Disclaimer.astro';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
 import { url } from '~/lib/events';
-import { favicon, type NavItem } from '~/data/site';
+import { favicon, type EventBar, type NavItem } from '~/data/site';
 
 interface Props {
   title: string;                 // sin sufijo; se agrega " · OWASP Uruguay"
@@ -15,12 +15,13 @@ interface Props {
   headerNav?: NavItem[];
   headerCta?: { label: string; href?: string; ariaLabel?: string; disabled?: boolean };
   eventNav?: { label: string; href: string }[];
+  eventBar?: EventBar;              // barra propia de la página del evento
   canonicalPath?: string;        // la portada muestra el evento: su canonical es /owasp-day-2026/
   photoCredit?: boolean;
   noindex?: boolean;
 }
 const {
-  title, description, image = '/og-image.jpg', variant = 'chapter', headerNav, headerCta, eventNav,
+  title, description, image = '/og-image.jpg', variant = 'chapter', headerNav, headerCta, eventNav, eventBar,
   canonicalPath, photoCredit = false, noindex = false,
 } = Astro.props;
 const fullTitle = title === 'OWASP Uruguay' ? title : `${title} · OWASP Uruguay`;
@@ -53,7 +54,7 @@ const icons = `/favicons/${favicon}`;
 <body class:list={[`theme-${variant}`]}>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <Disclaimer />
-  <Header nav={headerNav} cta={headerCta} />
+  <Header nav={headerNav} cta={headerCta} eventBar={eventBar} />
   <main id="contenido">
     <slot />
   </main>

@@ -35,6 +35,9 @@ export const joinLinks = {
 
 // Ítem del menú. `mobileOnly` lo oculta en escritorio.
 export interface NavItem { label: string; href: string; mobileOnly?: boolean }
+export interface Cta { label: string; href?: string; ariaLabel?: string; disabled?: boolean }
+// Barra propia de la página de un evento: sus secciones y su botón, separados del menú del sitio.
+export interface EventBar { title: string; items: NavItem[]; cta?: Cta }
 
 export const nav: NavItem[] = [
   { label: 'OWASP Day 2026', href: '/owasp-day-2026/' },
