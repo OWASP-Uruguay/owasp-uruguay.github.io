@@ -1,4 +1,4 @@
-// OWASP Day — menú móvil accesible + header compacto al hacer scroll. Sin dependencias.
+// Menú móvil accesible + header compacto al hacer scroll. Sin dependencias.
 (function () {
   var header = document.querySelector('.site-header');
   var toggle = document.querySelector('.nav-toggle');
@@ -36,7 +36,18 @@
     if (mq.matches) setOpen(false);
   });
 
-  function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 40); }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Header compacto. Al achicarse, el navegador corrige el scroll (scroll anchoring) y scrollY baja
+  // tanto como se achicó el header. Con un solo umbral eso lo vuelve a agrandar y parpadea.
+  // Por eso hay dos umbrales separados por más que esa diferencia.
+  var ON = 160, OFF = 24, ticking = false;
+  function update() {
+    ticking = false;
+    var y = window.scrollY, scrolled = header.classList.contains('is-scrolled');
+    if (!scrolled && y > ON) header.classList.add('is-scrolled');
+    else if (scrolled && y < OFF) header.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
 })();
