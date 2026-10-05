@@ -37,7 +37,7 @@ hero:
 about:
   title: Un día para hablar de *ciberseguridad*.
   lead: "OWASP Day Uruguay es una jornada abierta a quien desarrolla, prueba, opera o protege software: desarrolladores, QA, DevOps, equipos de seguridad, estudiantes y curiosos."
-  text: "Charlas de 40 minutos sobre seguridad de aplicaciones, con lugar para preguntas, de gente que trabaja en esto todos los días. La entrada es gratuita."
+  text: "Charlas sobre ciberseguridad, con lugar para preguntas, de gente que trabaja en esto todos los días. La entrada es gratuita."
   chapterTitle: El capítulo OWASP Uruguay
   chapterText: |-
     OWASP es una fundación sin fines de lucro que impulsa la seguridad del software con proyectos abiertos como el Top 10, ASVS y SAMM.
