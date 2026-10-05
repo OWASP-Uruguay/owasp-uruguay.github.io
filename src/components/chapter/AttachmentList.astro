@@ -1,0 +1,20 @@
+---
+// Materiales del evento: archivos locales (con descarga) y enlaces externos.
+import type { Attachment } from '~/lib/events';
+
+interface Props { items: Attachment[] }
+const { items } = Astro.props;
+const badge = (ext: string) => (ext === 'link' ? 'Enlace' : ext.toUpperCase());
+const fileName = (href: string) => decodeURIComponent(href.split('/').pop()?.split('?')[0] ?? '');
+---
+<ul class="files" role="list">
+  {items.map((a) => (
+    <li>
+      <a class="file" href={a.href} rel={a.external ? 'noopener' : undefined} download={a.external ? undefined : fileName(a.href)}>
+        <span class:list={['file__badge', `file__badge--${a.ext === 'link' ? 'link' : 'doc'}`]}>{badge(a.ext)}</span>
+        <span class="file__label">{a.label}</span>
+        <span class="file__action">{a.external ? 'Abrir' : 'Descargar'}</span>
+      </a>
+    </li>
+  ))}
+</ul>

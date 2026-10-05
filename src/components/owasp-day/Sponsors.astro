@@ -1,0 +1,52 @@
+---
+// Sponsors: src/content/owasp-day/sponsors.yaml, agrupados por nivel.
+// Sin logo se muestra el recuadro punteado con el nombre.
+import { Image } from 'astro:assets';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Arrow from '~/components/Arrow.astro';
+import { url } from '~/lib/events';
+import { inline } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { sponsors: s } = Astro.props.event;
+const all = (await getCollection('owaspDaySponsors')).sort((a, b) => a.id.localeCompare(b.id));
+const tiers = [
+  { id: 'platino', name: 'Platino', size: 'xl' },
+  { id: 'oro', name: 'Oro', size: 'lg' },
+  { id: 'plata', name: 'Plata', size: 'md' },
+  { id: 'comunidad', name: 'Comunidad', size: 'sm' },
+] as const;
+---
+<section class="section section--light sponsors" id="sponsors" aria-labelledby="sponsors-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Patrocinadores</p>
+        <span class="bar" aria-hidden="true"></span>
+        <h2 class="section-title" id="sponsors-title" set:html={inline(s.title)} />
+      </div>
+      <a class="btn btn--black" href={url(s.url)}>{s.button} <Arrow /></a>
+    </div>
+
+    {tiers.map((tier) => {
+      const list = all.filter((sp) => sp.data.tier === tier.id).map((sp) => sp.data);
+      return list.length > 0 && (
+        <div class="tier">
+          <h3 class="tier__name">{tier.name}</h3>
+          <ul class:list={['tier__logos', `tier__logos--${tier.size}`]}>
+            {list.map((sp) => {
+              const content = sp.logo
+                ? <Image src={sp.logo} alt={sp.name} height={160} />
+                : <span class="sponsor__ph">{sp.name}</span>;
+              return (
+                <li class="sponsor">
+                  {sp.url ? <a href={sp.url} rel="noopener">{content}</a> : content}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    })}
+  </div>
+</section>

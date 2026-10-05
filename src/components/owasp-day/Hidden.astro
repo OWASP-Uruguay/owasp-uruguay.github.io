@@ -1,0 +1,7 @@
+---
+// Envuelve una sección. Si se ve solo por SHOW_HIDDEN, la marca para no confundirla con lo publicado.
+interface Props { forced: boolean }
+---
+{Astro.props.forced
+  ? <div class="dev-hidden" data-label="Oculta en producción"><slot /></div>
+  : <slot />}

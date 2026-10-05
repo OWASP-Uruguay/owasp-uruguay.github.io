@@ -1,0 +1,173 @@
+---
+// Página de un evento: datos, contenido, charlas, materiales, fotos y navegación entre eventos.
+import { Image, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import Page from '~/components/chapter/Page.astro';
+import Arrow from '~/components/Arrow.astro';
+import TalkList from '~/components/chapter/TalkList.astro';
+import SponsorList from '~/components/chapter/SponsorList.astro';
+import AttachmentList from '~/components/chapter/AttachmentList.astro';
+import Gallery from '~/components/chapter/Gallery.astro';
+import {
+  getEvents, eventPhotos, eventAttachments, eventCover, eventHref, formatDate, isUpcoming, kindLabel, url,
+  type EventEntry,
+} from '~/lib/events';
+
+export async function getStaticPaths() {
+  const all = await getEvents();
+  // Los eventos con página propia (data.page) no generan /eventos/<id>/.
+  return all
+    .filter((e) => !e.data.page)
+    .map((entry) => {
+      const i = all.indexOf(entry);
+      // La lista está ordenada de más nuevo a más viejo.
+      return { params: { id: entry.id }, props: { entry, newer: all[i - 1], older: all[i + 1] } };
+    });
+}
+
+interface Props { entry: EventEntry; newer?: EventEntry; older?: EventEntry }
+const { entry, newer, older } = Astro.props;
+const { title, summary, kind, date, venue, online, links, talks, people, sponsors } = entry.data;
+const { Content } = await render(entry);
+const photos = eventPhotos(entry.id);
+const files = eventAttachments(entry);
+const cover = eventCover(entry);
+const upcoming = isUpcoming(entry);
+const og = cover ? await getImage({ src: cover, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 80 }) : undefined;
+// Base.astro pasa la imagen por url(): una URL absoluta evita duplicar el base.
+const ogImage = og ? new URL(og.src, Astro.site).href : undefined;
+const hasBody = Boolean(entry.body?.trim());
+---
+<Page title={title} description={summary} image={ogImage}>
+  <section class="ev-head" aria-labelledby="ev-title">
+    <div class="ev-head__art" aria-hidden="true">
+      <span class="ev-head__sun"></span>
+      {cover && (
+        <span class="ev-head__photo">
+          <Image src={cover} alt="" widths={[480, 800, 1100]} sizes="(max-width: 900px) 80vw, 40vw" loading="eager" />
+        </span>
+      )}
+      <span class="ev-head__corner"></span>
+      <span class="ev-head__dots"></span>
+    </div>
+    <div class="container ev-head__inner">
+      <nav class="crumbs" aria-label="Migas de pan">
+        <ol>
+          <li><a href={url('/')}>Inicio</a></li>
+          <li><a href={url('/eventos/')}>Eventos</a></li>
+          <li><span aria-current="page">{title}</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow">{kindLabel[kind]}{upcoming && ' · Próximo'}</p>
+      <span class="bar" aria-hidden="true"></span>
+      <h1 class="ev-head__title" id="ev-title">{title}</h1>
+      <p class="ev-head__summary">{summary}</p>
+      <dl class="ev-facts">
+        <div><dt>Fecha</dt><dd><time datetime={date.toISOString().slice(0, 10)}>{formatDate(entry)}</time></dd></div>
+        {venue && (
+          <div>
+            <dt>Lugar</dt>
+            <dd>
+              {venue.url ? <a href={venue.url} rel="noopener">{venue.name}</a> : venue.name}
+              {venue.address && <span class="ev-facts__sub">{venue.address}</span>}
+            </dd>
+          </div>
+        )}
+        {online && <div><dt>Modalidad</dt><dd>En línea</dd></div>}
+      </dl>
+      {links.length > 0 && (
+        <ul class="ev-head__links" role="list">
+          {links.map((l, i) => (
+            <li><a class:list={['btn', i === 0 ? 'btn--yellow' : 'btn--outline-white']} href={l.url} rel="noopener">{l.label} <Arrow /></a></li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  {(hasBody || talks.length > 0 || files.length > 0 || people.length > 0) && (
+    <section class="section section--light ev-body" aria-label="Detalle del evento">
+      <span class="deco ev-body__quarter" aria-hidden="true"></span>
+      <div class="container ev-body__grid">
+        <div class="ev-body__main">
+          {hasBody && (
+            <div class="prose">
+              <Content />
+            </div>
+          )}
+          {talks.length > 0 && (
+            <section class="ev-block" aria-labelledby="charlas-title">
+              <p class="eyebrow">Programa</p>
+              <span class="bar" aria-hidden="true"></span>
+              <h2 class="ev-block__title" id="charlas-title">{talks.length === 1 ? 'Charla' : 'Charlas'}</h2>
+              <TalkList talks={talks} />
+            </section>
+          )}
+        </div>
+        {(files.length > 0 || people.length > 0) && (
+          <aside class="ev-body__aside" aria-label="Materiales y participantes">
+            {files.length > 0 && (
+              <section class="ev-block" aria-labelledby="materiales-title">
+                <h2 class="ev-aside__title" id="materiales-title">Materiales</h2>
+                <AttachmentList items={files} />
+              </section>
+            )}
+            {people.length > 0 && (
+              <section class="ev-block" aria-labelledby="participantes-title">
+                <h2 class="ev-aside__title" id="participantes-title">Participaron</h2>
+                <ul class="people" role="list">{people.map((p) => <li>{p}</li>)}</ul>
+              </section>
+            )}
+          </aside>
+        )}
+      </div>
+    </section>
+  )}
+
+  {sponsors.length > 0 && (
+    <section class="section section--light ev-sponsors-section" aria-labelledby="sponsors-title">
+      <div class="container">
+        <p class="eyebrow">Gracias</p>
+        <span class="bar" aria-hidden="true"></span>
+        <h2 class="section-title" id="sponsors-title">Sponsors</h2>
+        <SponsorList sponsors={sponsors} />
+      </div>
+    </section>
+  )}
+
+  {photos.length > 0 && (
+    <section class="section section--dark photos" aria-labelledby="fotos-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Galería</p>
+            <span class="bar" aria-hidden="true"></span>
+            <h2 class="section-title" id="fotos-title">Fotos</h2>
+          </div>
+          <p class="section-head__note">{photos.length} {photos.length === 1 ? 'foto' : 'fotos'}. Tocá una para verla en grande.</p>
+        </div>
+        <Gallery photos={photos} title={title} />
+      </div>
+    </section>
+  )}
+
+  <nav class="ev-nav" aria-label="Otros eventos">
+    <div class="container ev-nav__grid">
+      {older ? (
+        <a class="ev-nav__link ev-nav__link--prev" href={eventHref(older)} rel="prev">
+          <span class="ev-nav__dir">Evento anterior</span>
+          <span class="ev-nav__title">{older.data.title}</span>
+          <span class="ev-nav__date">{formatDate(older)}</span>
+        </a>
+      ) : <span></span>}
+      <a class="ev-nav__all btn btn--outline-black" href={url('/eventos/')}>Volver a eventos</a>
+      {newer ? (
+        <a class="ev-nav__link ev-nav__link--next" href={eventHref(newer)} rel="next">
+          <span class="ev-nav__dir">Evento siguiente</span>
+          <span class="ev-nav__title">{newer.data.title}</span>
+          <span class="ev-nav__date">{formatDate(newer)}</span>
+        </a>
+      ) : <span></span>}
+    </div>
+  </nav>
+</Page>

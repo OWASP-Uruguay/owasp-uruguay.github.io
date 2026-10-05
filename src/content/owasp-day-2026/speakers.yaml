@@ -1,0 +1,46 @@
+# OWASP Day 2026: oradores. El orden de la lista es el orden en la página.
+#
+# Campos de cada orador:
+#   name       nombre (primera línea)
+#   lastName   apellido (segunda línea, en azul)
+#   role       cargo · empresa
+#   talk       título de la charla (opcional)
+#   photo      foto cuadrada, ej. ./speakers/lucia-fernandez.jpg (opcional).
+#              Se muestra en blanco y negro. Sin foto se usa una silueta de ejemplo.
+#   color      círculo detrás de la foto: yellow o blue
+
+- name: Lucía
+  lastName: Fernández
+  role: Investigadora en seguridad de aplicaciones · Empresa Ejemplo
+  talk: "El nuevo OWASP Top 10: qué cambió y por qué importa"
+  color: yellow
+
+- name: Martín
+  lastName: Pereira
+  role: AppSec Lead · Fintech Demo
+  talk: "ASVS en la práctica: requisitos de seguridad que sí se usan"
+  color: blue
+
+- name: Sofía
+  lastName: Rodríguez
+  role: Pentester · Consultora Ejemplo
+  talk: "API Security Top 10: atacando y defendiendo APIs"
+  color: yellow
+
+- name: Diego
+  lastName: Martínez
+  role: Security Program Manager · SaaS Demo
+  talk: "OWASP SAMM: medir y mejorar tu programa de AppSec"
+  color: blue
+
+- name: Valentina
+  lastName: Silva
+  role: DevSecOps Engineer · Software Factory Demo
+  talk: "Cadena de suministro: SBOM, CycloneDX y dependencias"
+  color: yellow
+
+- name: Nicolás
+  lastName: Sosa
+  role: ML Security Researcher · Lab Ejemplo
+  talk: OWASP Top 10 para aplicaciones con LLMs
+  color: blue

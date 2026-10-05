@@ -1,0 +1,28 @@
+---
+// Acerca de: textos en event.yaml (about).
+import type { CollectionEntry } from 'astro:content';
+import { inline, paragraphs } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { about } = Astro.props.event;
+---
+<section class="section section--light about" id="acerca" aria-labelledby="acerca-title">
+  <span class="deco deco--about-half" aria-hidden="true"></span>
+  <span class="deco deco--dots-dark deco--about-dots" aria-hidden="true"></span>
+  <div class="container">
+    <p class="eyebrow">Acerca de</p>
+    <span class="bar" aria-hidden="true"></span>
+    <h2 class="section-title" id="acerca-title" set:html={inline(about.title)} />
+
+    <div class="about__grid">
+      <div class="about__event">
+        <p class="lead" set:html={inline(about.lead, { hl: false })} />
+        {paragraphs(about.text).map((p) => <p set:html={p} />)}
+      </div>
+      <aside class="about__chapter" aria-labelledby="capitulo-title">
+        <h3 id="capitulo-title">{about.chapterTitle}</h3>
+        {paragraphs(about.chapterText).map((p) => <p set:html={p} />)}
+      </aside>
+    </div>
+  </div>
+</section>

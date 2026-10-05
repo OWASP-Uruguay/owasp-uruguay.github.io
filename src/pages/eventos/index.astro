@@ -1,0 +1,124 @@
+---
+// Archivo de eventos: próximos primero, luego por año (desc), con índice de años y filtro por tipo.
+import Page from '~/components/chapter/Page.astro';
+import PageHead from '~/components/chapter/PageHead.astro';
+import EventGrid from '~/components/chapter/EventGrid.astro';
+import JoinBand from '~/components/chapter/JoinBand.astro';
+import { chapter } from '~/data/site';
+import { getEvents, isUpcoming, kindLabel, type EventEntry } from '~/lib/events';
+
+const events = await getEvents();
+const upcoming = events.filter((e) => isUpcoming(e)).reverse();
+const past = events.filter((e) => !isUpcoming(e));
+const byYear = new Map<number, EventEntry[]>();
+for (const e of past) {
+  const y = e.data.date.getUTCFullYear();
+  byYear.set(y, [...(byYear.get(y) ?? []), e]);
+}
+const groups = [
+  ...(upcoming.length ? [{ id: 'proximos', label: 'Próximos', events: upcoming }] : []),
+  ...[...byYear].map(([y, list]) => ({ id: `y${y}`, label: String(y), events: list })),
+];
+const kinds = (Object.keys(kindLabel) as EventEntry['data']['kind'][]).filter((k) => events.some((e) => e.data.kind === k));
+const count = (n: number) => `${n} ${n === 1 ? 'evento' : 'eventos'}`;
+---
+<Page title="Eventos" description={`Todos los eventos de OWASP Uruguay desde ${chapter.founded}: meetups, talleres, conferencias y jornadas de colaboración, con charlas, materiales y fotos.`}>
+  <PageHead eyebrow="Archivo" title="Eventos" shapes="corner"
+    intro={`Meetups, talleres, conferencias y jornadas de colaboración desde ${chapter.founded}. Cada evento tiene sus charlas, materiales y fotos.`} />
+
+  <section class="section section--dark archive" aria-label="Listado de eventos">
+    <div class="container archive__layout">
+      <nav class="years" aria-label="Años">
+        <p class="years__label" aria-hidden="true">Ir a</p>
+        <ul role="list">
+          {groups.map((g) => <li data-year-link={g.id}><a href={`#${g.id}`}>{g.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <div class="archive__main">
+        <div class="filters" data-filters hidden>
+          <p class="filters__label" id="filtro-label">Filtrar por tipo</p>
+          <ul role="list" aria-labelledby="filtro-label">
+            <li><button type="button" class="chip" data-kind="" aria-pressed="true">Todos</button></li>
+            {kinds.map((k) => <li><button type="button" class="chip" data-kind={k} aria-pressed="false">{kindLabel[k]}</button></li>)}
+          </ul>
+          <p class="filters__status" aria-live="polite" data-status>{count(events.length)}</p>
+        </div>
+
+        {groups.map((g) => (
+          <section class="year-group" id={g.id} aria-labelledby={`${g.id}-title`} data-group>
+            <header class="year-group__head">
+              <h2 class="year-group__title" id={`${g.id}-title`}>{g.label}</h2>
+              <p class="year-group__count" data-count>{count(g.events.length)}</p>
+            </header>
+            <EventGrid events={g.events} class="ev-grid--archive" />
+          </section>
+        ))}
+        {groups.length === 0 && <p class="empty">Todavía no hay eventos cargados.</p>}
+      </div>
+    </div>
+  </section>
+
+  <JoinBand title="¿Querés dar una charla?" />
+</Page>
+
+<script>
+  // Filtro por tipo (mejora progresiva: sin JS se ven todos los eventos).
+  const box = document.querySelector<HTMLElement>('[data-filters]');
+  if (box) {
+    box.hidden = false;
+    const chips = [...box.querySelectorAll<HTMLButtonElement>('button[data-kind]')];
+    const status = box.querySelector<HTMLElement>('[data-status]')!;
+    const groups = [...document.querySelectorAll<HTMLElement>('[data-group]')];
+    const label = (n: number) => `${n} ${n === 1 ? 'evento' : 'eventos'}`;
+
+    const apply = (kind: string) => {
+      let total = 0;
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.kind === kind)));
+      groups.forEach((g) => {
+        const items = [...g.querySelectorAll<HTMLElement>('li[data-kind]')];
+        let n = 0;
+        items.forEach((li) => {
+          const show = !kind || li.dataset.kind === kind;
+          li.hidden = !show;
+          if (show) n++;
+        });
+        total += n;
+        g.hidden = n === 0;
+        g.querySelector('[data-count]')!.textContent = label(n);
+        const link = document.querySelector<HTMLElement>(`[data-year-link="${g.id}"]`);
+        if (link) link.hidden = n === 0;
+      });
+      status.textContent = kind ? `${label(total)} de tipo ${chips.find((c) => c.dataset.kind === kind)?.textContent}` : label(total);
+    };
+
+    chips.forEach((c) => c.addEventListener('click', () => {
+      apply(c.dataset.kind ?? '');
+      // El tipo queda en la URL (?tipo=meetup) para compartir el filtro.
+      const u = new URL(location.href);
+      if (c.dataset.kind) u.searchParams.set('tipo', c.dataset.kind); else u.searchParams.delete('tipo');
+      history.replaceState(null, '', u);
+    }));
+    const initial = new URL(location.href).searchParams.get('tipo');
+    if (initial && chips.some((c) => c.dataset.kind === initial)) apply(initial);
+  }
+
+  // Resalta el año visible en el índice.
+  const links = new Map([...document.querySelectorAll<HTMLElement>('[data-year-link]')].map((li) => [li.dataset.yearLink, li.querySelector('a')!]));
+  if ('IntersectionObserver' in window && links.size) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        links.forEach((a) => a.removeAttribute('aria-current'));
+        const a = links.get(en.target.id);
+        if (a) {
+          a.setAttribute('aria-current', 'true');
+          // En móvil el índice es una tira horizontal: centra el año activo.
+          const ul = a.closest('ul')!;
+          if (ul.scrollWidth > ul.clientWidth) ul.scrollTo({ left: a.offsetLeft - (ul.clientWidth - a.offsetWidth) / 2 });
+        }
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    document.querySelectorAll('[data-group]').forEach((g) => io.observe(g));
+  }
+</script>

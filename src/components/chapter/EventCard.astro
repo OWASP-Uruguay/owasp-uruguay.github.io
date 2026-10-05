@@ -1,0 +1,38 @@
+---
+// Tarjeta de evento: portada, fecha, tipo, título, resumen y cantidad de charlas/fotos.
+import { Image } from 'astro:assets';
+import { eventPhotos, eventCover, eventHref, formatDate, isUpcoming, kindLabel, type EventEntry } from '~/lib/events';
+
+interface Props { entry: EventEntry; level?: 'h2' | 'h3' | 'h4'; eager?: boolean }
+const { entry, level = 'h3', eager = false } = Astro.props;
+const H = level;
+const { title, summary, kind, talks, date, online } = entry.data;
+const cover = eventCover(entry);
+const photos = eventPhotos(entry.id).length;
+const upcoming = isUpcoming(entry);
+// Sin portada: composición de formas, variada según el id.
+const variant = [...entry.id].reduce((n, c) => n + c.charCodeAt(0), 0) % 3;
+const meta = [
+  talks.length > 0 && `${talks.length} ${talks.length === 1 ? 'charla' : 'charlas'}`,
+  photos > 0 && `${photos} ${photos === 1 ? 'foto' : 'fotos'}`,
+  online && 'En línea',
+].filter(Boolean) as string[];
+---
+<article class:list={['ev-card', { 'ev-card--upcoming': upcoming }]} data-kind={kind}>
+  <div class="ev-card__media">
+    {cover ? (
+      <Image src={cover} alt="" widths={[420, 840]} sizes="(max-width: 720px) calc(100vw - 32px), (max-width: 1080px) 46vw, 400px"
+        loading={eager ? 'eager' : 'lazy'} />
+    ) : (
+      <span class:list={['ev-card__ph', `ev-card__ph--${variant}`]} aria-hidden="true"><span></span><span></span></span>
+    )}
+    <span class="ev-card__chip">{kindLabel[kind]}</span>
+    {upcoming && <span class="ev-card__soon">Próximo</span>}
+  </div>
+  <div class="ev-card__body">
+    <p class="ev-card__date"><time datetime={date.toISOString().slice(0, 10)}>{formatDate(entry)}</time></p>
+    <H class="ev-card__title"><a href={eventHref(entry)}>{title}</a></H>
+    <p class="ev-card__summary">{summary}</p>
+    {meta.length > 0 && <ul class="ev-card__meta" aria-label="Detalles">{meta.map((m) => <li>{m}</li>)}</ul>}
+  </div>
+</article>

@@ -1,0 +1,115 @@
+---
+// Portada. Mientras el OWASP Day 2026 no terminó, muestra su página; después, el archivo de eventos.
+import { Image } from 'astro:assets';
+import Page from '~/components/chapter/Page.astro';
+import Arrow from '~/components/Arrow.astro';
+import EventGrid from '~/components/chapter/EventGrid.astro';
+import JoinBand from '~/components/chapter/JoinBand.astro';
+import heroSalvo from '~/assets/hero-salvo.webp';
+import { chapter } from '~/data/site';
+import EventPage from '~/components/owasp-day/EventPage.astro';
+import { getEntry } from 'astro:content';
+import { getEvents, isUpcoming, eventHref, formatDate, kindLabel, url } from '~/lib/events';
+import { NOW } from '~/lib/env';
+import { isOver } from '~/lib/when';
+
+const current = await getEntry('owaspDay', 'event');
+const showEvent = current && !isOver(current.data.date, NOW);
+
+const events = await getEvents();
+const upcoming = events.filter((e) => isUpcoming(e)).reverse();          // el más cercano primero
+const past = events.filter((e) => !isUpcoming(e));
+// Banda destacada: próximos con featured; si no hay, el próximo más cercano.
+const featured = upcoming.filter((e) => e.data.featured);
+const band = featured.length ? featured : upcoming.slice(0, 1);
+const nextOthers = upcoming.filter((e) => !band.includes(e));
+const recent = past.slice(0, 6);
+
+---
+{showEvent ? <EventPage canonicalPath="/owasp-day-2026/" /> : (
+<Page title="OWASP Uruguay" description={`${chapter.tagline} Meetups, talleres y el OWASP Day, desde ${chapter.founded}.`} photoCredit>
+  <section class="hero hero--chapter" aria-labelledby="hero-title">
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__owasp">OWASP</span>
+          <span class="hero__day">Uruguay</span>
+        </h1>
+        <p class="hero__city">Eventos desde {chapter.founded}</p>
+        <span class="bar" aria-hidden="true"></span>
+        <p class="hero__tagline">{chapter.tagline}</p>
+        <div class="hero__ctas">
+          <a class="btn btn--yellow btn--lg" href={url('/eventos/')}>Ver eventos <Arrow /></a>
+          <a class="btn btn--outline-white btn--lg" href="#participa">Sumate</a>
+        </div>
+      </div>
+      <div class="hero__art">
+        <span class="shape shape--blue-half" aria-hidden="true"></span>
+        <span class="shape shape--sun" aria-hidden="true"></span>
+        <span class="hero__photo">
+          <Image src={heroSalvo} alt="Palacio Salvo y Plaza Independencia, Montevideo" widths={[640, 1025, 1280]}
+            sizes="(max-width: 720px) 130vw, 72vw" loading="eager" fetchpriority="high" />
+        </span>
+        <span class="shape shape--blue-corner" aria-hidden="true"></span>
+        <span class="shape shape--dots" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  {band.map((e) => (
+    <section class="feature" aria-labelledby={`feature-${e.id}`}>
+      <span class="feature__quarter" aria-hidden="true"></span>
+      <span class="feature__dots" aria-hidden="true"></span>
+      <div class="container feature__inner">
+        <div>
+          <p class="eyebrow">Próximo evento <span class="nowrap">· {kindLabel[e.data.kind]}</span></p>
+          <span class="bar bar--black" aria-hidden="true"></span>
+          <h2 class="feature__title" id={`feature-${e.id}`}>{e.data.title}</h2>
+          <p class="feature__summary">{e.data.summary}</p>
+        </div>
+        <div class="feature__side">
+          <dl class="feature__facts">
+            <div><dt>Fecha</dt><dd>{formatDate(e)}</dd></div>
+            {e.data.venue && <div><dt>Lugar</dt><dd>{e.data.venue.name}{e.data.venue.address && <>, {e.data.venue.address}</>}</dd></div>}
+          </dl>
+          <a class="btn btn--black feature__btn" href={eventHref(e)}>{e.data.page ? `Conocé el ${e.data.title.replace(/ Montevideo/, '')}` : 'Ver el evento'} <Arrow /></a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  {nextOthers.length > 0 && (
+    <section class="section section--dark" aria-labelledby="proximos-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Agenda</p>
+            <span class="bar" aria-hidden="true"></span>
+            <h2 class="section-title" id="proximos-title">Próximos <span class="hl-blue">eventos</span></h2>
+          </div>
+        </div>
+        <EventGrid events={nextOthers} />
+      </div>
+    </section>
+  )}
+
+  <section class="section section--dark recent" aria-labelledby="recientes-title">
+    <span class="deco recent__half" aria-hidden="true"></span>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Qué hicimos</p>
+          <span class="bar" aria-hidden="true"></span>
+          <h2 class="section-title" id="recientes-title">Eventos <span class="hl-blue">recientes</span></h2>
+        </div>
+        <a class="link-arrow" href={url('/eventos/')}>Ver todos los eventos</a>
+      </div>
+      {recent.length > 0 ? <EventGrid events={recent} /> : <p class="empty">Pronto vas a encontrar acá los eventos del capítulo.</p>}
+      <p class="recent__more"><a class="btn btn--yellow" href={url('/eventos/')}>Ver todos los eventos <Arrow /></a></p>
+    </div>
+  </section>
+
+
+  <JoinBand />
+</Page>
+)}

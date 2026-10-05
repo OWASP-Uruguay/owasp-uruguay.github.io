@@ -1,0 +1,34 @@
+---
+// Encabezado de páginas internas: eyebrow + barra + título grande + intro, con formas de marca.
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  id?: string;
+  crumbs?: { label: string; href: string }[];   // migas de pan (hrefs ya pasados por url())
+  shapes?: 'sun' | 'corner' | 'half';
+}
+const { eyebrow, title, intro, id = 'page-title', crumbs = [], shapes = 'sun' } = Astro.props;
+---
+<section class:list={['page-head', `page-head--${shapes}`]} aria-labelledby={id}>
+  <div class="page-head__art" aria-hidden="true">
+    <span class="page-head__a"></span>
+    <span class="page-head__b"></span>
+    <span class="page-head__dots"></span>
+  </div>
+  <div class="container page-head__inner">
+    {crumbs.length > 0 && (
+      <nav class="crumbs" aria-label="Migas de pan">
+        <ol>
+          {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+          <li><span aria-current="page">{title}</span></li>
+        </ol>
+      </nav>
+    )}
+    <p class="eyebrow">{eyebrow}</p>
+    <span class="bar" aria-hidden="true"></span>
+    <h1 class="page-head__title" id={id}><slot name="title">{title}</slot></h1>
+    {intro && <p class="page-head__intro">{intro}</p>}
+    <slot />
+  </div>
+</section>

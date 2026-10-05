@@ -1,0 +1,15 @@
+---
+// Marca del sitio: logo de OWASP Uruguay + texto.
+import { Image } from 'astro:assets';
+import logo from '~/assets/brand/owasp-uy.png';
+
+interface Props { as?: 'a' | 'p'; href?: string; class?: string }
+const { as = 'a', href, class: cls = '' } = Astro.props;
+const Tag = as;
+---
+<Tag class:list={['brand', 'brand--chapter', cls]} href={as === 'a' ? href : undefined}
+  aria-label={as === 'a' ? 'OWASP Uruguay, eventos: inicio' : 'OWASP Uruguay, eventos'} role={as === 'p' ? 'img' : undefined}>
+  <Image class="brand__mark brand__mark--round" src={logo} alt="" widths={[64, 128]} sizes="56px" loading={as === 'p' ? 'lazy' : 'eager'} />
+  <span class="brand__word" aria-hidden="true"><span class="brand__owasp">OWASP</span><span class="brand__day">Uruguay</span></span>
+  <span class="brand__city" aria-hidden="true"><span>Eventos</span><span>Comunidad</span></span>
+</Tag>

@@ -1,0 +1,52 @@
+---
+// Oradores: src/content/owasp-day/speakers.yaml. Las fotos se muestran en B/N;
+// sin foto se usa la silueta src/assets/owasp-day/speakers/placeholder.svg.
+import { Image } from 'astro:assets';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import placeholder from '~/assets/owasp-day/speakers/placeholder.svg';
+import { url } from '~/lib/events';
+import { inline } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { speakers: s } = Astro.props.event;
+const speakers = (await getCollection('owaspDaySpeakers')).sort((a, b) => a.id.localeCompare(b.id));
+---
+<section class="section section--dark speakers" id="oradores" aria-labelledby="oradores-title">
+  <span class="deco deco--speakers-blue" aria-hidden="true"></span>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Oradores</p>
+        <span class="bar" aria-hidden="true"></span>
+        <h2 class="section-title" id="oradores-title" set:html={inline(s.title)} />
+      </div>
+      {s.note && <p class="section-head__note">{s.note}</p>}
+    </div>
+
+    <ul class="speakers__grid">
+      {speakers.map(({ data: sp }) => {
+        const fullName = `${sp.name} ${sp.lastName}`.trim();
+        return (
+          <li class="speaker">
+            <div class:list={['speaker__photo', `speaker__photo--${sp.color}`]}>
+              {sp.photo
+                ? <Image src={sp.photo} alt={`Foto de ${fullName}`} width={400} height={400} widths={[240, 400, 800]} sizes="(max-width: 720px) 112px, 400px" fit="cover" />
+                : <Image src={placeholder} alt={`Foto de ${fullName} (placeholder)`} width={400} height={400} />}
+            </div>
+            <h3 class="speaker__name">{sp.name} {sp.lastName && <span>{sp.lastName}</span>}</h3>
+            <p class="speaker__role">{sp.role}</p>
+            {sp.talk && <p class="speaker__talk">{sp.talk}</p>}
+          </li>
+        );
+      })}
+      {s.moreTile && (
+        <li class="speaker speaker--more">
+          <span class="speaker--more__icon" aria-hidden="true"></span>
+          <p class="speaker--more__title" set:html={inline(s.moreTitle, { hl: '' })} />
+          <p class="speaker--more__text">{s.moreText}</p>
+          <a class="link-arrow" href={url(s.moreLink.url)}>{s.moreLink.label}</a>
+        </li>
+      )}
+    </ul>
+  </div>
+</section>

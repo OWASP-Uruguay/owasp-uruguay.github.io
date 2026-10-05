@@ -1,0 +1,52 @@
+---
+// Sede: event.yaml (venue). Mapa de OpenStreetMap con marcador en venue.lat / venue.lon.
+import Arrow from '~/components/Arrow.astro';
+import { inline, longDate } from './format';
+import { timeLabel } from '~/lib/when';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { venue, date, time } = Astro.props.event;
+const { lat, lon } = venue;
+const bbox = [lon - 0.006, lat - 0.0035, lon + 0.006, lat + 0.0035].map((n) => n.toFixed(6)).join(',');
+const embed = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+const osm = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`;
+const directions = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+---
+<section class="section section--dark venue" id="sede" aria-labelledby="sede-title">
+  <div class="container venue__grid">
+    <div class="venue__info">
+      <p class="eyebrow">Sede</p>
+      <span class="bar" aria-hidden="true"></span>
+      <h2 class="section-title" id="sede-title" set:html={inline(venue.title)} />
+      <dl class="venue__list">
+        <div>
+          <dt>Lugar</dt>
+          <dd>{venue.name}<span class="venue__place">{venue.place}</span></dd>
+        </div>
+        <div>
+          <dt>Dirección</dt>
+          <dd>{venue.address}</dd>
+        </div>
+        <div>
+          <dt>Fecha</dt>
+          <dd>{longDate(date)}, {timeLabel(time).toLowerCase()}</dd>
+        </div>
+        {venue.accessibility && (
+          <div>
+            <dt>Accesibilidad</dt>
+            <dd>{venue.accessibility}</dd>
+          </div>
+        )}
+      </dl>
+      <div class="venue__links">
+        <a class="btn btn--yellow" href={directions} rel="noopener">Cómo llegar <Arrow /></a>
+        <a class="link-arrow" href={osm} rel="noopener">Ver en OpenStreetMap</a>
+      </div>
+    </div>
+
+    <figure class="venue__map">
+      <iframe src={embed} title={`Mapa: ${venue.name}, ${venue.place}, ${venue.address}`} loading="lazy" referrerpolicy="no-referrer"></iframe>
+    </figure>
+  </div>
+</section>

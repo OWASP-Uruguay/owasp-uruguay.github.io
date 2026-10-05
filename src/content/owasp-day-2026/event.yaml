@@ -1,0 +1,94 @@
+# OWASP Day Uruguay 2026: datos de la página /owasp-day-2026/ (y de la portada mientras el evento no pasó).
+#
+# Formato de texto en los campos largos:
+#   *texto*          resalta en azul (títulos) o cursiva (párrafos)
+#   **texto**        negrita
+#   [texto](url)     enlace: https://..., mailto:..., #seccion o /ruta/
+#   Una línea en blanco separa párrafos.
+#
+# Las fechas van entre comillas con formato "AAAA-MM-DD". Hora de Montevideo (UTC-3).
+
+title: OWASP Day Uruguay 2026
+description: "OWASP Day Uruguay 2026: una jornada gratuita sobre seguridad de aplicaciones, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
+date: "2026-11-30"
+# Vacío = "Horario a confirmar". Cuando se confirme: "09:00 a 17:30"
+time: ""
+
+cfp:
+  url: https://docs.google.com/forms/d/e/1FAIpQLSdsTsHDloLZp1_T8OsjSzm696dkgiQ22hZt5Dynb0BVq5IOEw/viewform
+  deadline: "2026-10-19"
+
+# Vacío = botón deshabilitado con "próximamente". Pegá acá el link de Eventbrite cuando exista.
+registration:
+  url: ""
+  provider: Eventbrite
+
+# Secciones que todavía no se publican. true = se ve en producción.
+# Para verlas en tu computadora sin tocar esto: SHOW_HIDDEN=all npm run dev
+sections:
+  speakers: false
+  agenda: false
+  sponsors: false
+  faq: false
+
+hero:
+  tagline: Una jornada abierta y gratuita sobre seguridad de aplicaciones.
+
+about:
+  title: Un día para hablar de *ciberseguridad*.
+  lead: "OWASP Day Uruguay es una jornada abierta a quien desarrolla, prueba, opera o protege software: desarrolladores, QA, DevOps, equipos de seguridad, estudiantes y curiosos."
+  text: "Charlas sobre ciberseguridad, con lugar para preguntas, de gente que trabaja en esto todos los días. La entrada es gratuita."
+  chapterTitle: El capítulo OWASP Uruguay
+  chapterText: |-
+    OWASP es una fundación sin fines de lucro que impulsa la seguridad del software con proyectos abiertos como el Top 10, ASVS y SAMM.
+
+    El capítulo de Uruguay existe desde 2010 y organiza meetups, talleres y jornadas gratuitas. La información oficial del capítulo está en [owasp.org/chapters/uruguay](https://owasp.org/chapters/uruguay).
+
+callForSpeakers:
+  title: Call for *speakers*
+  text: "Buscamos charlas sobre seguridad de aplicaciones para compartir con la comunidad local. Las propuestas las revisa un comité por relevancia, precisión técnica, originalidad y claridad."
+  format: "Charlas de 40 minutos con preguntas incluidas, en español o en inglés. La asistencia es gratuita; no se cubren viajes ni alojamiento."
+  topics:
+    - Seguridad web
+    - Seguridad móvil
+    - APIs
+    - Cloud
+    - DevSecOps y SSDLC
+    - Identidad y accesos
+    - Criptografía
+    - Testing de seguridad
+    - IA, IoT y tecnologías emergentes
+    - Casos reales
+    - Aspectos legales y cumplimiento
+  closedText: La convocatoria cerró. Gracias a todas las personas que mandaron su propuesta.
+
+speakers:
+  title: Voces de la *comunidad*
+  note: "Oradores de ejemplo: la grilla se anuncia cuando cierre la selección."
+  moreTile: true
+  moreTitle: Más oradores *próximamente*
+  moreText: Estamos armando la grilla completa.
+  moreLink:
+    label: Ver el call for speakers
+    url: "#cfs"
+
+agenda:
+  title: Agenda
+  note: "Agenda tentativa. Los horarios pueden cambiar."
+
+venue:
+  title: Nos vemos en la *Torre de ANTEL*
+  name: Auditorio Mario Benedetti
+  place: Torre de las Telecomunicaciones de ANTEL
+  address: Guatemala 1075, Montevideo
+  # Marcador del mapa (OpenStreetMap)
+  lat: -34.892135
+  lon: -56.194453
+
+sponsors:
+  title: Gracias a quienes lo hacen posible
+  button: Quiero ser sponsor
+  url: https://owasp.org/chapters/uruguay
+
+faq:
+  intro: ¿Otra duda? Escribinos por el [Slack de OWASP](https://owasp.org/slack/invite), canal #owasp-uruguay.

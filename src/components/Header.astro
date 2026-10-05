@@ -1,0 +1,69 @@
+---
+// Header del sitio. En la página del evento suma una segunda barra (amarilla) con sus secciones
+// y su botón, para que no se mezclen con el menú general del sitio.
+// En el resto de las páginas, mientras el evento no pasó, muestra un aviso que lleva a él.
+import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import { NOW } from '~/lib/env';
+import { isOver } from '~/lib/when';
+import Brand from './Brand.astro';
+import avispa from '~/assets/brand/avispa-negra.svg';
+import { url } from '~/lib/events';
+import { nav as siteNav, type Cta, type EventBar, type NavItem } from '~/data/site';
+
+interface Props { nav?: NavItem[]; cta?: Cta; eventBar?: EventBar }
+const { nav = siteNav, cta, eventBar } = Astro.props;
+const here = Astro.url.pathname;
+const event = (await getEntry('owaspDay', 'event'))?.data;
+const pill = !eventBar && event && !isOver(event.date, NOW)
+  ? { href: url('/owasp-day-2026/'), date: new Intl.DateTimeFormat('es-UY', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${event.date}T12:00:00Z`)).replace('.', '') }
+  : undefined;
+const isCurrent = (href: string) => {
+  if (href.includes('#')) return false;
+  const target = url(href);
+  return href === '/' ? here === target : here.startsWith(target);
+};
+---
+<header class:list={['site-header', { 'site-header--event': eventBar }]} id="top">
+  <div class="site-header__inner">
+    <Brand href={url('/')} />
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Abrir menú</span>
+    </button>
+    <nav class="site-nav" id="menu-principal" aria-label="Principal">
+      <ul>
+        {nav.map((item) => (
+          <li class:list={{ 'nav-mobile-only': item.mobileOnly }}>
+            <a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      {pill && (
+        <a class="event-pill" href={pill.href} aria-label={`Próximo evento: OWASP Day, ${pill.date}`}>
+          <Image src={avispa} alt="" width={28} height={28} />
+          <span>OWASP Day · {pill.date}</span>
+        </a>
+      )}
+      {cta && (cta.disabled || !cta.href
+        ? <span class="btn btn--yellow btn--nav is-disabled" aria-disabled="true">{cta.label}</span>
+        : <a class="btn btn--yellow btn--nav" href={url(cta.href)} aria-label={cta.ariaLabel}>{cta.label}</a>)}
+    </nav>
+  </div>
+  {eventBar && (
+    <nav class="event-bar" aria-label={`Secciones de ${eventBar.title}`}>
+      <div class="event-bar__inner">
+        <a class="event-bar__title" href="#top">
+          <Image src={avispa} alt="" width={32} height={32} />
+          <span>{eventBar.title}</span>
+        </a>
+        <ul class="event-bar__items">
+          {eventBar.items.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+        {eventBar.cta && (eventBar.cta.disabled || !eventBar.cta.href
+          ? <span class="btn btn--black btn--sm event-bar__cta is-disabled" aria-disabled="true">{eventBar.cta.label}</span>
+          : <a class="btn btn--black btn--sm event-bar__cta" href={eventBar.cta.href} rel="noopener">{eventBar.cta.label}</a>)}
+      </div>
+    </nav>
+  )}
+</header>

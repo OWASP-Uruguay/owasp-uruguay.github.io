@@ -1,0 +1,39 @@
+---
+// Banda amarilla "Sumate": todas las formas de participar en el capítulo.
+import Arrow from '~/components/Arrow.astro';
+import { chapter, social, joinLinks } from '~/data/site';
+
+interface Props { id?: string; title?: string }
+const { id = 'participa', title = 'Sumate a la comunidad' } = Astro.props;
+const net = (icon: string) => social.find((s) => s.icon === icon)!.url;
+const ways = [
+  { title: 'Vení a las meetups', text: 'Charlas abiertas y gratuitas. Anotate en Meetup y te avisamos de cada encuentro.', label: 'Grupo en Meetup', href: net('meetup') },
+  { title: 'Entrá al Slack', text: 'El canal #owasp-uruguay es donde se organiza el capítulo. Pedí tu invitación.', label: 'Invitación a Slack', href: joinLinks.slackInvite },
+  { title: 'Lista de correo', text: 'Anuncios y discusión del capítulo en el grupo de Google.', label: 'Google Group', href: joinLinks.googleGroup },
+  { title: 'Colaborá en GitHub', text: 'Contenido, herramientas y este mismo sitio viven en los repositorios del capítulo.', label: 'OWASP-Uruguay', href: net('github') },
+  { title: 'Mirá las charlas', text: 'Grabaciones de meetups y eventos. Dejanos tus comentarios.', label: 'Canal de YouTube', href: net('youtube') },
+  { title: 'Hacete miembro', text: 'La membresía de OWASP apoya los proyectos y al capítulo local.', label: 'Membresía OWASP', href: joinLinks.membership },
+  { title: 'Proponé una charla', text: '¿Tenés algo para contar sobre seguridad de aplicaciones? Escribinos por Slack o Meetup.', label: 'Escribinos en Slack', href: net('slack') },
+  { title: 'Recibí una meetup', text: 'Tu empresa puede ofrecer el espacio, el break o el streaming de un encuentro.', label: 'Sitio del capítulo', href: chapter.owaspPage },
+];
+---
+<section class="cta-band join" id={id} aria-labelledby={`${id}-title`}>
+  <span class="deco deco--cta-quarter" aria-hidden="true"></span>
+  <span class="deco deco--cta-dots" aria-hidden="true"></span>
+  <div class="container">
+    <p class="eyebrow">Participá</p>
+    <span class="bar bar--black" aria-hidden="true"></span>
+    <h2 class="section-title" id={`${id}-title`}>{title}</h2>
+    <p class="join__intro">El capítulo lo hacen voluntarios. Todas las actividades son gratuitas y abiertas a quien quiera sumarse.</p>
+    <ul class="join__grid" role="list">
+      {ways.map((w, i) => (
+        <li class="join__card">
+          <span class="join__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{w.title}</h3>
+          <p>{w.text}</p>
+          <a class="join__link" href={w.href} rel="noopener">{w.label} <Arrow /></a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

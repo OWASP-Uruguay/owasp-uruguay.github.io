@@ -1,0 +1,25 @@
+# OWASP Day 2026: preguntas frecuentes, en orden.
+# Revisar cada respuesta antes de poner sections.faq en true: algunas son de ejemplo.
+#
+# Campos de cada pregunta:
+#   q   pregunta
+#   a   respuesta. Admite [texto](url) para enlaces y **texto** para negrita.
+#       Una línea en blanco separa párrafos.
+
+- q: ¿La entrada es gratuita?
+  a: Sí. Es un evento comunitario y sin costo, con registro previo en Eventbrite.
+
+- q: ¿Cuándo y dónde es?
+  a: El lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Guatemala 1075, Montevideo.
+
+- q: ¿Necesito saber de seguridad para ir?
+  a: "No. Hay contenido para todos los niveles: desde introducciones al OWASP Top 10 hasta charlas avanzadas y talleres prácticos."
+
+- q: ¿Las charlas son en español?
+  a: La mayoría sí. Si hay charlas en inglés lo indicaremos en la agenda.
+
+- q: ¿Se va a transmitir o grabar?
+  a: Estamos trabajando para grabar las charlas de la sala principal y publicarlas luego del evento.
+
+- q: ¿Hay código de conducta?
+  a: Sí. Todas las personas participantes deben respetar el [código de conducta de OWASP](https://owasp.org/www-policy/operational/code-of-conduct).

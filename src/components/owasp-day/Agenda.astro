@@ -1,0 +1,51 @@
+---
+// Agenda: src/content/owasp-day/agenda.yaml. Una o dos sesiones por franja;
+// kind break/mate = pausa. Tracks: main/keynote/panel (amarillo) y lab (azul).
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { inline } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { agenda } = Astro.props.event;
+const slots = (await getCollection('owaspDayAgenda')).sort((a, b) => a.id.localeCompare(b.id));
+const trackLabel = { main: 'Sala principal', lab: 'Taller', keynote: 'Keynote', panel: 'Panel' } as const;
+---
+<section class="section section--light agenda" id="agenda" aria-labelledby="agenda-title">
+  <span class="deco deco--agenda-quarter" aria-hidden="true"></span>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Agenda</p>
+        <span class="bar" aria-hidden="true"></span>
+        <h2 class="section-title" id="agenda-title" set:html={inline(agenda.title)} />
+      </div>
+      <ul class="legend" aria-label="Salas">
+        <li><span class="dot dot--yellow" aria-hidden="true"></span>Sala principal</li>
+        <li><span class="dot dot--blue" aria-hidden="true"></span>Taller</li>
+      </ul>
+    </div>
+    {agenda.note && <p class="agenda__note" set:html={inline(agenda.note, { hl: false })} />}
+
+    <ol class="schedule">
+      {slots.map(({ data: slot }) => {
+        const isBreak = slot.kind !== 'session';
+        return (
+          <li class:list={['slot', { 'slot--break': isBreak, 'slot--mate': slot.kind === 'mate' }]}>
+            <time datetime={/^\d{2}:\d{2}$/.test(slot.time) ? slot.time : undefined}>{slot.time}</time>
+            <div class:list={['slot__sessions', { 'slot__sessions--2': slot.sessions.length > 1 }]}>
+              {slot.sessions.map((session) => {
+                const track = isBreak ? undefined : (session.track ?? 'main');
+                return (
+                  <div class="session">
+                    {track && <span class:list={['slot__track', track === 'lab' ? 'slot__track--lab' : 'slot__track--main']}>{trackLabel[track]}</span>}
+                    <p class="session__title">{session.title}</p>
+                    {session.by && <p>{session.by}</p>}
+                  </div>
+                );
+              })}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</section>

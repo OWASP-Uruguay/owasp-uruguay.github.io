@@ -1,0 +1,64 @@
+---
+// Layout común: <head>, aviso, header, footer y menú móvil.
+import '~/styles/global.css';
+import Disclaimer from '~/components/Disclaimer.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import { url } from '~/lib/events';
+import { favicon, type EventBar, type NavItem } from '~/data/site';
+
+interface Props {
+  title: string;                 // sin sufijo; se agrega " · OWASP Uruguay"
+  description: string;
+  image?: string;                // imagen para redes (1200x630)
+  variant?: 'chapter' | 'owasp-day';
+  headerNav?: NavItem[];
+  headerCta?: { label: string; href?: string; ariaLabel?: string; disabled?: boolean };
+  eventNav?: { label: string; href: string }[];
+  eventBar?: EventBar;              // barra propia de la página del evento
+  canonicalPath?: string;        // la portada muestra el evento: su canonical es /owasp-day-2026/
+  photoCredit?: boolean;
+  noindex?: boolean;
+}
+const {
+  title, description, image = '/og-image.jpg', variant = 'chapter', headerNav, headerCta, eventNav, eventBar,
+  canonicalPath, photoCredit = false, noindex = false,
+} = Astro.props;
+const fullTitle = title === 'OWASP Uruguay' ? title : `${title} · OWASP Uruguay`;
+const canonical = new URL(canonicalPath ? url(canonicalPath) : Astro.url.pathname, Astro.site);
+const ogImage = new URL(url(image), Astro.site);
+const icons = `/favicons/${favicon}`;
+---
+<!doctype html>
+<html lang="es-UY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#000000">
+  {noindex ? <meta name="robots" content="noindex"> : <link rel="canonical" href={canonical}>}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_UY">
+  <meta property="og:site_name" content="Eventos de OWASP Uruguay">
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  {!noindex && <meta property="og:url" content={canonical}>}
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href={url(`${icons}/favicon.ico`)} sizes="any">
+  {favicon === 'avispa' && <link rel="icon" type="image/svg+xml" href={url(`${icons}/favicon.svg`)}>}
+  <link rel="apple-touch-icon" href={url(`${icons}/apple-touch-icon.png`)}>
+  <slot name="head" />
+</head>
+<body class:list={[`theme-${variant}`]}>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <Disclaimer />
+  <Header nav={headerNav} cta={headerCta} eventBar={eventBar} />
+  <main id="contenido">
+    <slot />
+  </main>
+  <Footer photoCredit={photoCredit} eventNav={eventNav} />
+  <script>import '~/scripts/nav.js';</script>
+</body>
+</html>
