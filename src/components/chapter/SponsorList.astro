@@ -1,0 +1,26 @@
+---
+// Sponsors de un evento pasado, agrupados por `tier` en el orden del frontmatter.
+import { Image } from 'astro:assets';
+import type { EventEntry } from '~/lib/events';
+
+type Sponsor = EventEntry['data']['sponsors'][number];
+interface Props { sponsors: Sponsor[] }
+const tiers: { name?: string; list: Sponsor[] }[] = [];
+for (const s of Astro.props.sponsors) {
+  const t = tiers.find((x) => x.name === s.tier);
+  if (t) t.list.push(s); else tiers.push({ name: s.tier, list: [s] });
+}
+---
+<div class="ev-sponsors">
+  {tiers.map((t) => (
+    <section class="ev-sponsors__tier">
+      {t.name && <h3 class="ev-sponsors__name">{t.name}</h3>}
+      <ul class="ev-sponsors__logos" role="list">
+        {t.list.map((s) => {
+          const inner = s.logo ? <Image src={s.logo} alt={s.name} height={80} /> : <span>{s.name}</span>;
+          return <li>{s.url ? <a href={s.url} rel="noopener">{inner}</a> : inner}</li>;
+        })}
+      </ul>
+    </section>
+  ))}
+</div>

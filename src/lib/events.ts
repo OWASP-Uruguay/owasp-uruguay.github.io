@@ -5,10 +5,10 @@ import { dayOf, isOver } from './when';
 
 export type EventEntry = CollectionEntry<'events'>;
 
-// Fotos y adjuntos se detectan por carpeta: src/content/events/<id>/...
-// (cualquier subcarpeta; se ordenan por nombre de archivo).
+// Fotos de la galería: src/content/events/<id>/fotos/ (ordenadas por nombre de archivo).
+// Adjuntos: cualquier subcarpeta del evento. Otras imágenes (oradores/, sponsors/) no van a la galería.
 const photoModules = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/content/events/*/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  '/src/content/events/*/fotos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
   { eager: true },
 );
 const fileModules = import.meta.glob<string>(

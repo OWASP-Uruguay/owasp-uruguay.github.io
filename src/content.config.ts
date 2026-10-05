@@ -4,12 +4,6 @@ import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import yaml from 'js-yaml';
 
-const person = z.object({
-  name: z.string(),
-  url: z.url().optional(),        // LinkedIn, GitHub, web personal
-  org: z.string().optional(),
-});
-
 const link = z.object({
   label: z.string(),
   url: z.url(),
@@ -25,8 +19,14 @@ const events = defineCollection({
     base: './src/content/events',
     generateId: ({ entry }) => entry.split('/')[0],
   }),
-  schema: ({ image }) =>
-    z.object({
+  schema: ({ image }) => {
+    const person = z.object({
+      name: z.string(),
+      url: z.url().optional(),        // LinkedIn, GitHub, web personal
+      org: z.string().optional(),
+      photo: image().optional(),      // foto cuadrada en la carpeta del evento, ej. ./oradores/ana.jpg
+    });
+    return z.object({
       title: z.string(),
       date: z.coerce.date(),
       endDate: z.coerce.date().optional(),
@@ -42,6 +42,9 @@ const events = defineCollection({
         .array(
           z.object({
             title: z.string(),
+            group: z.string().optional(),      // agrupa charlas bajo un subtítulo, ej. "Trainings · miércoles 19"
+            time: z.string().optional(),       // "09:00 - 13:00"; reemplaza el número de la charla
+            abstract: z.string().optional(),   // resumen; una línea en blanco separa párrafos, "- " arma listas
             speakers: z.array(person).default([]),
             slides: z.url().optional(),
             video: z.url().optional(),
@@ -54,11 +57,16 @@ const events = defineCollection({
         .array(z.object({ label: z.string(), file: z.string().optional(), url: z.url().optional() }))
         .default([]),
       people: z.array(z.string()).default([]),
+      // Sponsors del evento, en orden. `tier` agrupa (ej. "Silver", "Sede"); `logo` va en la carpeta del evento.
+      sponsors: z
+        .array(z.object({ name: z.string(), url: z.url().optional(), logo: image().optional(), tier: z.string().optional() }))
+        .default([]),
       cover: image().optional(),                 // si falta, se usa la primera foto
       page: z.string().optional(),               // página propia (ej. /owasp-day-2026/)
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
-    }),
+    });
+  },
 });
 
 // ---------- OWASP Day 2026 ----------

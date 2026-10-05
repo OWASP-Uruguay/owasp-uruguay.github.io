@@ -1,41 +1,79 @@
 ---
-// Lista de charlas de un evento: título, oradores, diapositivas, video y enlaces extra.
+// Lista de charlas de un evento: título, oradores (con foto si hay), resumen, diapositivas, video y enlaces.
+// Si las charlas tienen `group`, se separan con un subtítulo; si tienen `time`, la hora reemplaza al número.
+import { Image } from 'astro:assets';
 import Arrow from '~/components/Arrow.astro';
 import type { EventEntry } from '~/lib/events';
 
-interface Props { talks: EventEntry['data']['talks'] }
+type Talk = EventEntry['data']['talks'][number];
+interface Props { talks: Talk[] }
 const { talks } = Astro.props;
 const pad = (n: number) => String(n).padStart(2, '0');
+
+const groups: { name?: string; talks: Talk[] }[] = [];
+for (const t of talks) {
+  const last = groups.at(-1);
+  if (last && last.name === t.group) last.talks.push(t);
+  else groups.push({ name: t.group, talks: [t] });
+}
+
+// Resumen: párrafos separados por línea en blanco; las líneas que empiezan con "- " forman una lista.
+const blocks = (text: string) =>
+  text.trim().split(/\n\s*\n/).map((b) => {
+    const lines = b.split('\n').map((l) => l.trim());
+    return lines.every((l) => l.startsWith('- '))
+      ? { list: lines.map((l) => l.slice(2)) }
+      : { p: lines.join(' ') };
+  });
+let n = 0;
 ---
-<ol class="talks" role="list">
-  {talks.map((t, i) => (
-    <li class="talk">
-      <span class="talk__n" aria-hidden="true">{pad(i + 1)}</span>
-      <div class="talk__body">
-        <h3 class="talk__title">{t.title}</h3>
-        {t.speakers.length > 0 && (
-          <p class="talk__speakers">
-            <span class="visually-hidden">Oradores: </span>
-            {t.speakers.map((s, j) => (
-              <>
-                {j > 0 && <span class="talk__sep" aria-hidden="true"> · </span>}
-                <span class="talk__speaker">
-                  {s.url ? <a href={s.url} rel="noopener">{s.name}</a> : s.name}
-                  {s.org && <span class="talk__org"> ({s.org})</span>}
-                </span>
-              </>
-            ))}
-          </p>
-        )}
-        {t.note && <p class="talk__note">{t.note}</p>}
-        {(t.slides || t.video || t.links.length > 0) && (
-          <ul class="talk__links" role="list">
-            {t.slides && <li><a class="btn btn--sm btn--outline-black" href={t.slides} rel="noopener" aria-label={`Diapositivas: ${t.title}`}>Diapositivas <Arrow /></a></li>}
-            {t.video && <li><a class="btn btn--sm btn--outline-black" href={t.video} rel="noopener" aria-label={`Video: ${t.title}`}>Video <Arrow /></a></li>}
-            {t.links.map((l) => <li><a class="btn btn--sm btn--ghost" href={l.url} rel="noopener">{l.label} <Arrow /></a></li>)}
-          </ul>
-        )}
-      </div>
-    </li>
-  ))}
-</ol>
+{groups.map((g) => (
+  <>
+    {g.name && <h3 class="talks__group">{g.name}</h3>}
+    <ol class="talks" role="list">
+      {g.talks.map((t) => (
+        <li class="talk">
+          <span class:list={['talk__n', { 'talk__n--time': t.time }]}>{t.time ?? pad(++n)}</span>
+          <div class="talk__body">
+            <h3 class="talk__title">{t.title}</h3>
+            {t.speakers.length > 0 && (
+              <div class="talk__people">
+                {t.speakers.some((s) => s.photo) && (
+                  <span class="talk__faces" aria-hidden="true">
+                    {t.speakers.filter((s) => s.photo).map((s) => <Image src={s.photo!} alt="" width={56} height={56} />)}
+                  </span>
+                )}
+                <p class="talk__speakers">
+                  <span class="visually-hidden">Oradores: </span>
+                  {t.speakers.map((s, j) => (
+                    <>
+                      {j > 0 && <span class="talk__sep" aria-hidden="true"> · </span>}
+                      <span class="talk__speaker">
+                        {s.url ? <a href={s.url} rel="noopener">{s.name}</a> : s.name}
+                        {s.org && <span class="talk__org"> ({s.org})</span>}
+                      </span>
+                    </>
+                  ))}
+                </p>
+              </div>
+            )}
+            {t.note && <p class="talk__note">{t.note}</p>}
+            {t.abstract && (
+              <details class="talk__abstract">
+                <summary>Resumen</summary>
+                {blocks(t.abstract).map((b) => b.list ? <ul>{b.list.map((i) => <li>{i}</li>)}</ul> : <p>{b.p}</p>)}
+              </details>
+            )}
+            {(t.slides || t.video || t.links.length > 0) && (
+              <ul class="talk__links" role="list">
+                {t.slides && <li><a class="btn btn--sm btn--outline-black" href={t.slides} rel="noopener" aria-label={`Diapositivas: ${t.title}`}>Diapositivas <Arrow /></a></li>}
+                {t.video && <li><a class="btn btn--sm btn--outline-black" href={t.video} rel="noopener" aria-label={`Video: ${t.title}`}>Video <Arrow /></a></li>}
+                {t.links.map((l) => <li><a class="btn btn--sm btn--ghost" href={l.url} rel="noopener">{l.label} <Arrow /></a></li>)}
+              </ul>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </>
+))}

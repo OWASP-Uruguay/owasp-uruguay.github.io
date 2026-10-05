@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import Page from '~/components/chapter/Page.astro';
 import Arrow from '~/components/Arrow.astro';
 import TalkList from '~/components/chapter/TalkList.astro';
+import SponsorList from '~/components/chapter/SponsorList.astro';
 import AttachmentList from '~/components/chapter/AttachmentList.astro';
 import Gallery from '~/components/chapter/Gallery.astro';
 import {
@@ -26,7 +27,7 @@ export async function getStaticPaths() {
 
 interface Props { entry: EventEntry; newer?: EventEntry; older?: EventEntry }
 const { entry, newer, older } = Astro.props;
-const { title, summary, kind, date, venue, online, links, talks, people } = entry.data;
+const { title, summary, kind, date, venue, online, links, talks, people, sponsors } = entry.data;
 const { Content } = await render(entry);
 const photos = eventPhotos(entry.id);
 const files = eventAttachments(entry);
@@ -119,6 +120,17 @@ const hasBody = Boolean(entry.body?.trim());
             )}
           </aside>
         )}
+      </div>
+    </section>
+  )}
+
+  {sponsors.length > 0 && (
+    <section class="section section--light ev-sponsors-section" aria-labelledby="sponsors-title">
+      <div class="container">
+        <p class="eyebrow">Gracias</p>
+        <span class="bar" aria-hidden="true"></span>
+        <h2 class="section-title" id="sponsors-title">Sponsors</h2>
+        <SponsorList sponsors={sponsors} />
       </div>
     </section>
   )}
