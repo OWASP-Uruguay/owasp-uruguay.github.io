@@ -21,7 +21,7 @@ const { photoCredit = false, eventNav = [] } = Astro.props;
       <ul>
         {eventNav.length > 0
           ? eventNav.map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)
-          : [{ label: 'Inicio', href: '/' }, ...nav].map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
+          : [{ label: 'Inicio', href: '/' }, { label: 'OWASP Day 2026', href: '/owasp-day-2026/' }, ...nav].map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}
       </ul>
     </nav>
     <div class="site-footer__nav">

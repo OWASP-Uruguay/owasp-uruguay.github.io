@@ -32,6 +32,12 @@ test('la portada muestra el OWASP Day mientras no terminó', () => {
   if (live) assert.match(home, /rel="canonical" href="[^"]*\/owasp-day-2026\/"/);
 });
 
+test('el aviso del evento aparece fuera de su página y solo mientras no terminó', () => {
+  const live = !isOver(event.date, now);
+  assert.equal(read('eventos/index.html').includes('class="event-pill" href="/owasp-day-2026/"'), live);
+  assert.ok(!read('owasp-day-2026/index.html').includes('class="event-pill"'));
+});
+
 test('los botones del evento coinciden con la fecha y event.yaml', () => {
   const html = read('owasp-day-2026/index.html');
   const ctas = heroCtas({ cfpUrl: event.cfp.url, cfpDeadline: event.cfp.deadline, registrationUrl: event.registration.url, now });

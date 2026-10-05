@@ -539,3 +539,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Botón sin destino todavía (ej. registro "próximamente") */
 .btn.is-disabled { opacity: .55; cursor: not-allowed; transform: none; }
+
+/* Aviso del evento vigente en el header (páginas que no son la del evento) */
+.event-pill {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 18px 6px 8px;
+  border-radius: var(--radius-pill); background: var(--c-yellow); color: var(--c-black);
+  font-weight: 800; font-size: .95rem; text-decoration: none; white-space: nowrap;
+}
+.event-pill img { width: 28px; height: 28px; background: var(--c-white); border-radius: 50%; padding: 3px; }
+.event-pill:hover { background: #ffd83d; }
+@media (max-width: 900px) {
+  .event-pill { order: -1; align-self: flex-start; font-size: 1.05rem; }
+}

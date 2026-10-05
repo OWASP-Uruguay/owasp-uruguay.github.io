@@ -39,7 +39,7 @@ export interface Cta { label: string; href?: string; ariaLabel?: string; disable
 // Barra propia de la página de un evento: sus secciones y su botón, separados del menú del sitio.
 export interface EventBar { title: string; items: NavItem[]; cta?: Cta }
 
+// Menú del sitio. El evento vigente no va acá: aparece como aviso aparte (ver Header.astro).
 export const nav: NavItem[] = [
-  { label: 'OWASP Day 2026', href: '/owasp-day-2026/' },
   { label: 'Eventos', href: '/eventos/' },
 ];
