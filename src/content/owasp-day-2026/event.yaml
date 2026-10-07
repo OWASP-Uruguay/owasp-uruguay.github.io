@@ -85,6 +85,11 @@ venue:
   lat: -34.892135
   lon: -56.194453
 
+# Textos extra de la imagen para redes (public/og-image.jpg). Después de cambiarlos: npm run og-image
+ogImage:
+  place: Torre de ANTEL, Montevideo
+  note: Entrada libre y gratuita
+
 sponsors:
   title: Gracias a quienes lo hacen posible
   button: Quiero ser sponsor
