@@ -1,6 +1,6 @@
 # Eventos de OWASP Uruguay
 
-Sitio comunitario de eventos del capítulo OWASP Uruguay: el OWASP Day 2026 y el archivo de meetups, conferencias y talleres desde 2010, con charlas, materiales y fotos. No es el sitio oficial del capítulo, que está en https://owasp.org/chapters/uruguay.
+Sitio comunitario de eventos del capítulo OWASP Uruguay: el OWASP Meetup+ 2026 y el archivo de meetups, conferencias y talleres desde 2010, con charlas, materiales y fotos. No es el sitio oficial del capítulo, que está en https://owasp.org/chapters/uruguay.
 
 Hecho con [Astro](https://astro.build/), publicado en GitHub Pages en https://owasp-uruguay.github.io/.
 
@@ -24,13 +24,13 @@ Para ver cómo se verá el sitio otro día: `NOW=2026-12-01 npm run dev`. Sirve 
 
 | Qué | Dónde |
 |---|---|
-| Datos del OWASP Day 2026 (fecha, horario, CFS, registro, textos) | `src/content/owasp-day-2026/event.yaml` |
+| Datos del OWASP Meetup+ 2026 (fecha, horario, CFS, registro, textos) | `src/content/owasp-day-2026/event.yaml` |
 | Oradores, agenda, sponsors y FAQ del evento | `src/content/owasp-day-2026/*.yaml` |
 | Eventos pasados y futuros | `src/content/events/<AAAA-MM-DD-slug>/index.mdx`, con `fotos/` y `adjuntos/` |
 | Enlaces, redes, aviso de sitio no oficial, favicon | `src/data/site.ts` |
 | Logos | `src/assets/brand/` y `public/favicons/` |
 
-## El OWASP Day 2026
+## El OWASP Meetup+ 2026
 
 La portada muestra la página del evento hasta el final del 30 de noviembre (hora de Montevideo). Desde el día siguiente pasa a mostrar el archivo de eventos. La página sigue en `/owasp-day-2026/`.
 

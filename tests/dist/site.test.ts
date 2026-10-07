@@ -25,7 +25,7 @@ test('todas las páginas tienen el aviso de sitio no oficial con link al capítu
   }
 });
 
-test('la portada muestra el OWASP Day mientras no terminó', () => {
+test('la portada muestra el OWASP Meetup+ mientras no terminó', () => {
   const home = read('index.html');
   const live = !isOver(event.date, now);
   assert.equal(home.includes('id="cfs"'), live);

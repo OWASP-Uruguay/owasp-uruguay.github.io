@@ -1,5 +1,5 @@
 ---
-// Página completa del OWASP Day 2026. La usan /owasp-day-2026/ y la portada mientras el evento no pasó.
+// Página completa del OWASP Meetup+ 2026. La usan /owasp-day-2026/ y la portada mientras el evento no pasó.
 // Las secciones apagadas en event.yaml (sections) no se renderizan.
 import { getEntry } from 'astro:content';
 import Base from '~/layouts/Base.astro';
@@ -39,7 +39,7 @@ const anchors = [
   title={event.title}
   description={event.description}
   variant="owasp-day"
-  eventBar={{ title: 'OWASP Day 2026', items: anchors, cta: { label: cta.label, href: cta.href, disabled: cta.disabled } }}
+  eventBar={{ title: 'OWASP Meetup+ 2026', items: anchors, cta: { label: cta.label, href: cta.href, disabled: cta.disabled } }}
   eventNav={anchors}
   canonicalPath={Astro.props.canonicalPath}
 >

@@ -69,7 +69,7 @@ const events = defineCollection({
   },
 });
 
-// ---------- OWASP Day 2026 ----------
+// ---------- OWASP Meetup+ 2026 ----------
 // Datos en src/content/owasp-day-2026/*.yaml. Las listas son listas YAML simples:
 // el orden del archivo es el orden en la página.
 const dir = './src/content/owasp-day-2026';

@@ -1,4 +1,4 @@
-# OWASP Day Uruguay 2026: datos de la página /owasp-day-2026/ (y de la portada mientras el evento no pasó).
+# OWASP Meetup+ Uruguay 2026: datos de la página /owasp-day-2026/ (y de la portada mientras el evento no pasó).
 #
 # Formato de texto en los campos largos:
 #   *texto*          resalta en azul (títulos) o cursiva (párrafos)
@@ -8,8 +8,8 @@
 #
 # Las fechas van entre comillas con formato "AAAA-MM-DD". Hora de Montevideo (UTC-3).
 
-title: OWASP Day Uruguay 2026
-description: "OWASP Day Uruguay 2026: una jornada gratuita sobre seguridad de aplicaciones, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
+title: OWASP Meetup+ Uruguay 2026
+description: "OWASP Meetup+ Uruguay 2026: una jornada gratuita sobre seguridad de aplicaciones, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
 date: "2026-11-30"
 # Vacío = "Horario a confirmar". Cuando se confirme: "09:00 a 17:30"
 time: ""
@@ -36,7 +36,7 @@ hero:
 
 about:
   title: Un día para hablar de *ciberseguridad*.
-  lead: "OWASP Day Uruguay es una jornada abierta a quien desarrolla, prueba, opera o protege software: desarrolladores, QA, DevOps, equipos de seguridad, estudiantes y curiosos."
+  lead: "OWASP Meetup+ Uruguay es una jornada abierta a quien desarrolla, prueba, opera o protege software: desarrolladores, QA, DevOps, equipos de seguridad, estudiantes y curiosos."
   text: "Charlas sobre ciberseguridad, con lugar para preguntas, de gente que trabaja en esto todos los días. La entrada es gratuita."
   chapterTitle: El capítulo OWASP Uruguay
   chapterText: |-

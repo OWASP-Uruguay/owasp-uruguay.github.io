@@ -40,9 +40,9 @@ const isCurrent = (href: string) => {
         ))}
       </ul>
       {pill && (
-        <a class="event-pill" href={pill.href} aria-label={`Próximo evento: OWASP Day, ${pill.date}`}>
+        <a class="event-pill" href={pill.href} aria-label={`Próximo evento: OWASP Meetup+, ${pill.date}`}>
           <Image src={avispa} alt="" width={28} height={28} />
-          <span>OWASP Day · {pill.date}</span>
+          <span>OWASP Meetup+ · {pill.date}</span>
         </a>
       )}
       {cta && (cta.disabled || !cta.href
