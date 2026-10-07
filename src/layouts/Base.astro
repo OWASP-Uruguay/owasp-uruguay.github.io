@@ -1,6 +1,8 @@
 ---
 // Layout común: <head>, aviso, header, footer y menú móvil.
 import '~/styles/global.css';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import Disclaimer from '~/components/Disclaimer.astro';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
@@ -20,13 +22,17 @@ interface Props {
   photoCredit?: boolean;
   noindex?: boolean;
 }
+// La imagen por defecto lleva un hash de su contenido en la URL: al reemplazar
+// public/og-image.jpg, las redes no muestran la versión vieja que tienen guardada.
+const OG_DEFAULT = '/og-image.jpg';
+const ogVersion = createHash('sha256').update(readFileSync('public/og-image.jpg')).digest('hex').slice(0, 8);
 const {
-  title, description, image = '/og-image.jpg', variant = 'chapter', headerNav, headerCta, eventNav, eventBar,
+  title, description, image = OG_DEFAULT, variant = 'chapter', headerNav, headerCta, eventNav, eventBar,
   canonicalPath, photoCredit = false, noindex = false,
 } = Astro.props;
 const fullTitle = title === 'OWASP Uruguay' ? title : `${title} · OWASP Uruguay`;
 const canonical = new URL(canonicalPath ? url(canonicalPath) : Astro.url.pathname, Astro.site);
-const ogImage = new URL(url(image), Astro.site);
+const ogImage = new URL(url(image) + (image === OG_DEFAULT ? `?v=${ogVersion}` : ''), Astro.site);
 const icons = `/favicons/${favicon}`;
 ---
 <!doctype html>

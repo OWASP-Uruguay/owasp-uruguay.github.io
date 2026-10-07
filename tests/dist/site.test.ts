@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
 import yaml from 'js-yaml';
 import { heroCtas, isOver, parseNow } from '../../src/lib/when.ts';
 
@@ -37,6 +38,11 @@ test('el aviso del evento aparece fuera de su página y solo mientras no termin�
   const live = !isOver(event.date, now);
   assert.equal(read('eventos/index.html').includes('class="event-pill" href="/owasp-meetup-plus-2026/"'), live);
   assert.ok(!read('owasp-meetup-plus-2026/index.html').includes('class="event-pill"'));
+});
+
+test('la imagen para redes por defecto lleva la versión de su contenido', () => {
+  const v = createHash('sha256').update(readFileSync('public/og-image.jpg')).digest('hex').slice(0, 8);
+  assert.match(read('index.html'), new RegExp(`<meta property="og:image" content="[^"]*/og-image\\.jpg\\?v=${v}">`));
 });
 
 test('la ruta anterior del evento redirige a la nueva', () => {
