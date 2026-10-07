@@ -16,7 +16,7 @@ const { nav = siteNav, cta, eventBar } = Astro.props;
 const here = Astro.url.pathname;
 const event = (await getEntry('owaspDay', 'event'))?.data;
 const pill = !eventBar && event && !isOver(event.date, NOW)
-  ? { href: url('/owasp-day-2026/'), date: new Intl.DateTimeFormat('es-UY', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${event.date}T12:00:00Z`)).replace('.', '') }
+  ? { href: url('/owasp-meetup-plus-2026/'), date: new Intl.DateTimeFormat('es-UY', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${event.date}T12:00:00Z`)).replace('.', '') }
   : undefined;
 const isCurrent = (href: string) => {
   if (href.includes('#')) return false;
@@ -40,9 +40,9 @@ const isCurrent = (href: string) => {
         ))}
       </ul>
       {pill && (
-        <a class="event-pill" href={pill.href} aria-label={`Próximo evento: OWASP Day, ${pill.date}`}>
+        <a class="event-pill" href={pill.href} aria-label={`Próximo evento: OWASP Meetup+, ${pill.date}`}>
           <Image src={avispa} alt="" width={28} height={28} />
-          <span>OWASP Day · {pill.date}</span>
+          <span>OWASP Meetup+ · {pill.date}</span>
         </a>
       )}
       {cta && (cta.disabled || !cta.href

@@ -27,6 +27,8 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://owasp-uruguay.github.io',
   base,
   trailingSlash: 'always',
+  // El evento 2026 se llamaba OWASP Day: la ruta vieja sigue llevando a la página.
+  redirects: { '/owasp-day-2026/': `${prefix}/owasp-meetup-plus-2026/` },
   markdown: { processor: markdownProcessor },
   integrations: [mdx()],
 });

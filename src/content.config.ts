@@ -62,14 +62,14 @@ const events = defineCollection({
         .array(z.object({ name: z.string(), url: z.url().optional(), logo: image().optional(), tier: z.string().optional() }))
         .default([]),
       cover: image().optional(),                 // si falta, se usa la primera foto
-      page: z.string().optional(),               // página propia (ej. /owasp-day-2026/)
+      page: z.string().optional(),               // página propia (ej. /owasp-meetup-plus-2026/)
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
     });
   },
 });
 
-// ---------- OWASP Day 2026 ----------
+// ---------- OWASP Meetup+ 2026 ----------
 // Datos en src/content/owasp-day-2026/*.yaml. Las listas son listas YAML simples:
 // el orden del archivo es el orden en la página.
 const dir = './src/content/owasp-day-2026';

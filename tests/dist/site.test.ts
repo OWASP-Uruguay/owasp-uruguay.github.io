@@ -20,26 +20,33 @@ test('hay páginas compiladas', () => {
 test('todas las páginas tienen el aviso de sitio no oficial con link al capítulo', () => {
   for (const p of pages) {
     const html = read(p);
+    if (html.includes('http-equiv="refresh"')) continue; // redirecciones: no se ven
     assert.match(html, /class="disclaimer"/, p);
     assert.ok(html.includes(`href="${OFFICIAL}"`), `${p} sin link a ${OFFICIAL}`);
   }
 });
 
-test('la portada muestra el OWASP Day mientras no terminó', () => {
+test('la portada muestra el OWASP Meetup+ mientras no terminó', () => {
   const home = read('index.html');
   const live = !isOver(event.date, now);
   assert.equal(home.includes('id="cfs"'), live);
-  if (live) assert.match(home, /rel="canonical" href="[^"]*\/owasp-day-2026\/"/);
+  if (live) assert.match(home, /rel="canonical" href="[^"]*\/owasp-meetup-plus-2026\/"/);
 });
 
 test('el aviso del evento aparece fuera de su página y solo mientras no terminó', () => {
   const live = !isOver(event.date, now);
-  assert.equal(read('eventos/index.html').includes('class="event-pill" href="/owasp-day-2026/"'), live);
-  assert.ok(!read('owasp-day-2026/index.html').includes('class="event-pill"'));
+  assert.equal(read('eventos/index.html').includes('class="event-pill" href="/owasp-meetup-plus-2026/"'), live);
+  assert.ok(!read('owasp-meetup-plus-2026/index.html').includes('class="event-pill"'));
+});
+
+test('la ruta anterior del evento redirige a la nueva', () => {
+  const html = read('owasp-day-2026/index.html');
+  assert.match(html, /http-equiv="refresh" content="0;url=\/owasp-meetup-plus-2026\/"/);
+  assert.match(html, /rel="canonical" href="[^"]*\/owasp-meetup-plus-2026\/"/);
 });
 
 test('los botones del evento coinciden con la fecha y event.yaml', () => {
-  const html = read('owasp-day-2026/index.html');
+  const html = read('owasp-meetup-plus-2026/index.html');
   const ctas = heroCtas({ cfpUrl: event.cfp.url, cfpDeadline: event.cfp.deadline, registrationUrl: event.registration.url, now });
   const cfpOpen = ctas.some((c) => c.id === 'cfp');
   assert.equal(html.includes(`href="${event.cfp.url.replaceAll('&', '&amp;')}"`), cfpOpen, 'link al form del CFS');

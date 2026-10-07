@@ -1,5 +1,5 @@
 ---
-// Portada. Mientras el OWASP Day 2026 no terminó, muestra su página; después, el archivo de eventos.
+// Portada. Mientras el OWASP Meetup+ 2026 no terminó, muestra su página; después, el archivo de eventos.
 import { Image } from 'astro:assets';
 import Page from '~/components/chapter/Page.astro';
 import Arrow from '~/components/Arrow.astro';
@@ -26,7 +26,7 @@ const nextOthers = upcoming.filter((e) => !band.includes(e));
 const recent = past.slice(0, 6);
 
 ---
-{showEvent ? <EventPage canonicalPath="/owasp-day-2026/" /> : (
+{showEvent ? <EventPage canonicalPath="/owasp-meetup-plus-2026/" /> : (
 <Page title="OWASP Uruguay" description={`${chapter.tagline} Meetups, talleres y el OWASP Day, desde ${chapter.founded}.`} photoCredit>
   <section class="hero hero--chapter" aria-labelledby="hero-title">
     <div class="hero__inner">
