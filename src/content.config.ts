@@ -62,7 +62,7 @@ const events = defineCollection({
         .array(z.object({ name: z.string(), url: z.url().optional(), logo: image().optional(), tier: z.string().optional() }))
         .default([]),
       cover: image().optional(),                 // si falta, se usa la primera foto
-      page: z.string().optional(),               // página propia (ej. /owasp-day-2026/)
+      page: z.string().optional(),               // página propia (ej. /owasp-meetup-plus-2026/)
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
     });

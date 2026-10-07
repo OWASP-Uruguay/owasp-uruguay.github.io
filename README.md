@@ -32,7 +32,7 @@ Para ver cómo se verá el sitio otro día: `NOW=2026-12-01 npm run dev`. Sirve 
 
 ## El OWASP Meetup+ 2026
 
-La portada muestra la página del evento hasta el final del 30 de noviembre (hora de Montevideo). Desde el día siguiente pasa a mostrar el archivo de eventos. La página sigue en `/owasp-day-2026/`.
+La portada muestra la página del evento hasta el final del 30 de noviembre (hora de Montevideo). Desde el día siguiente pasa a mostrar el archivo de eventos. La página sigue en `/owasp-meetup-plus-2026/`; la ruta anterior, `/owasp-day-2026/`, redirige ahí.
 
 Lo que cambia solo, según la fecha: el botón "Postulá tu charla" desaparece después del 19 de octubre y la tarjeta del CFS pasa a "Convocatoria cerrada". El sitio se vuelve a publicar todos los días a las 06:00 para que esos cambios entren.
 
