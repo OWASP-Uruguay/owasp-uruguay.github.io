@@ -27,12 +27,12 @@ const html = `<!doctype html><meta charset="utf-8">
 body { width: 1200px; height: 630px; overflow: hidden; position: relative; background: ${tokens.black}; color: ${tokens.white}; font-family: Montserrat, sans-serif; }
 .text { position: absolute; left: 72px; top: 132px; width: 570px; }
 .eyebrow { font-size: 17px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: ${tokens.grey}; }
-h1 { margin-top: 14px; font-size: 72px; font-weight: 700; line-height: 1.04; letter-spacing: -0.02em; }
+h1 { margin-top: 14px; font-size: 72px; font-weight: 850; line-height: 1.04; letter-spacing: -0.03em; }
 .bar { width: 64px; height: 10px; margin-top: 26px; background: ${tokens.yellow}; }
-.date { margin-top: 31px; font-size: 32px; font-weight: 800; color: ${tokens.yellow}; }
-.venue { margin-top: 18px; font-size: 24px; font-weight: 500; line-height: 1.4; }
+.date { margin-top: 31px; font-size: 32px; font-weight: 880; color: ${tokens.yellow}; }
+.venue { margin-top: 18px; font-size: 24px; font-weight: 650; line-height: 1.4; }
 .venue span { display: block; color: ${tokens.grey}; }
-.note { margin-top: 43px; font-size: 18px; font-weight: 600; }
+.note { margin-top: 43px; font-size: 18px; font-weight: 650; }
 .art { position: absolute; left: 600px; top: 0; right: 0; bottom: 0; overflow: hidden; }
 .blue { position: absolute; left: -200px; top: 440px; width: 400px; height: 400px; border-radius: 50%; background: ${tokens.blue}; }
 .circle { position: absolute; left: 50px; top: 60px; width: 510px; height: 510px; border-radius: 50%; background: ${tokens.white}; display: grid; place-items: center; }
