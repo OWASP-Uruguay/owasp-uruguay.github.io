@@ -12,7 +12,7 @@ title: OWASP Meetup+ Uruguay 2026
 description: "OWASP Meetup+ Uruguay 2026: una jornada gratuita sobre seguridad de aplicaciones, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
 date: "2026-11-30"
 # Vacío = "Horario a confirmar". Cuando se confirme: "09:00 a 17:30"
-time: ""
+time: "09:00 a 18:00"
 
 cfp:
   url: https://docs.google.com/forms/d/e/1FAIpQLSdsTsHDloLZp1_T8OsjSzm696dkgiQ22hZt5Dynb0BVq5IOEw/viewform
@@ -20,7 +20,7 @@ cfp:
 
 # Vacío = botón deshabilitado con "próximamente". Pegá acá el link de Eventbrite cuando exista.
 registration:
-  url: ""
+  url: "https://www.eventbrite.com/e/owasp-uruguay-meetup-2026-tickets-2003456388991"
   provider: Eventbrite
 
 # Secciones que todavía no se publican. true = se ve en producción.
