@@ -29,6 +29,7 @@ Para ver cómo se verá el sitio otro día: `NOW=2026-12-01 npm run dev`. Sirve 
 | Eventos pasados y futuros | `src/content/events/<AAAA-MM-DD-slug>/index.mdx`, con `fotos/` y `adjuntos/` |
 | Enlaces, redes, aviso de sitio no oficial, favicon | `src/data/site.ts` |
 | Logos | `src/assets/brand/` y `public/favicons/` |
+| Imagen para redes (`public/og-image.jpg`) | se genera con `npm run og-image` desde `event.yaml` (título, fecha, sala y `ogImage`) |
 
 ## El OWASP Meetup+ 2026
 

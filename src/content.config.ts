@@ -172,6 +172,7 @@ const owaspDay = defineCollection({
       lat: z.number(),                  // coordenadas del marcador del mapa
       lon: z.number(),
     }),
+    ogImage: z.object({ place: z.string().optional(), note: z.string().optional() }).optional(), // lo usa scripts/og-image.mjs
     sponsors: z.object({ title: z.string(), button: z.string(), url: z.string() }),
     faq: z.object({ intro: z.string().optional() }),
   }),
