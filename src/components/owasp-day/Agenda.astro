@@ -12,7 +12,7 @@ const { event: { agenda }, published = false } = Astro.props;
 const byId = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id, 'es', { numeric: true });
 const slots = (await getCollection('owaspDayAgenda')).sort(byId);
 const talks = published ? new Map((await getCollection('owaspDayTalks')).map((t) => [t.id, t.data])) : new Map();
-const trackLabel = { main: 'Sala principal', lab: 'Taller', keynote: 'Keynote', panel: 'Panel' } as const;
+const trackLabel = { main: 'Charla', lab: 'Taller', keynote: 'Keynote', panel: 'Panel' } as const;
 const hasLab = slots.some(({ data }) => data.sessions.some((s) => s.track === 'lab'));
 ---
 <section class="section section--light agenda" id="agenda" aria-labelledby="agenda-title">
@@ -26,7 +26,7 @@ const hasLab = slots.some(({ data }) => data.sessions.some((s) => s.track === 'l
       </div>
       {hasLab && (
         <ul class="legend" aria-label="Salas">
-          <li><span class="dot dot--yellow" aria-hidden="true"></span>Sala principal</li>
+          <li><span class="dot dot--yellow" aria-hidden="true"></span>Charla</li>
           <li><span class="dot dot--blue" aria-hidden="true"></span>Taller</li>
         </ul>
       )}

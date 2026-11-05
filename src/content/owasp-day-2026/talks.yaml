@@ -40,125 +40,125 @@
         linkedin: "https://www.linkedin.com/in/palzuri/"
         photo: ./speakers/pablo-alzuri.jpg
 
-- id: "2"
-  title: "Caminos del deseo: cómo hacer que las personas quieran ser seguras"
-  language: es
-  level: beginner
-  abstract: |-
-    En los parques, la gente suele ignorar los senderos diseñados por los arquitectos y crean sus propios caminos sobre el pasto. Con el tiempo, esos recorridos se vuelven visibles. Se los conoce como Desire Paths, o caminos del deseo, y revelan una verdad incómoda: las personas no siempre hacen lo que esperamos, sino lo que les resulta más natural, sencillo o conveniente.
+# - id: "2"
+#   title: "Caminos del deseo: cómo hacer que las personas quieran ser seguras"
+#   language: es
+#   level: beginner
+#   abstract: |-
+#     En los parques, la gente suele ignorar los senderos diseñados por los arquitectos y crean sus propios caminos sobre el pasto. Con el tiempo, esos recorridos se vuelven visibles. Se los conoce como Desire Paths, o caminos del deseo, y revelan una verdad incómoda: las personas no siempre hacen lo que esperamos, sino lo que les resulta más natural, sencillo o conveniente.
 
-    En ciberseguridad nos pasa lo mismo.
+#     En ciberseguridad nos pasa lo mismo.
 
-    Diseñamos políticas, procedimientos, herramientas y controles esperando que las personas los sigan. Pero los desarrolladores encuentran formas de evitar verificaciones, los usuarios buscan alternativas a las restricciones y los equipos de seguridad terminan creando sus propios atajos.
+#     Diseñamos políticas, procedimientos, herramientas y controles esperando que las personas los sigan. Pero los desarrolladores encuentran formas de evitar verificaciones, los usuarios buscan alternativas a las restricciones y los equipos de seguridad terminan creando sus propios atajos.
 
-    ¿Y si en lugar de intentar impedir esto lo comprendemos?
+#     ¿Y si en lugar de intentar impedir esto lo comprendemos?
 
-    Esta charla propone mirar la seguridad desde una perspectiva diferente: observar los caminos que las personas realmente recorren para descubrir cómo diseñar controles que quieran utilizar.
+#     Esta charla propone mirar la seguridad desde una perspectiva diferente: observar los caminos que las personas realmente recorren para descubrir cómo diseñar controles que quieran utilizar.
 
-    A través de ejemplos cotidianos, situaciones del desarrollo seguro de software y una metodología sencilla, exploraremos cómo transformar la fricción en oportunidades de mejora.
+#     A través de ejemplos cotidianos, situaciones del desarrollo seguro de software y una metodología sencilla, exploraremos cómo transformar la fricción en oportunidades de mejora.
 
-    Porque quizás el futuro de la ciberseguridad no consista en construir cercas más altas, sino en diseñar mejores caminos.
-  speakers:
-      - name: "Santiago"
-        lastName: "Ingold"
-        role: "Fundador · BlackPitbull y ExpertoCiber"
-        bio: "Especialista en ciberseguridad con más de 10 años de experiencia asegurando entornos críticos. Fundador de BlackPitbull, consultora especializada en ciberseguridad, y de ExpertoCiber, iniciativa dedicada a la divulgación y formación.Apasionado por cuestionar enfoques tradicionales y explorar nuevas perspectivas sobre la seguridad, la tecnología y el comportamiento humano."
-        linkedin: "https://www.linkedin.com/in/experto-ciber/"
-        photo: ./speakers/santiago-ingold.jpg
+#     Porque quizás el futuro de la ciberseguridad no consista en construir cercas más altas, sino en diseñar mejores caminos.
+#   speakers:
+#       - name: "Santiago"
+#         lastName: "Ingold"
+#         role: "Fundador · BlackPitbull y ExpertoCiber"
+#         bio: "Especialista en ciberseguridad con más de 10 años de experiencia asegurando entornos críticos. Fundador de BlackPitbull, consultora especializada en ciberseguridad, y de ExpertoCiber, iniciativa dedicada a la divulgación y formación.Apasionado por cuestionar enfoques tradicionales y explorar nuevas perspectivas sobre la seguridad, la tecnología y el comportamiento humano."
+#         linkedin: "https://www.linkedin.com/in/experto-ciber/"
+#         photo: ./speakers/santiago-ingold.jpg
 
-- id: "3"
-  # Co-speaker según la planilla: Antônio Bittencourt (sin LinkedIn ni empresa en la planilla).
-  title: "When AI Agents Meet Payment APIs: The New Authorization Problem"
-  language: en
-  level: advanced
-  abstract: |-
-    AI agents are evolving beyond conversational assistants into autonomous systems capable of executing business workflows and initiating financial transactions. This raises a critical security question: Does an authenticated AI agent have the authority to move money?
+# - id: "3"
+#   # Co-speaker según la planilla: Antônio Bittencourt (sin LinkedIn ni empresa en la planilla).
+#   title: "When AI Agents Meet Payment APIs: The New Authorization Problem"
+#   language: en
+#   level: advanced
+#   abstract: |-
+#     AI agents are evolving beyond conversational assistants into autonomous systems capable of executing business workflows and initiating financial transactions. This raises a critical security question: Does an authenticated AI agent have the authority to move money?
 
-    This session explores the security challenges of agent-driven payments through a realistic scenario inspired by Brazil’s fintech ecosystem. An AI agent is instructed to distribute R$100,000 to 200 eligible recipients. What happens when an attacker manipulates campaign data to introduce an unauthorized beneficiary?
+#     This session explores the security challenges of agent-driven payments through a realistic scenario inspired by Brazil’s fintech ecosystem. An AI agent is instructed to distribute R$100,000 to 200 eligible recipients. What happens when an attacker manipulates campaign data to introduce an unauthorized beneficiary?
 
-    Through threat modeling, reference architectures, and a controlled technical demonstration, we examine how agentic threats intersect with traditional API vulnerabilities.
+#     Through threat modeling, reference architectures, and a controlled technical demonstration, we examine how agentic threats intersect with traditional API vulnerabilities.
 
-    We connect these risks to the OWASP Top 10 for Agentic Applications (2025) and the OWASP API Security Top 10, focusing on Agent Goal Hijack, Tool Misuse, privilege abuse, and broken authorization.
+#     We connect these risks to the OWASP Top 10 for Agentic Applications (2025) and the OWASP API Security Top 10, focusing on Agent Goal Hijack, Tool Misuse, privilege abuse, and broken authorization.
 
-    Attendees will explore practical security controls, including independent authorization policies, explicit delegation, tenant isolation, transaction limits, human approval, and auditability.
+#     Attendees will explore practical security controls, including independent authorization policies, explicit delegation, tenant isolation, transaction limits, human approval, and auditability.
 
-    Combining fintech experience with hands-on security engineering, this session demonstrates how to prevent unauthorized financial transactions, even when AI agents are compromised.
+#     Combining fintech experience with hands-on security engineering, this session demonstrates how to prevent unauthorized financial transactions, even when AI agents are compromised.
 
-    Target audience: Security professionals, API developers, architects, fintech engineers, and technology leaders.
+#     Target audience: Security professionals, API developers, architects, fintech engineers, and technology leaders.
 
-    Key takeaway: AI agents can propose financial actions, but only independent authorization controls should decide whether money moves.
-  speakers:
-      - name: "André"
-        lastName: "Agostinho"
-        role: "CPTO · OnlyPay"
-        bio: "André Agostinho is Chief Product and Technology Officer (CPTO) at OnlyPay, a Brazilian fintech specializing in incentive payments. With over 25 years of experience in technology leadership, he has driven software engineering, cloud architecture, and digital transformation initiatives, contributing to two successful technology exits involving QuintoAndar and Eletromidia. He holds a BSc in Computer Science, pursued MSc studies in Computer Engineering, and completed the CTO Program at UC Berkeley Haas School of Business. His current focus includes secure payment platforms, API security, cybersecurity, and the responsible adoption of AI agents in financial services."
-        linkedin: "https://www.linkedin.com/in/andre-agostinho"
-        photo: ./speakers/andre-agostinho.jpg
-      - name: "Antônio"
-        lastName: "Bittencourt"
-        role: "TL Cloud & Platform"
-        # linkedin: FALTA (pasar el perfil)
-        # photo: ./speakers/antonio-bittencourt.jpg
+#     Key takeaway: AI agents can propose financial actions, but only independent authorization controls should decide whether money moves.
+#   speakers:
+#       - name: "André"
+#         lastName: "Agostinho"
+#         role: "CPTO · OnlyPay"
+#         bio: "André Agostinho is Chief Product and Technology Officer (CPTO) at OnlyPay, a Brazilian fintech specializing in incentive payments. With over 25 years of experience in technology leadership, he has driven software engineering, cloud architecture, and digital transformation initiatives, contributing to two successful technology exits involving QuintoAndar and Eletromidia. He holds a BSc in Computer Science, pursued MSc studies in Computer Engineering, and completed the CTO Program at UC Berkeley Haas School of Business. His current focus includes secure payment platforms, API security, cybersecurity, and the responsible adoption of AI agents in financial services."
+#         linkedin: "https://www.linkedin.com/in/andre-agostinho"
+#         photo: ./speakers/andre-agostinho.jpg
+#       - name: "Antônio"
+#         lastName: "Bittencourt"
+#         role: "TL Cloud & Platform"
+#         # linkedin: FALTA (pasar el perfil)
+#         # photo: ./speakers/antonio-bittencourt.jpg
 
-- id: "4"
-  title: "ADversary: From User to Domain Admin"
-  language: es
-  level: beginner
-  abstract: |-
-    ADversary: From User to Domain Admin es una charla práctica sobre cómo se puede comprometer un entorno de Active Directory desde una perspectiva ofensiva, empezando únicamente con una cuenta de dominio con pocos privilegios y avanzando hasta alcanzar el control del dominio.
-    Durante la charla veremos técnicas que aparecen de forma habitual en evaluaciones reales de Active Directory y también en entrenamientos avanzados. Hablaremos de enumeración, abuso de credenciales, ataques Kerberos, configuraciones inseguras, escalada de privilegios, movimiento lateral, análisis de rutas de ataque y otras técnicas que pueden terminar llevando a privilegios de Domain Admin.
-    La idea no es simplemente mostrar una colección de comandos o herramientas, sino entender cómo distintas debilidades dentro del entorno pueden conectarse entre sí y convertirse en una ruta de ataque completa. Queremos mostrar el razonamiento detrás de cada paso: qué información buscar, cómo interpretarla y cómo decidir cuál puede ser el siguiente movimiento.
-    También dedicaremos una parte de la charla al uso de Inteligencia Artificial aplicada al pentesting de Active Directory. Veremos ejemplos prácticos de cómo la IA puede ayudar a analizar la información obtenida durante la enumeración, interpretar relaciones y configuraciones, sugerir posibles rutas de ataque, generar o adaptar comandos y servir como apoyo durante distintas etapas de una evaluación.
-    Al mismo tiempo, hablaremos de sus limitaciones y de por qué utilizar IA no sustituye el conocimiento técnico necesario para entender y validar lo que realmente está ocurriendo en el entorno.
-    La charla está orientada a pentesters, red teamers, blue teamers, profesionales de seguridad, estudiantes y personas que ya tengan una base de Windows y Active Directory y quieran profundizar en seguridad ofensiva, rutas de ataque y nuevas formas de incorporar IA a este tipo de evaluaciones.
-  speakers:
-      - name: "Wander"
-        lastName: "Astorga"
-        role: "Ingeniero de Telecomunicaciones · DevSecOps"
-        bio: "Ingeniero de Telecomunicaciones, CPTS, DevSecOps"
-        linkedin: "https://www.linkedin.com/in/wanderastorga/"
-        photo: ./speakers/wander-astorga.jpg
-      - name: "German"
-        lastName: "Marquez"
-        role: "AD Pentesting Expert"
-        bio: "AD Pentesting Expert (CAPE) | OSCP | CPTS | CRTP"
-        linkedin: "https://www.linkedin.com/in/german-marquez875/"
-        photo: ./speakers/german-marquez.jpg
+# - id: "4"
+#   title: "ADversary: From User to Domain Admin"
+#   language: es
+#   level: beginner
+#   abstract: |-
+#     ADversary: From User to Domain Admin es una charla práctica sobre cómo se puede comprometer un entorno de Active Directory desde una perspectiva ofensiva, empezando únicamente con una cuenta de dominio con pocos privilegios y avanzando hasta alcanzar el control del dominio.
+#     Durante la charla veremos técnicas que aparecen de forma habitual en evaluaciones reales de Active Directory y también en entrenamientos avanzados. Hablaremos de enumeración, abuso de credenciales, ataques Kerberos, configuraciones inseguras, escalada de privilegios, movimiento lateral, análisis de rutas de ataque y otras técnicas que pueden terminar llevando a privilegios de Domain Admin.
+#     La idea no es simplemente mostrar una colección de comandos o herramientas, sino entender cómo distintas debilidades dentro del entorno pueden conectarse entre sí y convertirse en una ruta de ataque completa. Queremos mostrar el razonamiento detrás de cada paso: qué información buscar, cómo interpretarla y cómo decidir cuál puede ser el siguiente movimiento.
+#     También dedicaremos una parte de la charla al uso de Inteligencia Artificial aplicada al pentesting de Active Directory. Veremos ejemplos prácticos de cómo la IA puede ayudar a analizar la información obtenida durante la enumeración, interpretar relaciones y configuraciones, sugerir posibles rutas de ataque, generar o adaptar comandos y servir como apoyo durante distintas etapas de una evaluación.
+#     Al mismo tiempo, hablaremos de sus limitaciones y de por qué utilizar IA no sustituye el conocimiento técnico necesario para entender y validar lo que realmente está ocurriendo en el entorno.
+#     La charla está orientada a pentesters, red teamers, blue teamers, profesionales de seguridad, estudiantes y personas que ya tengan una base de Windows y Active Directory y quieran profundizar en seguridad ofensiva, rutas de ataque y nuevas formas de incorporar IA a este tipo de evaluaciones.
+#   speakers:
+#       - name: "Wander"
+#         lastName: "Astorga"
+#         role: "Ingeniero de Telecomunicaciones · DevSecOps"
+#         bio: "Ingeniero de Telecomunicaciones, CPTS, DevSecOps"
+#         linkedin: "https://www.linkedin.com/in/wanderastorga/"
+#         photo: ./speakers/wander-astorga.jpg
+#       - name: "German"
+#         lastName: "Marquez"
+#         role: "AD Pentesting Expert"
+#         bio: "AD Pentesting Expert (CAPE) | OSCP | CPTS | CRTP"
+#         linkedin: "https://www.linkedin.com/in/german-marquez875/"
+#         photo: ./speakers/german-marquez.jpg
 
-- id: "5"
-  # Sitio de Nexa según la planilla: https://wearenexa.com
-  title: "Una noche con ARTEX"
-  language: es
-  level: intermediate
-  abstract: |-
-    Este año nos tocó investigar una intrusión de una fintech llevada adelante con ARTEX, un framework de pentest agéntico. El atacante entró por un SSRF en una aplicación expuesta a internet, aunque no fue el SSRF lo que lo llevó lejos. Estuvo casi tres semanas juntando credenciales e intentando escalar sin suerte, hasta que encontró la llave donde nadie la estaba buscando. A partir de ahí todo se aceleró. Pasó de administrador de AWS a los clústeres de PCI en media hora, y en una sola noche recorrió lo que a un red team le lleva semanas, sin preocuparse demasiado por pasar desapercibido.
+# - id: "5"
+#   # Sitio de Nexa según la planilla: https://wearenexa.com
+#   title: "Una noche con ARTEX"
+#   language: es
+#   level: intermediate
+#   abstract: |-
+#     Este año nos tocó investigar una intrusión de una fintech llevada adelante con ARTEX, un framework de pentest agéntico. El atacante entró por un SSRF en una aplicación expuesta a internet, aunque no fue el SSRF lo que lo llevó lejos. Estuvo casi tres semanas juntando credenciales e intentando escalar sin suerte, hasta que encontró la llave donde nadie la estaba buscando. A partir de ahí todo se aceleró. Pasó de administrador de AWS a los clústeres de PCI en media hora, y en una sola noche recorrió lo que a un red team le lleva semanas, sin preocuparse demasiado por pasar desapercibido.
 
-    En esta charla reconstruimos esa noche: cómo se movió entre la nube, la identidad y Kubernetes, qué fue dejando a su paso, y por qué aun haciendo ruido, llegó tan lejos. Vamos a mostrar qué rastro deja un agente y en qué se diferencia de un operador humano. Ninguna de las fallas que aprovechó era nueva; lo que cambió es la velocidad con la que un agente las encuentra y las encadena, y eso nos obliga a repensar cómo defendemos.
-  speakers:
-      - name: "Andrés"
-        lastName: "Gómez"
-        role: "Líder de práctica · Nexa"
-        bio: "Líder de práctica en Nexa."
-        linkedin: "https://www.linkedin.com/in/andresgo/"
-        photo: ./speakers/andres-gomez.jpg
+#     En esta charla reconstruimos esa noche: cómo se movió entre la nube, la identidad y Kubernetes, qué fue dejando a su paso, y por qué aun haciendo ruido, llegó tan lejos. Vamos a mostrar qué rastro deja un agente y en qué se diferencia de un operador humano. Ninguna de las fallas que aprovechó era nueva; lo que cambió es la velocidad con la que un agente las encuentra y las encadena, y eso nos obliga a repensar cómo defendemos.
+#   speakers:
+#       - name: "Andrés"
+#         lastName: "Gómez"
+#         role: "Líder de práctica · Nexa"
+#         bio: "Líder de práctica en Nexa."
+#         linkedin: "https://www.linkedin.com/in/andresgo/"
+#         photo: ./speakers/andres-gomez.jpg
 
-- id: panel
-  # A definir: contenido del panel y panelistas. Mientras no haya speakers, la agenda
-  # sigue mostrando el texto genérico de agenda.yaml aunque sections.talks sea true.
-  title: Panel de ciberdelito
-  speakers: []
+# - id: panel
+#   # A definir: contenido del panel y panelistas. Mientras no haya speakers, la agenda
+#   # sigue mostrando el texto genérico de agenda.yaml aunque sections.talks sea true.
+#   title: Panel de ciberdelito
+#   speakers: []
 
-- id: "6"
-  title: "Confiás en tu IA. El atacante cuenta con eso"
-  language: es
-  level: intermediate
-  abstract: |-
-    Cómo manipular sus respuestas y acciones sin tocar el modelo.
-    Un modelo puede funcionar exactamente como fue diseñado y, aun así, responder o actuar sobre una realidad manipulada. Esta charla analiza cómo se comprometen sus datos, fuentes, contexto y herramientas sin necesidad de modificar el modelo.
-  speakers:
-      - name: "Maximiliano"
-        lastName: "Alonzo"
-        role: "Especialista en ciberseguridad"
-        bio: "Especialista en ciberseguridad, desarrollo seguro, auditorías y pentesting; docente y conferencista."
-        linkedin: "https://www.linkedin.com/in/maximiliano-alonzo-18075720/"
-        photo: ./speakers/maximiliano-alonzo.jpg
+# - id: "6"
+#   title: "Confiás en tu IA. El atacante cuenta con eso"
+#   language: es
+#   level: intermediate
+#   abstract: |-
+#     Cómo manipular sus respuestas y acciones sin tocar el modelo.
+#     Un modelo puede funcionar exactamente como fue diseñado y, aun así, responder o actuar sobre una realidad manipulada. Esta charla analiza cómo se comprometen sus datos, fuentes, contexto y herramientas sin necesidad de modificar el modelo.
+#   speakers:
+#       - name: "Maximiliano"
+#         lastName: "Alonzo"
+#         role: "Especialista en ciberseguridad"
+#         bio: "Especialista en ciberseguridad, desarrollo seguro, auditorías y pentesting; docente y conferencista."
+#         linkedin: "https://www.linkedin.com/in/maximiliano-alonzo-18075720/"
+#         photo: ./speakers/maximiliano-alonzo.jpg

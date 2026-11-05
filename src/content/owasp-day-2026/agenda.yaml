@@ -8,7 +8,7 @@
 #   time       hora de inicio, entre comillas: "09:30"
 #   kind       session (charlas), break (pausa) o mate (pausa destacada, café)
 #   sessions   una o dos sesiones en paralelo. Cada sesión:
-#                track   sala: main (Sala principal), lab (Taller), keynote o panel.
+#                track   sala: main (Charla), lab (Taller), keynote o panel.
 #                        No hace falta en las pausas.
 #                title   título genérico, ej. "Charla 1"
 #                by      texto genérico de quién la da, ej. "TBD" (opcional)
@@ -59,9 +59,9 @@
       talk: "4"
 
 - time: "13:10"
-  kind: break
+  kind: mate
   sessions:
-    - title: Lunch break
+    - title: Almuerzo libre
 
 - time: "14:40"
   sessions:

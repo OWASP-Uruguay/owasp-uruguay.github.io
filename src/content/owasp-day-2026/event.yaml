@@ -30,11 +30,11 @@ registration:
 #             Prender cuando se anuncian las charlas (necesita agenda: true).
 #   speakers  la grilla de oradores (también de talks.yaml).
 sections:
-  speakers: false
+  speakers: true
   agenda: true
   talks: false
   sponsors: false
-  faq: false
+  faq: true
 
 hero:
   tagline: Una jornada abierta y gratuita sobre seguridad de aplicaciones.
@@ -69,17 +69,17 @@ callForSpeakers:
 
 speakers:
   title: Voces de la *comunidad*
-  note: "Oradores de ejemplo: la grilla se anuncia cuando cierre la selección."
+  note: "" #"Oradores de ejemplo: la grilla se anuncia cuando cierre la selección."
   moreTile: true
   moreTitle: Más oradores *próximamente*
   moreText: Estamos armando la grilla completa.
   moreLink:
-    label: Ver el call for speakers
-    url: "#cfs"
+    label: "" #Ver el call for speakers
+    url: "" #cfs"
 
 agenda:
   title: Agenda
-  note: "Agenda preliminar. Las charlas y los oradores se anuncian próximamente; los horarios pueden cambiar."
+  note: "Agenda preliminar. Las charlas y los oradores se anuncian próximamente. Los horarios pueden cambiar."
 
 venue:
   title: Nos vemos en la *Torre de ANTEL*
