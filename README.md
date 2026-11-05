@@ -25,7 +25,7 @@ Para ver cómo se verá el sitio otro día: `NOW=2026-12-01 npm run dev`. Sirve 
 | Qué | Dónde |
 |---|---|
 | Datos del OWASP Meetup+ 2026 (fecha, horario, CFS, registro, textos) | `src/content/owasp-day-2026/event.yaml` |
-| Oradores, agenda, sponsors y FAQ del evento | `src/content/owasp-day-2026/*.yaml` |
+| Agenda, charlas con sus oradores, sponsors y FAQ del evento | `src/content/owasp-day-2026/*.yaml` (`agenda.yaml`, `talks.yaml`, ...) |
 | Eventos pasados y futuros | `src/content/events/<AAAA-MM-DD-slug>/index.mdx`, con `fotos/` y `adjuntos/` |
 | Enlaces, redes, aviso de sitio no oficial, favicon | `src/data/site.ts` |
 | Logos | `src/assets/brand/` y `public/favicons/` |
@@ -40,7 +40,16 @@ Lo que se cambia en `event.yaml`:
 
 - `registration.url`: el link de Eventbrite. Vacío, el botón de registro se ve deshabilitado con "próximamente".
 - `time`: el horario, por ejemplo `"09:00 a 17:30"`. Vacío, se lee "Horario a confirmar".
-- `sections`: oradores, agenda, sponsors y FAQ. En `false` no se publican: no quedan ni en el HTML. Para verlas en local sin tocar el archivo, `npm run dev:all` (aparecen con un borde rojo punteado).
+- `sections`: agenda, charlas, oradores, sponsors y FAQ. En `false` no se publican: no quedan ni en el HTML. Para verlas en local sin tocar el archivo, `npm run dev:all` (aparecen con un borde rojo punteado).
+
+### Agenda y charlas
+
+La agenda (`agenda.yaml`) ya está publicada con texto genérico: "Charla 1 ... Charla 6" con "TBD" y el panel sin panelistas. Los datos reales están cargados en `talks.yaml` pero no se publican hasta que `sections.talks` sea `true` en `event.yaml`; mientras tanto no llegan al HTML (un test de `dist/` lo verifica). Para revisarlos en local: `SHOW_HIDDEN=talks npm run dev`.
+
+- Cada sesión de la agenda con charla lleva `talk: "N"`, que apunta al `id` de `talks.yaml`. Al publicar, el título y los oradores salen de ahí, con el resumen desplegable y una marca "EN" en las charlas en inglés.
+- Una charla puede tener uno o varios oradores (`speakers`). Cada uno lleva su `linkedin`; la foto se baja de ese perfil, se guarda cuadrada en `src/content/owasp-day-2026/speakers/` (JPG, hasta ~800 px, sin metadatos) y se enlaza con `photo: ./speakers/nombre-apellido.jpg`. Sin foto se ve una silueta. Las fotos se sirven desde `/owasp-meetup-plus-2026/oradores/` y solo entran al build con `sections.speakers` en `true`.
+- La grilla de oradores sale de las mismas charlas y se publica aparte con `sections.speakers`. Muestra el título de cada charla solo si `sections.talks` también está en `true`.
+- El panel está en `talks.yaml` con el id `panel`. Mientras no tenga `speakers`, la agenda sigue mostrando el texto de `agenda.yaml` aunque `talks` esté publicado.
 
 ## Agregar un evento
 
