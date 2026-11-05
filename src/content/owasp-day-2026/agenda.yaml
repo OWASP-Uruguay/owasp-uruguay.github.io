@@ -1,91 +1,95 @@
 # OWASP Meetup+ 2026: agenda. Cada elemento es una franja horaria, en orden.
 #
+# Lo que se escribe acá es lo que se ve SIEMPRE (el texto genérico). El detalle de cada
+# charla (título, oradores, resumen) vive en talks.yaml y solo se publica con
+# sections.talks: true en event.yaml. Hasta entonces se muestra el texto de acá.
+#
 # Campos de cada franja:
 #   time       hora de inicio, entre comillas: "09:30"
-#   kind       session (charlas), break (pausa) o mate (mate break)
+#   kind       session (charlas), break (pausa) o mate (pausa destacada, café)
 #   sessions   una o dos sesiones en paralelo. Cada sesión:
 #                track   sala: main (Sala principal), lab (Taller), keynote o panel.
 #                        No hace falta en las pausas.
-#                title   título
-#                by      quién la da (opcional)
+#                title   título genérico, ej. "Charla 1"
+#                by      texto genérico de quién la da, ej. "TBD" (opcional)
+#                talk    clave de la charla en talks.yaml (opcional). Con sections.talks
+#                        en true, título y oradores se toman de ahí.
 
-- time: "08:30"
+- time: "09:00"
   kind: break
   sessions:
-    - title: Acreditación y café
+    - title: Ingreso
 
-- time: "09:15"
+- time: "09:45"
   sessions:
     - track: main
-      title: "Bienvenida: OWASP Uruguay"
-      by: Equipo del capítulo
+      title: Apertura
 
-- time: "09:30"
-  sessions:
-    - track: keynote
-      title: "El nuevo OWASP Top 10: qué cambió y por qué importa"
-      by: Lucía Fernández
-
-- time: "10:20"
+- time: "10:00"
   sessions:
     - track: main
-      title: "ASVS en la práctica: requisitos de seguridad que sí se usan"
-      by: Martín Pereira
-    - track: lab
-      title: Threat modeling express con OWASP Threat Dragon
-      by: Comunidad OWASP Uruguay
+      title: Charla 1
+      by: TBD
+      talk: "1"
 
-- time: "11:05"
+- time: "10:40"
+  sessions:
+    - track: main
+      title: Charla 2
+      by: TBD
+      talk: "2"
+
+- time: "11:20"
   kind: mate
   sessions:
-    - title: Mate break
-      by: Café, mate y networking
+    - title: Coffee break 1
 
-- time: "11:30"
+- time: "11:50"
   sessions:
     - track: main
-      title: "API Security Top 10: atacando y defendiendo APIs"
-      by: Sofía Rodríguez
+      title: Charla 3
+      by: TBD
+      talk: "3"
 
-- time: "12:15"
+- time: "12:30"
   sessions:
     - track: main
-      title: "OWASP SAMM: medir y mejorar tu programa de AppSec"
-      by: Diego Martínez
+      title: Charla 4
+      by: TBD
+      talk: "4"
 
-- time: "13:00"
+- time: "13:10"
   kind: break
   sessions:
-    - title: Almuerzo
+    - title: Lunch break
 
-- time: "14:15"
+- time: "14:40"
   sessions:
     - track: main
-      title: "Cadena de suministro de software: SBOM, CycloneDX y dependencias"
-      by: Valentina Silva
-    - track: lab
-      title: "OWASP Juice Shop: CTF para todos los niveles"
-      by: Comunidad OWASP Uruguay
+      title: Charla 5
+      by: TBD
+      talk: "5"
 
-- time: "15:00"
-  sessions:
-    - track: main
-      title: "Seguridad en IA: OWASP Top 10 para aplicaciones con LLMs"
-      by: Nicolás Sosa
-
-- time: "15:45"
-  kind: mate
-  sessions:
-    - title: Mate break
-      by: Café, mate y networking
-
-- time: "16:15"
+- time: "15:20"
   sessions:
     - track: panel
-      title: "AppSec en Uruguay: desafíos y oportunidades"
-      by: Oradores invitados
+      title: Panel de ciberdelito
+      by: "Panelistas: TBD"
+      talk: panel
 
-- time: "17:15"
-  kind: break
+- time: "16:20"
+  kind: mate
   sessions:
-    - title: Cierre, sorteos y after
+    - title: Coffee break 2
+
+- time: "16:50"
+  sessions:
+    - track: main
+      title: Charla 6
+      by: TBD
+      talk: "6"
+
+- time: "17:30"
+  sessions:
+    - track: main
+      title: Cierre

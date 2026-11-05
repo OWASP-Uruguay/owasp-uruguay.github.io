@@ -25,9 +25,14 @@ registration:
 
 # Secciones que todavía no se publican. true = se ve en producción.
 # Para verlas en tu computadora sin tocar esto: SHOW_HIDDEN=all npm run dev
+#   agenda    la agenda. Mientras talks sea false muestra "Charla 1 ... Charla 6 / TBD".
+#   talks     el detalle de cada charla en la agenda (título, oradores, resumen), de talks.yaml.
+#             Prender cuando se anuncian las charlas (necesita agenda: true).
+#   speakers  la grilla de oradores (también de talks.yaml).
 sections:
   speakers: false
-  agenda: false
+  agenda: true
+  talks: false
   sponsors: false
   faq: false
 
@@ -74,7 +79,7 @@ speakers:
 
 agenda:
   title: Agenda
-  note: "Agenda tentativa. Los horarios pueden cambiar."
+  note: "Agenda preliminar. Las charlas y los oradores se anuncian próximamente; los horarios pueden cambiar."
 
 venue:
   title: Nos vemos en la *Torre de ANTEL*

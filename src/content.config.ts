@@ -77,20 +77,34 @@ const yamlList = (name: string) =>
   file(`${dir}/${name}`, {
     parser: (text) => {
       const items = (yaml.load(text) ?? []) as Record<string, unknown>[];
-      return items.map((item, i) => ({ ...item, id: String(i + 1).padStart(3, '0') }));
+      // `id` del YAML si existe (ej. "1", "panel"); si no, la posición en la lista.
+      return items.map((item, i) => ({ ...item, id: item.id != null ? String(item.id) : String(i + 1).padStart(3, '0') }));
     },
   });
 
-const owaspDaySpeakers = defineCollection({
-  loader: yamlList('speakers.yaml'),
+// Charlas seleccionadas y panel, con sus oradores (talks.yaml). No se publica hasta sections.talks;
+// la grilla de oradores sale de acá y se publica con sections.speakers.
+const owaspDayTalks = defineCollection({
+  loader: yamlList('talks.yaml'),
   schema: ({ image }) =>
     z.object({
-      name: z.string(),
-      lastName: z.string().default(''),
-      role: z.string(),
-      talk: z.string().optional(),
-      photo: image().optional(),
-      color: z.enum(['yellow', 'blue']).default('yellow'),
+      title: z.string(),
+      language: z.enum(['es', 'en']).default('es'),
+      level: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
+      abstract: z.string().optional(),
+      speakers: z
+        .array(
+          z.object({
+            name: z.string(),
+            lastName: z.string().default(''),
+            role: z.string().optional(),
+            bio: z.string().optional(),
+            linkedin: z.url().optional(),   // de acá sale la foto; también se enlaza desde la tarjeta
+            photo: image().optional(),
+            color: z.enum(['yellow', 'blue']).optional(),
+          }),
+        )
+        .default([]),
     }),
 });
 
@@ -100,7 +114,7 @@ const owaspDayAgenda = defineCollection({
     time: z.string(),
     kind: z.enum(['session', 'break', 'mate']).default('session'),
     sessions: z
-      .array(z.object({ track: z.enum(['main', 'lab', 'keynote', 'panel']).optional(), title: z.string(), by: z.string().optional() }))
+      .array(z.object({ track: z.enum(['main', 'lab', 'keynote', 'panel']).optional(), title: z.string(), by: z.string().optional(), talk: z.string().optional() }))
       .min(1),
   }),
 });
@@ -136,6 +150,7 @@ const owaspDay = defineCollection({
     sections: z.object({
       speakers: z.boolean().default(false),
       agenda: z.boolean().default(false),
+      talks: z.boolean().default(false),   // detalle de cada charla en la agenda (título, oradores, resumen)
       sponsors: z.boolean().default(false),
       faq: z.boolean().default(false),
     }),
@@ -177,4 +192,4 @@ const owaspDay = defineCollection({
   }),
 });
 
-export const collections = { events, owaspDay, owaspDaySpeakers, owaspDayAgenda, owaspDaySponsors, owaspDayFaq };
+export const collections = { events, owaspDay, owaspDayTalks, owaspDayAgenda, owaspDaySponsors, owaspDayFaq };
