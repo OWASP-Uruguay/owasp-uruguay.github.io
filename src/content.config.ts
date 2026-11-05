@@ -86,8 +86,7 @@ const yamlList = (name: string) =>
 // la grilla de oradores sale de acá y se publica con sections.speakers.
 const owaspDayTalks = defineCollection({
   loader: yamlList('talks.yaml'),
-  schema: ({ image }) =>
-    z.object({
+  schema: z.object({
       title: z.string(),
       language: z.enum(['es', 'en']).default('es'),
       level: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
@@ -100,7 +99,9 @@ const owaspDayTalks = defineCollection({
             role: z.string().optional(),
             bio: z.string().optional(),
             linkedin: z.url().optional(),   // de acá sale la foto; también se enlaza desde la tarjeta
-            photo: image().optional(),
+            // Ruta de la foto, ej. ./speakers/ana-perez.jpg. Es texto (no image()) a propósito: así la foto
+            // no se importa ni se copia a dist/ hasta que Speakers.astro la usa (sections.speakers).
+            photo: z.string().regex(/^\.\/speakers\/[\w-]+\.(jpe?g|png|webp)$/, 'Usá ./speakers/nombre.jpg').optional(),
             color: z.enum(['yellow', 'blue']).optional(),
           }),
         )

@@ -93,6 +93,17 @@ test('las secciones apagadas no están en el HTML publicado', () => {
   }
 });
 
+test('mientras no se publican oradores, sus fotos no entran al build', () => {
+  if (event.sections.speakers) return;
+  assert.ok(!existsSync(join(dist, 'owasp-meetup-plus-2026/oradores')), 'hay fotos de oradores publicadas');
+  const dir = 'src/content/owasp-day-2026/speakers';
+  const hash = (f: string) => createHash('sha256').update(readFileSync(f)).digest('hex');
+  const originals = new Set(readdirSync(dir).filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).map((f) => hash(join(dir, f))));
+  for (const f of readdirSync(dist, { recursive: true }) as string[]) {
+    if (/\.(jpe?g|png|webp)$/i.test(f)) assert.ok(!originals.has(hash(join(dist, f))), `foto de orador copiada a dist/: ${f}`);
+  }
+});
+
 test('la agenda muestra el texto genérico hasta que se publican las charlas', () => {
   if (!event.sections.agenda) return;
   const html = read('owasp-meetup-plus-2026/index.html');

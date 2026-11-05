@@ -14,7 +14,10 @@ import { inline } from './format';
 interface Props { event: CollectionEntry<'owaspDay'>['data']; showTalks?: boolean }
 const { event: { speakers: s }, showTalks = false } = Astro.props;
 const talks = (await getCollection('owaspDayTalks')).sort((a, b) => a.id.localeCompare(b.id, 'es', { numeric: true }));
-const speakers = talks.flatMap(({ data: t }) => t.speakers.map((sp) => ({ ...sp, talk: t.title })));
+// Fotos: ./speakers/<nombre>.jpg junto a talks.yaml. Las sirve src/pages/owasp-meetup-plus-2026/oradores/
+// (no se importan acá: ver ese archivo).
+const photoUrl = (photo?: string) => photo && url(`/owasp-meetup-plus-2026/oradores/${photo.replace(/^.*\/|\.[^.]+$/g, '')}.webp`);
+const speakers = talks.flatMap(({ data: t }) => t.speakers.map((sp) => ({ ...sp, talk: t.title, photoSrc: photoUrl(sp.photo) })));
 ---
 <section class="section section--dark speakers" id="oradores" aria-labelledby="oradores-title">
   <span class="deco deco--speakers-blue" aria-hidden="true"></span>
@@ -34,8 +37,8 @@ const speakers = talks.flatMap(({ data: t }) => t.speakers.map((sp) => ({ ...sp,
         return (
           <li class="speaker">
             <div class:list={['speaker__photo', `speaker__photo--${sp.color ?? (i % 2 ? 'blue' : 'yellow')}`]}>
-              {sp.photo
-                ? <Image src={sp.photo} alt={`Foto de ${name}`} width={400} height={400} widths={[240, 400, 800]} sizes="(max-width: 720px) 112px, 400px" fit="cover" />
+              {sp.photoSrc
+                ? <img src={sp.photoSrc} alt={`Foto de ${name}`} width="400" height="400" loading="lazy" decoding="async" />
                 : <Image src={placeholder} alt={`Foto de ${name} (placeholder)`} width={400} height={400} />}
             </div>
             <h3 class="speaker__name">{sp.name} {sp.lastName && <span>{sp.lastName}</span>}</h3>

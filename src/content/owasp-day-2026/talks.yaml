@@ -19,7 +19,7 @@
 #     role              cargo · empresa (opcional)
 #     bio               biografía (opcional, hoy no se muestra)
 #     linkedin          perfil de LinkedIn: de ahí sale la foto y el enlace de la tarjeta
-#     photo             foto cuadrada en ./speakers/ (opcional; sin foto va una silueta)
+#     photo             foto cuadrada en ./speakers/, ej. ./speakers/ana-perez.jpg (opcional; sin foto va una silueta)
 #     color             yellow o blue, círculo detrás de la foto (opcional; si falta, alterna)
 
 - id: "1"
@@ -38,7 +38,7 @@
         role: "CISO · QoxIT"
         bio: "Ingeniero en Computación y Especialista en Seguridad Informática egresado de la Universidad de la República (UdelaR), certificado Google Professional Cloud Security Engineer. CISO de QoxIT, empresa de desarrollo de software y ciberseguridad con operaciones en Uruguay, Perú y Estados Unidos. Más de 20 años de experiencia nacional e internacional en arquitectura de software, seguridad de la información y seguridad de aplicaciones, con foco en ciclo de desarrollo seguro y ethical hacking para instituciones de salud, organismos públicos y empresas privadas. Colaborador de OWASP Uruguay desde 2011 y Chapter Leader entre 2024 y 2026. Actualmente investiga el uso de agentes de IA en pruebas de penetración."
         linkedin: "https://www.linkedin.com/in/palzuri/"
-        # photo: ./speakers/pablo-alzuri.jpg
+        photo: ./speakers/pablo-alzuri.jpg
 
 - id: "2"
   title: "Caminos del deseo: cómo hacer que las personas quieran ser seguras"
@@ -64,7 +64,7 @@
         role: "Fundador · BlackPitbull y ExpertoCiber"
         bio: "Especialista en ciberseguridad con más de 10 años de experiencia asegurando entornos críticos. Fundador de BlackPitbull, consultora especializada en ciberseguridad, y de ExpertoCiber, iniciativa dedicada a la divulgación y formación.Apasionado por cuestionar enfoques tradicionales y explorar nuevas perspectivas sobre la seguridad, la tecnología y el comportamiento humano."
         linkedin: "https://www.linkedin.com/in/experto-ciber/"
-        # photo: ./speakers/santiago-ingold.jpg
+        photo: ./speakers/santiago-ingold.jpg
 
 - id: "3"
   # Co-speaker según la planilla: Antônio Bittencourt (sin LinkedIn ni empresa en la planilla).
@@ -93,7 +93,7 @@
         role: "CPTO · OnlyPay"
         bio: "André Agostinho is Chief Product and Technology Officer (CPTO) at OnlyPay, a Brazilian fintech specializing in incentive payments. With over 25 years of experience in technology leadership, he has driven software engineering, cloud architecture, and digital transformation initiatives, contributing to two successful technology exits involving QuintoAndar and Eletromidia. He holds a BSc in Computer Science, pursued MSc studies in Computer Engineering, and completed the CTO Program at UC Berkeley Haas School of Business. His current focus includes secure payment platforms, API security, cybersecurity, and the responsible adoption of AI agents in financial services."
         linkedin: "https://www.linkedin.com/in/andre-agostinho"
-        # photo: ./speakers/andre-agostinho.jpg
+        photo: ./speakers/andre-agostinho.jpg
       - name: "Antônio"
         lastName: "Bittencourt"
         role: "TL Cloud & Platform"
@@ -117,13 +117,13 @@
         role: "Ingeniero de Telecomunicaciones · DevSecOps"
         bio: "Ingeniero de Telecomunicaciones, CPTS, DevSecOps"
         linkedin: "https://www.linkedin.com/in/wanderastorga/"
-        # photo: ./speakers/wander-astorga.jpg
+        photo: ./speakers/wander-astorga.jpg
       - name: "German"
         lastName: "Marquez"
         role: "AD Pentesting Expert"
         bio: "AD Pentesting Expert (CAPE) | OSCP | CPTS | CRTP"
         linkedin: "https://www.linkedin.com/in/german-marquez875/"
-        # photo: ./speakers/german-marquez.jpg
+        photo: ./speakers/german-marquez.jpg
 
 - id: "5"
   # Sitio de Nexa según la planilla: https://wearenexa.com
@@ -139,8 +139,8 @@
         lastName: "Gómez"
         role: "Líder de práctica · Nexa"
         bio: "Líder de práctica en Nexa."
-        # linkedin: FALTA (pasar el perfil)
-        # photo: ./speakers/andres-gómez.jpg
+        linkedin: "https://www.linkedin.com/in/andresgo/"
+        photo: ./speakers/andres-gomez.jpg
 
 - id: panel
   # A definir: contenido del panel y panelistas. Mientras no haya speakers, la agenda
@@ -161,4 +161,4 @@
         role: "Especialista en ciberseguridad"
         bio: "Especialista en ciberseguridad, desarrollo seguro, auditorías y pentesting; docente y conferencista."
         linkedin: "https://www.linkedin.com/in/maximiliano-alonzo-18075720/"
-        # photo: ./speakers/maximiliano-alonzo.jpg
+        photo: ./speakers/maximiliano-alonzo.jpg
