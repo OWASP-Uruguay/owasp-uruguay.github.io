@@ -44,12 +44,13 @@ Lo que se cambia en `event.yaml`:
 
 ### Agenda y charlas
 
-La agenda (`agenda.yaml`) ya está publicada con texto genérico: "Charla 1 ... Charla 6" con "TBD" y el panel sin panelistas. Los datos reales están cargados en `talks.yaml` pero no se publican hasta que `sections.talks` sea `true` en `event.yaml`; mientras tanto no llegan al HTML (un test de `dist/` lo verifica). Para revisarlos en local: `SHOW_HIDDEN=talks npm run dev`.
+La agenda (`agenda.yaml`) se publica con texto genérico: "Charla 1 ... Charla 6" con "TBD" y el panel sin panelistas. Los datos reales de cada charla están cargados en `talks.yaml` y se publican de a una:
 
-- Cada sesión de la agenda con charla lleva `talk: "N"`, que apunta al `id` de `talks.yaml`. Al publicar, el título y los oradores salen de ahí, con el resumen desplegable y una marca "EN" en las charlas en inglés.
-- Una charla puede tener uno o varios oradores (`speakers`). Cada uno lleva su `linkedin`; la foto se baja de ese perfil, se guarda cuadrada en `src/content/owasp-day-2026/speakers/` (JPG, hasta ~800 px, sin metadatos) y se enlaza con `photo: ./speakers/nombre-apellido.jpg`. Sin foto se ve una silueta. Las fotos se sirven desde `/owasp-meetup-plus-2026/oradores/` y solo entran al build con `sections.speakers` en `true`.
-- La grilla de oradores sale de las mismas charlas y se publica aparte con `sections.speakers`. Muestra el título de cada charla solo si `sections.talks` también está en `true`.
-- El panel está en `talks.yaml` con el id `panel`. Mientras no tenga `speakers`, la agenda sigue mostrando el texto de `agenda.yaml` aunque `talks` esté publicado.
+- Para anunciar una charla, poné `published: true` en su entrada de `talks.yaml`. En su lugar de la agenda pasa a verse el título, los oradores y el resumen desplegable (con una marca "EN" si es en inglés), y sus oradores entran a la grilla de "Oradores". La grilla aparece sola con el primer orador publicado.
+- Lo que no está publicado no llega al HTML ni al build (tampoco sus fotos); un test de `dist/` lo verifica. Para revisar todo en local: `npm run dev:all` o `SHOW_HIDDEN=talks npm run dev`. Para publicar todo de golpe: `sections.talks: true` en `event.yaml`.
+- Cada sesión de `agenda.yaml` con charla lleva `talk: "N"`, que apunta al `id` de `talks.yaml`: el `id` tiene que coincidir con el lugar de la charla en la agenda.
+- Una charla puede tener uno o varios oradores (`speakers`). Cada uno lleva su `linkedin`; la foto se baja de ese perfil, se guarda cuadrada en `src/content/owasp-day-2026/speakers/` (JPG, hasta ~800 px, sin metadatos) y se enlaza con `photo: ./speakers/nombre-apellido.jpg`. Sin foto se ve una silueta. Las fotos se sirven desde `/owasp-meetup-plus-2026/oradores/`.
+- El panel está en `talks.yaml` con el id `panel` y se anuncia de a una persona: dejá la charla en `published: false` (la agenda sigue diciendo "Panel de ciberdelito") y agregá cada panelista en `speakers` con `published: true` cuando se confirme. Los publicados aparecen en el slot del panel y en la grilla. Al completarse, `published: true` en el panel muestra también su resumen.
 
 ## Agregar un evento
 

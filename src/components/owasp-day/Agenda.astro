@@ -1,17 +1,17 @@
 ---
 // Agenda: src/content/owasp-day-2026/agenda.yaml. Una o dos sesiones por franja;
 // kind break/mate = pausa. Tracks: main/keynote/panel (amarillo) y lab (azul).
-// Con published (sections.talks) cada sesión con `talk` toma título, oradores y resumen de talks.yaml;
-// sin published solo se ve el texto genérico de agenda.yaml.
+// Cada sesión con `talk` toma título, oradores y resumen de talks.yaml si esa charla está publicada
+// (published: true, o `all`); si no, solo se ve el texto genérico de agenda.yaml. Ver src/lib/agenda.ts.
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { inline, paragraphs } from './format';
 import { resolveSession } from '~/lib/agenda';
 
-interface Props { event: CollectionEntry<'owaspDay'>['data']; published?: boolean }
-const { event: { agenda }, published = false } = Astro.props;
+interface Props { event: CollectionEntry<'owaspDay'>['data']; all?: boolean }
+const { event: { agenda }, all = false } = Astro.props;
 const byId = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id, 'es', { numeric: true });
 const slots = (await getCollection('owaspDayAgenda')).sort(byId);
-const talks = published ? new Map((await getCollection('owaspDayTalks')).map((t) => [t.id, t.data])) : new Map();
+const talks = new Map((await getCollection('owaspDayTalks')).map((t) => [t.id, t.data]));
 const trackLabel = { main: 'Charla', lab: 'Taller', keynote: 'Keynote', panel: 'Panel' } as const;
 const hasLab = slots.some(({ data }) => data.sessions.some((s) => s.track === 'lab'));
 ---
@@ -41,7 +41,7 @@ const hasLab = slots.some(({ data }) => data.sessions.some((s) => s.track === 'l
             <time datetime={/^\d{2}:\d{2}$/.test(slot.time) ? slot.time : undefined}>{slot.time}</time>
             <div class:list={['slot__sessions', { 'slot__sessions--2': slot.sessions.length > 1 }]}>
               {slot.sessions.map((raw) => {
-                const session = resolveSession(raw, raw.talk ? talks.get(raw.talk) : undefined, published);
+                const session = resolveSession(raw, raw.talk ? talks.get(raw.talk) : undefined, all);
                 const track = isBreak ? undefined : (raw.track ?? 'main');
                 return (
                   <div class="session">

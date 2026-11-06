@@ -1,23 +1,31 @@
 ---
-// Oradores: salen de las charlas de src/content/owasp-day-2026/talks.yaml, en el orden de la lista.
-// Una charla con dos oradores genera dos tarjetas. Las fotos se muestran en B/N;
-// sin foto se usa la silueta src/assets/owasp-day/speakers/placeholder.svg.
-// El título de la charla solo se muestra con showTalks (sections.talks).
+// Oradores: salen de las charlas de src/content/owasp-day-2026/talks.yaml, en el orden de la lista, y solo
+// los publicados (ver src/lib/agenda.ts). Una charla con dos oradores genera dos tarjetas; el panel, una por
+// panelista publicado. Las fotos se muestran en B/N; sin foto se usa la silueta
+// src/assets/owasp-day/speakers/placeholder.svg.
 import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import placeholder from '~/assets/owasp-day/speakers/placeholder.svg';
 import SocialIcon from '~/components/SocialIcon.astro';
 import { url } from '~/lib/events';
-import { fullName } from '~/lib/agenda';
+import { fullName, isPublished, visibleSpeakers } from '~/lib/agenda';
 import { inline } from './format';
 
-interface Props { event: CollectionEntry<'owaspDay'>['data']; showTalks?: boolean }
-const { event: { speakers: s }, showTalks = false } = Astro.props;
-const talks = (await getCollection('owaspDayTalks')).sort((a, b) => a.id.localeCompare(b.id, 'es', { numeric: true }));
+interface Props { event: CollectionEntry<'owaspDay'>['data']; all?: boolean }
+const { event: { speakers: s }, all = false } = Astro.props;
+const byId = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id, 'es', { numeric: true });
+const talks = (await getCollection('owaspDayTalks')).sort(byId);
+
+// Título genérico de cada charla (agenda.yaml), para las que todavía no se publican (ej. el panel).
+const generic = new Map<string, string>();
+for (const { data } of await getCollection('owaspDayAgenda')) for (const ses of data.sessions) if (ses.talk) generic.set(ses.talk, ses.title);
+
 // Fotos: ./speakers/<nombre>.jpg junto a talks.yaml. Las sirve src/pages/owasp-meetup-plus-2026/oradores/
 // (no se importan acá: ver ese archivo).
 const photoUrl = (photo?: string) => photo && url(`/owasp-meetup-plus-2026/oradores/${photo.replace(/^.*\/|\.[^.]+$/g, '')}.webp`);
-const speakers = talks.flatMap(({ data: t }) => t.speakers.map((sp) => ({ ...sp, talk: t.title, photoSrc: photoUrl(sp.photo) })));
+const speakers = talks.flatMap(({ id, data: t }) =>
+  visibleSpeakers(t, all).map((sp) => ({ ...sp, talk: isPublished(t, all) ? t.title : generic.get(id), photoSrc: photoUrl(sp.photo) })),
+);
 ---
 <section class="section section--dark speakers" id="oradores" aria-labelledby="oradores-title">
   <span class="deco deco--speakers-blue" aria-hidden="true"></span>
@@ -48,7 +56,7 @@ const speakers = talks.flatMap(({ data: t }) => t.speakers.map((sp) => ({ ...sp,
                 <a class="speaker__social" href={sp.linkedin} rel="noopener" aria-label={`LinkedIn de ${name}`}><SocialIcon name="linkedin" /></a>
               )}
             </p>
-            {showTalks && <p class="speaker__talk">{sp.talk}</p>}
+            {sp.talk && <p class="speaker__talk">{sp.talk}</p>}
           </li>
         );
       })}
@@ -57,7 +65,7 @@ const speakers = talks.flatMap(({ data: t }) => t.speakers.map((sp) => ({ ...sp,
           <span class="speaker--more__icon" aria-hidden="true"></span>
           <p class="speaker--more__title" set:html={inline(s.moreTitle, { hl: '' })} />
           <p class="speaker--more__text">{s.moreText}</p>
-          <a class="link-arrow" href={url(s.moreLink.url)}>{s.moreLink.label}</a>
+          {s.moreLink.label && s.moreLink.url && <a class="link-arrow" href={url(s.moreLink.url)}>{s.moreLink.label}</a>}
         </li>
       )}
     </ul>

@@ -91,6 +91,7 @@ const owaspDayTalks = defineCollection({
       language: z.enum(['es', 'en']).default('es'),
       level: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
       abstract: z.string().optional(),
+      published: z.boolean().default(false),   // true = la charla (título, resumen) y sus oradores se muestran
       speakers: z
         .array(
           z.object({
@@ -103,6 +104,7 @@ const owaspDayTalks = defineCollection({
             // no se importa ni se copia a dist/ hasta que Speakers.astro la usa (sections.speakers).
             photo: z.string().regex(/^\.\/speakers\/[\w-]+\.(jpe?g|png|webp)$/, 'Usá ./speakers/nombre.jpg').optional(),
             color: z.enum(['yellow', 'blue']).optional(),
+            published: z.boolean().optional(),   // sin esto hereda el de la charla; sirve para el panel
           }),
         )
         .default([]),

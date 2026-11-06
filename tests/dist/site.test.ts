@@ -6,14 +6,16 @@ import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import yaml from 'js-yaml';
 import { heroCtas, isOver, parseNow } from '../../src/lib/when.ts';
+import { fullName, isPublished, resolveSession, visibleSpeakers, type Talk } from '../../src/lib/agenda.ts';
 
 const dist = 'dist';
 const read = (p: string) => readFileSync(join(dist, p), 'utf8');
 const pages = (readdirSync(dist, { recursive: true }) as string[]).filter((p) => p.endsWith('.html'));
 const event = yaml.load(readFileSync('src/content/owasp-day-2026/event.yaml', 'utf8')) as any;
 const now = parseNow(process.env.NOW);
-interface TalkData { title: string; abstract?: string; speakers?: { name: string; lastName?: string; linkedin?: string }[] }
 const esc = (x: string) => x.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+type TalkData = Talk & { id: string; speakers: (Talk['speakers'][number] & { linkedin?: string; photo?: string })[] };
+const loadTalks = () => (yaml.load(readFileSync('src/content/owasp-day-2026/talks.yaml', 'utf8')) as TalkData[]).map((t) => ({ ...t, id: String(t.id) }));
 const OFFICIAL = 'https://owasp.org/chapters/uruguay';
 
 test('hay páginas compiladas', () => {
@@ -76,45 +78,59 @@ test('las secciones apagadas no están en el HTML publicado', () => {
     if (event.sections[name]) continue;
     assert.ok(!html.includes(`id="${id}"`), `la sección ${name} está apagada pero aparece`);
   }
-  // Los datos de talks.yaml (charlas y oradores) tampoco están en el HTML mientras no se publican.
+  // Charlas y oradores de talks.yaml: solo lo publicado está en el HTML.
   const eventHtml = [read('index.html'), read('owasp-meetup-plus-2026/index.html')].join('\n');
-  const talks = yaml.load(readFileSync('src/content/owasp-day-2026/talks.yaml', 'utf8')) as TalkData[];
+  const slots = yaml.load(readFileSync('src/content/owasp-day-2026/agenda.yaml', 'utf8')) as { sessions: { title: string }[] }[];
+  const genericTitles = new Set(slots.flatMap((s) => s.sessions.map((x) => x.title)));
+  const talks = loadTalks();
+  const shownNames = new Set(talks.flatMap((t) => visibleSpeakers(t, event.sections.talks)).map(fullName));
   for (const talk of talks) {
-    if (!event.sections.talks) {
-      assert.ok(!eventHtml.includes(esc(talk.title)) || talk.title === 'Panel de ciberdelito', `título visible: ${talk.title}`);
+    if (!isPublished(talk, event.sections.talks)) {
+      if (!genericTitles.has(talk.title)) assert.ok(!eventHtml.includes(esc(talk.title)), `título visible: ${talk.title}`);
       if (talk.abstract) assert.ok(!eventHtml.includes(esc(talk.abstract.slice(0, 60))), `resumen visible: ${talk.title}`);
     }
-    for (const sp of talk.speakers ?? []) {
-      const full = `${sp.name} ${sp.lastName ?? ''}`.trim();
-      const hidden = !event.sections.speakers && !event.sections.talks;
-      if (hidden) assert.ok(!eventHtml.includes(esc(full)) && !eventHtml.includes(esc(sp.linkedin ?? '\0')), `orador visible: ${full}`);
-      if (!event.sections.speakers) assert.ok(!eventHtml.includes(`Foto de ${full}`), `foto visible: ${full}`);
+    const visible = visibleSpeakers(talk, event.sections.talks);
+    for (const sp of talk.speakers) {
+      const full = fullName(sp);
+      if (visible.includes(sp)) assert.ok(eventHtml.includes(`Foto de ${esc(full)}`), `orador publicado sin tarjeta: ${full}`);
+      else if (!shownNames.has(full)) {
+        assert.ok(!eventHtml.includes(esc(full)), `orador visible sin publicar: ${full}`);
+        if (sp.linkedin) assert.ok(!eventHtml.includes(esc(sp.linkedin)), `LinkedIn visible sin publicar: ${full}`);
+      }
     }
   }
 });
 
-test('mientras no se publican oradores, sus fotos no entran al build', () => {
-  if (event.sections.speakers) return;
-  assert.ok(!existsSync(join(dist, 'owasp-meetup-plus-2026/oradores')), 'hay fotos de oradores publicadas');
-  const dir = 'src/content/owasp-day-2026/speakers';
+test('la agenda muestra cada charla publicada y el texto genérico del resto', () => {
+  if (!event.sections.agenda) return;
+  const html = read('owasp-meetup-plus-2026/index.html');
+  const talks = new Map(loadTalks().map((t) => [t.id, t]));
+  const slots = yaml.load(readFileSync('src/content/owasp-day-2026/agenda.yaml', 'utf8')) as { sessions: { title: string; by?: string; talk?: string }[] }[];
+  let abstracts = 0;
+  for (const slot of slots) for (const s of slot.sessions) {
+    const shown = resolveSession(s, s.talk ? talks.get(s.talk) : undefined, event.sections.talks);
+    assert.ok(html.includes(esc(shown.title)), `falta "${shown.title}" en la agenda`);
+    if (shown.by) assert.ok(html.includes(esc(shown.by)), `falta "${shown.by}" en la agenda`);
+    if (shown.talk?.abstract) abstracts++;
+  }
+  assert.equal(html.split('Ver resumen').length - 1, abstracts, 'cantidad de resúmenes publicados');
+});
+
+test('en dist/ solo están las fotos de los oradores publicados', () => {
+  const photoDir = 'src/content/owasp-day-2026/speakers';
+  const stem = (photo: string) => photo.replace(/^.*\/|\.[^.]+$/g, '');
+  const expected = loadTalks()
+    .flatMap((t) => visibleSpeakers(t, event.sections.talks))
+    .flatMap((sp) => (sp.photo ? [`${stem(sp.photo)}.webp`] : []));
+  const out = join(dist, 'owasp-meetup-plus-2026/oradores');
+  const found = existsSync(out) ? readdirSync(out) : [];
+  assert.deepEqual([...found].sort(), [...new Set(expected)].sort());
+  // Ningún original (con el nombre del orador) se copia tal cual a dist/.
   const hash = (f: string) => createHash('sha256').update(readFileSync(f)).digest('hex');
-  const originals = new Set(readdirSync(dir).filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).map((f) => hash(join(dir, f))));
+  const originals = new Set(readdirSync(photoDir).filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).map((f) => hash(join(photoDir, f))));
   for (const f of readdirSync(dist, { recursive: true }) as string[]) {
     if (/\.(jpe?g|png|webp)$/i.test(f)) assert.ok(!originals.has(hash(join(dist, f))), `foto de orador copiada a dist/: ${f}`);
   }
-});
-
-test('la agenda muestra el texto genérico hasta que se publican las charlas', () => {
-  if (!event.sections.agenda) return;
-  const html = read('owasp-meetup-plus-2026/index.html');
-  const slots = yaml.load(readFileSync('src/content/owasp-day-2026/agenda.yaml', 'utf8')) as { sessions: { title: string; by?: string }[] }[];
-  for (const slot of slots) for (const s of slot.sessions) {
-    if (!event.sections.talks) {
-      assert.ok(html.includes(esc(s.title)), `falta "${s.title}" en la agenda`);
-      if (s.by) assert.ok(html.includes(esc(s.by)), `falta "${s.by}" en la agenda`);
-    }
-  }
-  if (!event.sections.talks) assert.ok(!html.includes('Ver resumen'), 'hay resúmenes publicados');
 });
 
 test('los enlaces internos apuntan a archivos que existen', () => {
