@@ -136,7 +136,7 @@
 
 - id: "5"
   # Sitio de Nexa según la planilla: https://wearenexa.com
-  published: false
+  published: true
   title: "Una noche con ARTEX"
   language: es
   level: intermediate
@@ -151,6 +151,12 @@
         bio: "Líder de práctica en Nexa."
         linkedin: "https://www.linkedin.com/in/andresgo/"
         photo: ./speakers/andres-gomez.jpg
+      - name: "Javier"
+        lastName: "Gelós"
+        role: "Líder técnico · Nexa"
+        bio: "Líder técnico · Nexa."
+        linkedin: "https://www.linkedin.com/in/javiergelos/"
+        photo: ./speakers/javier-gelos.jpeg
 
 - id: panel
   # A definir: contenido del panel y panelistas. El panel se anuncia de a una persona: dejar la charla
