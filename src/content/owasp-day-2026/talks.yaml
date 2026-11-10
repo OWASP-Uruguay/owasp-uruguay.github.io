@@ -47,24 +47,22 @@
         photo: ./speakers/pablo-alzuri.jpg
 
 - id: "2"
-  published: false
+  published: true
   title: "Caminos del deseo: cómo hacer que las personas quieran ser seguras"
   language: es
   level: beginner
   abstract: |-
-    En los parques, la gente suele ignorar los senderos diseñados por los arquitectos y crean sus propios caminos sobre el pasto. Con el tiempo, esos recorridos se vuelven visibles. Se los conoce como Desire Paths, o caminos del deseo, y revelan una verdad incómoda: las personas no siempre hacen lo que esperamos, sino lo que les resulta más natural, sencillo o conveniente.
+    En los parques, las personas suelen ignorar los senderos diseñados y crear sus propios caminos sobre el césped. Estos recorridos, conocidos como Desire Paths o caminos del deseo, revelan una realidad: las personas no siempre siguen los caminos previstos, sino los que les resultan más convenientes.
 
-    En ciberseguridad nos pasa lo mismo.
+    En el desarrollo de software sucede algo similar. Diseñamos procesos, herramientas y controles de seguridad, pero los equipos encuentran atajos para evitarlos.
 
-    Diseñamos políticas, procedimientos, herramientas y controles esperando que las personas los sigan. Pero los desarrolladores encuentran formas de evitar verificaciones, los usuarios buscan alternativas a las restricciones y los equipos de seguridad terminan creando sus propios atajos.
+    ¿Y si, en lugar de intentar impedir esos comportamientos, empezáramos por comprenderlos?
 
-    ¿Y si en lugar de intentar impedir esto lo comprendemos?
+    Esta charla propone una perspectiva diferente sobre el desarrollo seguro: observar los caminos que realmente recorren los desarrolladores para diseñar prácticas de seguridad que quieran adoptar.
 
-    Esta charla propone mirar la seguridad desde una perspectiva diferente: observar los caminos que las personas realmente recorren para descubrir cómo diseñar controles que quieran utilizar.
+    A través de ejemplos y una metodología sencilla, exploraremos cómo convertir la fricción en oportunidades de mejora.
 
-    A través de ejemplos cotidianos, situaciones del desarrollo seguro de software y una metodología sencilla, exploraremos cómo transformar la fricción en oportunidades de mejora.
-
-    Porque quizás el futuro de la ciberseguridad no consista en construir cercas más altas, sino en diseñar mejores caminos.
+    Quizás el desafío no sea construir más barreras, sino diseñar mejores caminos.
   speakers:
       - name: "Santiago"
         lastName: "Ingold"
@@ -109,22 +107,23 @@
         # photo: ./speakers/antonio-bittencourt.jpg
 
 - id: "4"
-  published: false
+  published: true
   title: "ADversary: From User to Domain Admin"
   language: es
   level: beginner
   abstract: |-
-    ADversary: From User to Domain Admin es una charla práctica sobre cómo se puede comprometer un entorno de Active Directory desde una perspectiva ofensiva, empezando únicamente con una cuenta de dominio con pocos privilegios y avanzando hasta alcanzar el control del dominio.
-    Durante la charla veremos técnicas que aparecen de forma habitual en evaluaciones reales de Active Directory y también en entrenamientos avanzados. Hablaremos de enumeración, abuso de credenciales, ataques Kerberos, configuraciones inseguras, escalada de privilegios, movimiento lateral, análisis de rutas de ataque y otras técnicas que pueden terminar llevando a privilegios de Domain Admin.
-    La idea no es simplemente mostrar una colección de comandos o herramientas, sino entender cómo distintas debilidades dentro del entorno pueden conectarse entre sí y convertirse en una ruta de ataque completa. Queremos mostrar el razonamiento detrás de cada paso: qué información buscar, cómo interpretarla y cómo decidir cuál puede ser el siguiente movimiento.
-    También dedicaremos una parte de la charla al uso de Inteligencia Artificial aplicada al pentesting de Active Directory. Veremos ejemplos prácticos de cómo la IA puede ayudar a analizar la información obtenida durante la enumeración, interpretar relaciones y configuraciones, sugerir posibles rutas de ataque, generar o adaptar comandos y servir como apoyo durante distintas etapas de una evaluación.
-    Al mismo tiempo, hablaremos de sus limitaciones y de por qué utilizar IA no sustituye el conocimiento técnico necesario para entender y validar lo que realmente está ocurriendo en el entorno.
-    La charla está orientada a pentesters, red teamers, blue teamers, profesionales de seguridad, estudiantes y personas que ya tengan una base de Windows y Active Directory y quieran profundizar en seguridad ofensiva, rutas de ataque y nuevas formas de incorporar IA a este tipo de evaluaciones.
+    Una charla práctica sobre cómo comprometer un entorno de Active Directory desde una perspectiva ofensiva: empezando con una cuenta de dominio de pocos privilegios y avanzando hasta el control total del dominio.
+
+    Veremos técnicas que aparecen de forma habitual en evaluaciones reales de AD: enumeración, abuso de credenciales, ataques Kerberos, configuraciones inseguras, escalada de privilegios, movimiento lateral y análisis de rutas de ataque hasta llegar a Domain Admin.
+
+    La idea no es mostrar una colección de comandos, sino entender cómo distintas debilidades se conectan entre sí para formar una ruta de ataque completa: qué información buscar, cómo interpretarla y cómo decidir el siguiente movimiento.
+
+    Orientada a pentesters, red teamers, blue teamers, profesionales de seguridad y estudiantes con base en Windows y Active Directory que quieran profundizar en seguridad ofensiva.
   speakers:
       - name: "Wander"
         lastName: "Astorga"
-        role: "Ingeniero de Telecomunicaciones · DevSecOps"
-        bio: "Ingeniero de Telecomunicaciones, CPTS, DevSecOps"
+        role: "Cybersecurity Engineer"
+        bio: "Cybersecurity Engineer."
         linkedin: "https://www.linkedin.com/in/wanderastorga/"
         photo: ./speakers/wander-astorga.jpg
       - name: "German"
@@ -174,17 +173,18 @@
   speakers: []
 
 - id: "6"
-  published: false
-  title: "Confiás en tu IA. El atacante cuenta con eso"
+  published: true
+  title: "Confiás en tu IA. El atacante cuenta con eso."
   language: es
   level: intermediate
   abstract: |-
     Cómo manipular sus respuestas y acciones sin tocar el modelo.
+
     Un modelo puede funcionar exactamente como fue diseñado y, aun así, responder o actuar sobre una realidad manipulada. Esta charla analiza cómo se comprometen sus datos, fuentes, contexto y herramientas sin necesidad de modificar el modelo.
   speakers:
       - name: "Maximiliano"
         lastName: "Alonzo"
-        role: "Especialista en ciberseguridad"
-        bio: "Especialista en ciberseguridad, desarrollo seguro, auditorías y pentesting; docente y conferencista."
+        role: "Analista en Seguridad Informática"
+        bio: "Analista en Seguridad Informática"
         linkedin: "https://www.linkedin.com/in/maximiliano-alonzo-18075720/"
-        photo: ./speakers/maximiliano-alonzo.jpg
+        photo: ./speakers/maximiliano-alonzo.jpeg
