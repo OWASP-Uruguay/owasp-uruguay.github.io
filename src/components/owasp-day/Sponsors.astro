@@ -1,42 +1,38 @@
 ---
-// Sponsors: src/content/owasp-day/sponsors.yaml, agrupados por nivel.
-// Sin logo se muestra el recuadro punteado con el nombre.
+// Quienes acompañan el evento: src/content/owasp-day-2026/sponsors.yaml, agrupados por nivel.
+// En la web no se les dice "sponsors": los niveles son Apoyan, Venue y Comunidad.
+// Todos los niveles comparten la misma grilla de columnas, así las tarjetas quedan alineadas entre filas.
+// Dentro de un nivel, los logos se igualan por área visual (no por alto): uno ancho y uno cuadrado
+// "pesan" lo mismo. `scale` en el YAML corrige casos puntuales.
+// Sin logo se muestra el recuadro punteado con el nombre. La sección no tiene encabezado visible:
+// los títulos de cada nivel alcanzan (el h2 queda solo para lectores de pantalla).
 import { Image } from 'astro:assets';
-import { getCollection, type CollectionEntry } from 'astro:content';
-import Arrow from '~/components/Arrow.astro';
-import { url } from '~/lib/events';
-import { inline } from './format';
+import { getCollection } from 'astro:content';
 
-interface Props { event: CollectionEntry<'owaspDay'>['data'] }
-const { sponsors: s } = Astro.props.event;
 const all = (await getCollection('owaspDaySponsors')).sort((a, b) => a.id.localeCompare(b.id));
 const tiers = [
-  { id: 'platino', name: 'Platino', size: 'xl' },
-  { id: 'oro', name: 'Oro', size: 'lg' },
-  { id: 'plata', name: 'Plata', size: 'md' },
-  { id: 'comunidad', name: 'Comunidad', size: 'sm' },
+  { id: 'apoyan', name: 'Apoyan' },
+  { id: 'venue', name: 'Venue' },
+  { id: 'comunidad', name: 'Comunidad' },
 ] as const;
+const groups = tiers
+  .map((tier) => ({ ...tier, list: all.filter((sp) => sp.data.tier === tier.id).map((sp) => sp.data) }))
+  .filter((g) => g.list.length > 0);
+// Factor de ancho del logo: raíz de la proporción ancho/alto, así ancho × alto queda constante.
+const k = (sp: (typeof groups)[number]['list'][number]) =>
+  sp.logo ? Math.sqrt(sp.logo.width / sp.logo.height) * sp.scale : 1;
 ---
 <section class="section section--light sponsors" id="sponsors" aria-labelledby="sponsors-title">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Patrocinadores</p>
-        <span class="bar" aria-hidden="true"></span>
-        <h2 class="section-title" id="sponsors-title" set:html={inline(s.title)} />
-      </div>
-      <a class="btn btn--black" href={url(s.url)}>{s.button} <Arrow /></a>
-    </div>
-
-    {tiers.map((tier) => {
-      const list = all.filter((sp) => sp.data.tier === tier.id).map((sp) => sp.data);
-      return list.length > 0 && (
-        <div class="tier">
-          <h3 class="tier__name">{tier.name}</h3>
-          <ul class:list={['tier__logos', `tier__logos--${tier.size}`]}>
-            {list.map((sp) => {
+    <h2 class="visually-hidden" id="sponsors-title">Nos acompañan</h2>
+    <div class="backers">
+      {groups.map((g) => (
+        <div class:list={['backers__group', `backers__group--${g.id}`]}>
+          <h3 class="tier__name">{g.name}</h3>
+          <ul class="backers__logos" role="list">
+            {g.list.map((sp) => {
               const content = sp.logo
-                ? <Image src={sp.logo} alt={sp.name} height={160} />
+                ? <Image src={sp.logo} alt={sp.name} width={Math.round(2 * 96 * k(sp))} style={`--k: ${k(sp).toFixed(3)}`} />
                 : <span class="sponsor__ph">{sp.name}</span>;
               return (
                 <li class="sponsor">
@@ -46,7 +42,7 @@ const tiers = [
             })}
           </ul>
         </div>
-      );
-    })}
+      ))}
+    </div>
   </div>
 </section>

@@ -1,41 +1,52 @@
-# OWASP Meetup+ 2026: patrocinadores. Se agrupan por nivel; dentro de cada nivel, en el orden de la lista.
+# OWASP Meetup+ 2026: quienes acompañan el evento. En la web no se les dice "sponsors".
+# Se agrupan por nivel en este orden: apoyan, venue, comunidad; dentro de cada nivel, en el orden de la lista.
 #
 # Campos de cada sponsor:
-#   tier   nivel: platino, oro, plata o comunidad
+#   tier   nivel: apoyan, venue o comunidad
 #   name   nombre de la marca (texto alternativo del logo)
-#   logo   archivo del logo, ej. ./sponsors/marca.svg (opcional).
+#   logo   archivo del logo, ej. ./sponsors/marca.svg (opcional). Recortado al contenido y con fondo
+#          transparente; se muestra sobre blanco.
 #          Sin logo se muestra un recuadro punteado con el nombre (sirve de lugar reservado).
-#   url    sitio web de la marca (opcional)
+#   url    sitio institucional de la marca (opcional): el logo pasa a ser un enlace
+#   scale  ajuste óptico del tamaño del logo (opcional, 1 por defecto). Los logos de un mismo nivel ya se
+#          igualan por área visual; usalo solo si alguno se ve más "pesado" o más liviano que el resto (ej. 0.9).
 # Un nivel sin sponsors no se muestra.
 
-- tier: platino
-  name: Tu logo aquí
-- tier: platino
-  name: Tu logo aquí
+# Apoyan: mismo aporte, mismo protagonismo (tarjetas del mismo tamaño).
+- tier: apoyan
+  name: Krav Maga Hacking
+  logo: ./sponsors/krav-maga-hacking.png
+  url: https://www.kmhcorp.com/
+  scale: 1.05  # letras finas: a igual área se ve más liviano
+- tier: apoyan
+  name: Nexa
+  logo: ./sponsors/nexa.png
+  url: https://www.wearenexa.com/
+- tier: apoyan
+  name: QoxIT
+  logo: ./sponsors/qoxit.svg
+  url: https://www.qoxit.com/
+- tier: apoyan
+  name: Sabyk by Domus Global
+  logo: ./sponsors/sabyk.svg
+  url: https://www.sabyk.com/
+  scale: 1.12  # la bajada "by Domus Global" ocupa área: sin esto la marca queda chica
+- tier: apoyan
+  name: Tilsor
+  logo: ./sponsors/tilsor.png
+  url: https://tilsor.com.uy/
 
-- tier: oro
-  name: Logo
-- tier: oro
-  name: Logo
-- tier: oro
-  name: Logo
-
-- tier: plata
-  name: Logo
-- tier: plata
-  name: Logo
-- tier: plata
-  name: Logo
-- tier: plata
-  name: Logo
+- tier: venue
+  name: Antel
+  logo: ./sponsors/antel.svg
+  url: https://www.antel.com.uy/
 
 - tier: comunidad
-  name: Comunidad
+  name: InfoSecMap
+  logo: ./sponsors/infosecmap.png
+  url: https://infosecmap.com/
+  scale: 1.25  # globo con texto chico adentro: necesita más tamaño para leerse
 - tier: comunidad
-  name: Comunidad
-- tier: comunidad
-  name: Universidad
-- tier: comunidad
-  name: Meetup
-- tier: comunidad
-  name: Comunidad
+  name: ISACA Montevideo Chapter
+  logo: ./sponsors/isaca.png
+  url: https://engage.isaca.org/montevideochapter/home
