@@ -487,7 +487,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .deco--dots-dark { display: none; }
   .deco--speakers-blue { width: 240px; height: 240px; right: -130px; top: -130px; }
 
-  .speakers__grid { grid-template-columns: 1fr; gap: 48px; }
+  .speakers__grid { grid-template-columns: 1fr; gap: 0; }
+  /* Línea sutil entre un orador y el siguiente: la del título de la charla separa a la persona de su charla. */
+  .speaker + .speaker { margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, .22); }
+  .speaker + .speaker--more { margin-top: 40px; padding-top: 20px; border-top: 2px dashed #3a3a3a; }
   .speaker { display: grid; grid-template-columns: 112px 1fr; column-gap: 20px; align-items: start; }
   .speaker__photo { width: 112px; margin: 0; grid-row: span 3; }
   .speaker__role { margin: 6px 0 10px; }
