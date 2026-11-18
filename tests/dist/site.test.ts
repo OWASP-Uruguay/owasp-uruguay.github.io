@@ -34,7 +34,7 @@ test('todas las páginas tienen el aviso de sitio no oficial con link al capítu
 test('la portada muestra el OWASP Meetup+ mientras no terminó', () => {
   const home = read('index.html');
   const live = !isOver(event.date, now);
-  assert.equal(home.includes('id="cfs"'), live);
+  assert.equal(home.includes('id="cfs"'), live && event.sections.cfs);
   if (live) assert.match(home, /rel="canonical" href="[^"]*\/owasp-meetup-plus-2026\/"/);
 });
 
@@ -60,7 +60,7 @@ test('los botones del evento coinciden con la fecha y event.yaml', () => {
   const ctas = heroCtas({ cfpUrl: event.cfp.url, cfpDeadline: event.cfp.deadline, registrationUrl: event.registration.url, now });
   const cfpOpen = ctas.some((c) => c.id === 'cfp');
   assert.equal(html.includes(`href="${event.cfp.url.replaceAll('&', '&amp;')}"`), cfpOpen, 'link al form del CFS');
-  assert.equal(html.includes('Convocatoria cerrada'), !cfpOpen);
+  assert.equal(html.includes('Convocatoria cerrada'), !cfpOpen && event.sections.cfs);
   const reg = [...html.matchAll(/<(a|span)\b[^>]*data-cta="registration"[^>]*>/g)].map((m) => m[0]);
   assert.ok(reg.length > 0, 'falta el botón de registro');
   for (const tag of reg) {
@@ -73,7 +73,7 @@ test('los botones del evento coinciden con la fecha y event.yaml', () => {
 test('las secciones apagadas no están en el HTML publicado', () => {
   const html = pages.map(read).join('\n');
   assert.ok(!html.includes('class="dev-hidden"'), 'hay secciones marcadas como ocultas: ¿SHOW_HIDDEN definida?');
-  const ids = { speakers: 'oradores', agenda: 'agenda', sponsors: 'sponsors', faq: 'faq' } as const;
+  const ids = { cfs: 'cfs', speakers: 'oradores', agenda: 'agenda', sponsors: 'sponsors', faq: 'faq' } as const;
   for (const [name, id] of Object.entries(ids)) {
     if (event.sections[name]) continue;
     assert.ok(!html.includes(`id="${id}"`), `la sección ${name} está apagada pero aparece`);

@@ -151,6 +151,7 @@ const owaspDay = defineCollection({
     cfp: z.object({ url: z.url(), deadline: isoDay }),
     registration: z.object({ url: z.union([z.url(), z.literal('')]).default(''), provider: z.string().default('Eventbrite') }),
     sections: z.object({
+      cfs: z.boolean().default(true),       // tarjeta del call for speakers
       speakers: z.boolean().default(false),
       agenda: z.boolean().default(false),
       talks: z.boolean().default(false),   // detalle de cada charla en la agenda (título, oradores, resumen)

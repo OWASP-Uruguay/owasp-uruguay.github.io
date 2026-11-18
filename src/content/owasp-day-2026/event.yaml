@@ -25,11 +25,13 @@ registration:
 
 # Secciones que todavía no se publican. true = se ve en producción.
 # Para verlas en tu computadora sin tocar esto: SHOW_HIDDEN=all npm run dev
+#   cfs       la sección del call for speakers ("Participá"). Apagada, no queda ni en el HTML ni en el menú.
 #   agenda    la agenda. Cada sesión con charla muestra "Charla N / TBD" hasta que esa charla se publica.
 #   talks     publica TODAS las charlas y oradores de talks.yaml de golpe. Normalmente en false: cada charla
 #             se publica con `published: true` en talks.yaml, a medida que se anuncian.
 #   speakers  la grilla de oradores. Aparece sola cuando hay al menos un orador publicado.
 sections:
+  cfs: false
   speakers: true
   agenda: true
   talks: false
