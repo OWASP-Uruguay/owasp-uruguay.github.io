@@ -9,7 +9,7 @@
 # Las fechas van entre comillas con formato "AAAA-MM-DD". Hora de Montevideo (UTC-3).
 
 title: OWASP Meetup+ Uruguay 2026
-description: "OWASP Meetup+ Uruguay 2026: una jornada gratuita sobre seguridad de aplicaciones, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
+description: "OWASP Meetup+ Uruguay 2026: una jornada gratuita sobre ciberseguridad, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
 date: "2026-11-30"
 # Vacío = "Horario a confirmar". Cuando se confirme: "09:00 a 17:30"
 time: "09:00 a 18:00"
@@ -37,7 +37,7 @@ sections:
   faq: true
 
 hero:
-  tagline: Una jornada abierta y gratuita sobre seguridad de aplicaciones.
+  tagline: Una jornada abierta y gratuita sobre ciberseguridad.
 
 about:
   title: Un día para hablar de *ciberseguridad*.

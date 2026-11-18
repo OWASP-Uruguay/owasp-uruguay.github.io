@@ -33,7 +33,7 @@ const talksLabel = 'Incluye charlas y oradores sin publicar';
 const [cta] = heroCtas({ cfpUrl: event.cfp.url, cfpDeadline: event.cfp.deadline, registrationUrl: event.registration.url, now: NOW });
 const anchors = [
   { label: 'Acerca de', href: '#acerca' },
-  { label: 'Participá', href: '#cfs' },
+  // { label: 'Participá', href: '#cfs' },
   ...(showSpeakers ? [{ label: 'Oradores', href: '#oradores' }] : []),
   ...(on.agenda ? [{ label: 'Agenda', href: '#agenda' }] : []),
   { label: 'Sede', href: '#sede' },
@@ -50,7 +50,7 @@ const anchors = [
 >
   <Hero event={event} />
   <About event={event} />
-  <CallForSpeakers event={event} />
+  <!-- <CallForSpeakers event={event} /> -->
   {showSpeakers && (
     <Hidden forced={forced.has('speakers') || forced.has('talks')} label={forced.has('speakers') ? undefined : talksLabel}>
       <Speakers event={event} all={on.talks} />
