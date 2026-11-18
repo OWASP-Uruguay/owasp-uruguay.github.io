@@ -9,7 +9,7 @@
 # Las fechas van entre comillas con formato "AAAA-MM-DD". Hora de Montevideo (UTC-3).
 
 title: OWASP Meetup+ Uruguay 2026
-description: "OWASP Meetup+ Uruguay 2026: una jornada gratuita sobre seguridad de aplicaciones, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
+description: "OWASP Meetup+ Uruguay 2026: una jornada gratuita sobre ciberseguridad, el lunes 30 de noviembre de 2026 en el Auditorio Mario Benedetti de la Torre de las Telecomunicaciones de ANTEL, Montevideo."
 date: "2026-11-30"
 # Vacío = "Horario a confirmar". Cuando se confirme: "09:00 a 17:30"
 time: "09:00 a 18:00"
@@ -25,11 +25,13 @@ registration:
 
 # Secciones que todavía no se publican. true = se ve en producción.
 # Para verlas en tu computadora sin tocar esto: SHOW_HIDDEN=all npm run dev
+#   cfs       la sección del call for speakers ("Participá"). Apagada, no queda ni en el HTML ni en el menú.
 #   agenda    la agenda. Cada sesión con charla muestra "Charla N / TBD" hasta que esa charla se publica.
 #   talks     publica TODAS las charlas y oradores de talks.yaml de golpe. Normalmente en false: cada charla
 #             se publica con `published: true` en talks.yaml, a medida que se anuncian.
 #   speakers  la grilla de oradores. Aparece sola cuando hay al menos un orador publicado.
 sections:
+  cfs: false
   speakers: true
   agenda: true
   talks: false
@@ -37,7 +39,7 @@ sections:
   faq: true
 
 hero:
-  tagline: Una jornada abierta y gratuita sobre seguridad de aplicaciones.
+  tagline: Una jornada abierta y gratuita sobre ciberseguridad.
 
 about:
   title: Un día para hablar de *ciberseguridad*.

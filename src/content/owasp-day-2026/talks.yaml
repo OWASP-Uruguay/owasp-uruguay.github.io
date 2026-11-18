@@ -72,8 +72,7 @@
         photo: ./speakers/santiago-ingold.jpg
 
 - id: "3"
-  # Co-speaker según la planilla: Antônio Bittencourt (sin LinkedIn ni empresa en la planilla).
-  published: false
+  published: true
   title: "When AI Agents Meet Payment APIs: The New Authorization Problem"
   language: en
   level: advanced
@@ -103,8 +102,8 @@
       - name: "Antônio"
         lastName: "Bittencourt"
         role: "TL Cloud & Platform"
-        # linkedin: FALTA (pasar el perfil)
-        # photo: ./speakers/antonio-bittencourt.jpg
+        linkedin: "https://www.linkedin.com/in/antonio-bittencourt/"
+        photo: ./speakers/antonio-bittencourt.jpg
 
 - id: "4"
   published: true

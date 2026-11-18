@@ -40,7 +40,7 @@ Lo que se cambia en `event.yaml`:
 
 - `registration.url`: el link de Eventbrite. Vacío, el botón de registro se ve deshabilitado con "próximamente".
 - `time`: el horario, por ejemplo `"09:00 a 17:30"`. Vacío, se lee "Horario a confirmar".
-- `sections`: agenda, charlas, oradores, sponsors y FAQ. En `false` no se publican: no quedan ni en el HTML. Para verlas en local sin tocar el archivo, `npm run dev:all` (aparecen con un borde rojo punteado).
+- `sections`: call for speakers (`cfs`), agenda, charlas, oradores, sponsors y FAQ. En `false` no se publican: no quedan ni en el HTML. Para verlas en local sin tocar el archivo, `npm run dev:all` (aparecen con un borde rojo punteado).
 
 ### Agenda y charlas
 
