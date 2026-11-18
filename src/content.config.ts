@@ -126,10 +126,11 @@ const owaspDaySponsors = defineCollection({
   loader: yamlList('sponsors.yaml'),
   schema: ({ image }) =>
     z.object({
-      tier: z.enum(['platino', 'oro', 'plata', 'comunidad']),
+      tier: z.enum(['apoyan', 'venue', 'comunidad']),
       name: z.string(),
       logo: image().optional(),
       url: z.url().optional(),
+      scale: z.number().positive().default(1),   // ajuste óptico del tamaño del logo
     }),
 });
 
@@ -191,7 +192,6 @@ const owaspDay = defineCollection({
       lat: z.number(),                  // coordenadas del marcador del mapa
       lon: z.number(),
     }),
-    sponsors: z.object({ title: z.string(), button: z.string(), url: z.string() }),
     faq: z.object({ intro: z.string().optional() }),
   }),
 });

@@ -62,7 +62,8 @@ const anchors = [
     </Hidden>
   )}
   <Venue event={event} />
-  {on.sponsors && <Hidden forced={forced.has('sponsors')}><Sponsors event={event} /></Hidden>}
   {on.faq && <Hidden forced={forced.has('faq')}><Faq event={event} /></Hidden>}
   <Conduct />
+  {/* Quienes acompañan: al final, justo antes del pie. */}
+  {on.sponsors && <Hidden forced={forced.has('sponsors')}><Sponsors /></Hidden>}
 </Base>

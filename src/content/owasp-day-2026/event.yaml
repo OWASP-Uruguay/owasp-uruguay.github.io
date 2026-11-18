@@ -35,7 +35,7 @@ sections:
   speakers: true
   agenda: true
   talks: false
-  sponsors: false
+  sponsors: true
   faq: true
 
 hero:
@@ -91,11 +91,6 @@ venue:
   # Marcador del mapa (OpenStreetMap)
   lat: -34.892135
   lon: -56.194453
-
-sponsors:
-  title: Gracias a quienes lo hacen posible
-  button: Quiero ser sponsor
-  url: https://owasp.org/chapters/uruguay
 
 faq:
   intro: ¿Otra duda? Escribinos por el [Slack de OWASP](https://owasp.org/slack/invite), canal #owasp-uruguay.

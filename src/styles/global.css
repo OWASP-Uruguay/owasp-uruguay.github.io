@@ -345,21 +345,30 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .map svg { width: 100%; height: auto; border-radius: 50% 50% 4px 4px / 42% 42% 4px 4px; }
 .map figcaption { margin-top: 14px; color: var(--c-grey); font-size: .85rem; }
 
-/* Sponsors */
-.tier { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid #d9d9d9; align-items: center; }
+/* Sponsors ("Nos acompañan"): Apoyan, Venue y Comunidad sobre una misma grilla de columnas.
+   Escritorio: Apoyan ocupa las 5 columnas; abajo Venue (1) y Comunidad (el resto), alineadas con las de arriba.
+   --c es el lado del cuadrado de referencia: cada logo mide --c × --k de ancho (--k sale de su proporción),
+   así todos los logos de un nivel tienen la misma área visual. */
+.backers { --gap: 16px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--gap); }
+.backers__group { border-top: 1px solid #d9d9d9; padding: 28px 0 36px; --c: 66px; --h: 104px; }
+.backers__group--apoyan { grid-column: 1 / -1; --c: 80px; --h: 128px; }
+.sponsors { padding-block: clamp(56px, 7vw, 104px); background: var(--c-paper); }  /* fondo gris: se separa de Código de conducta (blanco) y las tarjetas blancas resaltan */
+.backers__group--apoyan:first-child { border-top: 0; padding-top: 0; }  /* sin encabezado: la primera fila no lleva línea */
+.backers__group--venue { grid-column: span 1; }
+.backers__group--comunidad { grid-column: 2 / -1; }
+.backers__group:last-child, .backers__group--venue { padding-bottom: 0; }
+.backers .tier__name { margin-bottom: 20px; }
+.backers__logos { display: grid; gap: var(--gap); grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.backers__group--venue .backers__logos { grid-template-columns: minmax(0, 1fr); }
+.backers__group--comunidad .backers__logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .tier__name { font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
 .tier__name::before { content: ""; display: block; width: 32px; height: 6px; background: var(--c-yellow); margin-bottom: 12px; }
-.tier__logos { display: grid; gap: 16px; }
-.tier__logos--xl { grid-template-columns: repeat(2, 1fr); }
-.tier__logos--lg { grid-template-columns: repeat(3, 1fr); }
-.tier__logos--md { grid-template-columns: repeat(4, 1fr); }
-.tier__logos--sm { grid-template-columns: repeat(5, 1fr); }
-.sponsor { display: grid; place-items: center; border: 2px dashed #bdbdbd; border-radius: 4px; color: #6b6b6b; font-weight: 600; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; text-align: center; padding: 12px; }
-.tier__logos--xl .sponsor { height: 150px; font-size: 1rem; }
-.tier__logos--lg .sponsor { height: 116px; }
-.tier__logos--md .sponsor { height: 92px; }
-.tier__logos--sm .sponsor { height: 72px; font-size: .72rem; }
-.sponsor img { max-height: 70%; max-width: 80%; width: auto; }
+.sponsor { display: grid; place-items: center; height: var(--h, 104px); border: 2px dashed #bdbdbd; border-radius: 4px; background: var(--c-white); color: #6b6b6b; font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; text-align: center; padding: 12px; }
+.sponsor:has(img) { border: 1px solid #e3e3e3; padding: 0; }
+.sponsor:has(> a) { padding: 0; }
+.sponsor > a { display: grid; place-items: center; width: 100%; height: 100%; min-height: 44px; border-radius: 3px; transition: box-shadow .15s ease; }
+.sponsor > a:hover { box-shadow: inset 0 0 0 2px var(--c-yellow); }
+.sponsor img { display: block; width: calc(var(--c) * var(--k, 1)); height: auto; max-width: 84%; max-height: 70%; object-fit: contain; }
 
 /* CTA band */
 .cta-band { position: relative; overflow: hidden; overflow: clip; background: var(--c-yellow); color: var(--c-black); padding-block: clamp(72px, 9vw, 128px); }
@@ -415,7 +424,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 1080px) {
   .speakers__grid { grid-template-columns: repeat(2, 1fr); }
   .site-footer__grid { grid-template-columns: 1fr 1fr; }
-  .tier__logos--sm { grid-template-columns: repeat(3, 1fr); }
   .deco--dots-dark { display: none; }       /* would overlap the section title */
 }
 
@@ -513,15 +521,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .deco--agenda-quarter { width: 110px; height: 110px; }
 
   .venue__list div { grid-template-columns: 1fr; gap: 4px; }
-  .tier { grid-template-columns: 1fr; gap: 16px; }
-  .tier__logos { gap: 10px; }
-  .tier__logos--lg { grid-template-columns: repeat(3, 1fr); }
-  .tier__logos--md { grid-template-columns: repeat(2, 1fr); }
-  .tier__logos--xl .sponsor { height: 96px; font-size: .78rem; }
-  .tier__logos--lg .sponsor { height: 76px; font-size: .72rem; }
-  .tier__logos--md .sponsor { height: 64px; }
-  .tier__logos--sm .sponsor { height: 56px; font-size: .62rem; letter-spacing: .06em; }
-  .tier { padding: 22px 0; }
   .deco--cta-quarter { width: 150px; }
   .deco--cta-dots { display: none; }
   .site-footer__grid { grid-template-columns: 1fr 1fr; }
@@ -560,4 +559,30 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .event-pill:hover { background: #ffd83d; }
 @media (max-width: 900px) {
   .event-pill { order: -1; align-self: flex-start; font-size: 1.05rem; }
+}
+
+/* Sponsors en tablet: 3 columnas; Apoyan queda 3 + 2 centradas, todas del mismo tamaño. */
+@media (max-width: 900px) {
+  .backers { --gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .backers__group { --c: 60px; --h: 96px; }
+  .backers__group--apoyan { --c: 72px; --h: 112px; }
+  .backers__group--apoyan .backers__logos { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .backers__group--apoyan .sponsor { grid-column: span 2; }
+  .backers__group--comunidad .backers__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 561px) and (max-width: 900px) {
+  .backers__group--apoyan .sponsor:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
+  .backers__group--apoyan .sponsor:nth-child(3n+1):last-child { grid-column: 3 / span 2; }
+}
+/* Teléfono: 2 columnas; Apoyan queda 2 + 2 + 1 centrada; Venue y Comunidad en filas propias. */
+@media (max-width: 560px) {
+  .backers { --gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .backers__group { padding: 22px 0 28px; --c: 54px; --h: 84px; }
+  .backers__group--apoyan { --c: 58px; --h: 92px; }
+  .backers__group--venue, .backers__group--comunidad { grid-column: 1 / -1; }
+  .backers__group--venue { padding-bottom: 28px; }
+  .backers__group--apoyan .backers__logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .backers__group--apoyan .sponsor { grid-column: span 2; }
+  .backers__group--apoyan .sponsor:nth-child(2n+1):last-child { grid-column: 2 / span 2; }
+  .backers__group--venue .backers__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
