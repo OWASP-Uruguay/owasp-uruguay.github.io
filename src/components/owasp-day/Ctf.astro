@@ -1,0 +1,22 @@
+---
+// CTF: desafío TILIA, cortesía de Tilsor. Textos en event.yaml (ctf).
+import type { CollectionEntry } from 'astro:content';
+import { inline, paragraphs } from './format';
+
+interface Props { event: CollectionEntry<'owaspDay'>['data'] }
+const { ctf } = Astro.props.event;
+---
+<section class="section section--light ctf" id="ctf" aria-labelledby="ctf-title">
+  <div class="container ctf__inner">
+    <div>
+      <p class="eyebrow">{ctf.eyebrow}</p>
+      <span class="bar" aria-hidden="true"></span>
+      <h2 class="section-title" id="ctf-title" set:html={inline(ctf.title)} />
+    </div>
+    <div>
+      <p class="lead" set:html={inline(ctf.lead, { hl: false })} />
+      {paragraphs(ctf.text).map((p) => <p set:html={p} />)}
+      <p class="ctf__when" set:html={inline(ctf.when, { hl: false })} />
+    </div>
+  </div>
+</section>

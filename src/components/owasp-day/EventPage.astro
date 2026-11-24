@@ -12,6 +12,7 @@ import Speakers from './Speakers.astro';
 import Agenda from './Agenda.astro';
 import Venue from './Venue.astro';
 import Sponsors from './Sponsors.astro';
+import Ctf from './Ctf.astro';
 import Faq from './Faq.astro';
 import Conduct from './Conduct.astro';
 import Hidden from './Hidden.astro';
@@ -36,6 +37,7 @@ const anchors = [
   ...(on.cfs ? [{ label: 'Participá', href: '#cfs' }] : []),
   ...(showSpeakers ? [{ label: 'Oradores', href: '#oradores' }] : []),
   ...(on.agenda ? [{ label: 'Agenda', href: '#agenda' }] : []),
+  ...(on.ctf ? [{ label: 'CTF', href: '#ctf' }] : []),
   { label: 'Sede', href: '#sede' },
   ...(on.faq ? [{ label: 'FAQ', href: '#faq' }] : []),
 ];
@@ -61,6 +63,7 @@ const anchors = [
       <Agenda event={event} all={on.talks} />
     </Hidden>
   )}
+  {on.ctf && <Hidden forced={forced.has('ctf')}><Ctf event={event} /></Hidden>}
   <Venue event={event} />
   {on.faq && <Hidden forced={forced.has('faq')}><Faq event={event} /></Hidden>}
   <Conduct />

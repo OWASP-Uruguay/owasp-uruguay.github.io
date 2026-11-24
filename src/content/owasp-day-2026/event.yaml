@@ -30,10 +30,12 @@ registration:
 #   talks     publica TODAS las charlas y oradores de talks.yaml de golpe. Normalmente en false: cada charla
 #             se publica con `published: true` en talks.yaml, a medida que se anuncian.
 #   speakers  la grilla de oradores. Aparece sola cuando hay al menos un orador publicado.
+#   ctf       la sección del CTF (desafío TILIA). Apagada, no queda ni en el HTML ni en el menú.
 sections:
   cfs: false
   speakers: true
   agenda: true
+  ctf: true
   talks: false
   sponsors: true
   faq: true
@@ -91,6 +93,14 @@ venue:
   # Marcador del mapa (OpenStreetMap)
   lat: -34.892135
   lon: -56.194453
+
+# CTF: desafío TILIA, cortesía de Tilsor (textos del cartel).
+ctf:
+  eyebrow: CTF · Cortesía de Tilsor
+  title: Te invitamos a jugar contra *la IA*
+  lead: ¡Entrá al desafío TILIA y llevate un premio si lográs estar entre los más rápidos!
+  text: Este es un juego en el que cada participante asume el rol de una persona curiosa (o malintencionada) que pone a prueba los límites de TILIA para hacerla confesar secretos, revelar códigos prohibidos, infiltrar una orden oculta o consultar datos fuera de su alcance.
+  when: El desafío transcurre mientras dure el evento. Los ganadores se anuncian en el cierre.
 
 faq:
   intro: ¿Otra duda? Escribinos por el [Slack de OWASP](https://owasp.org/slack/invite), canal #owasp-uruguay.
