@@ -105,6 +105,7 @@ const owaspDayTalks = defineCollection({
             photo: z.string().regex(/^\.\/speakers\/[\w-]+\.(jpe?g|png|webp)$/, 'Usá ./speakers/nombre.jpg').optional(),
             color: z.enum(['yellow', 'blue']).optional(),
             published: z.boolean().optional(),   // sin esto hereda el de la charla; sirve para el panel
+            moderator: z.boolean().optional(),   // modera el panel: en la agenda figura como "Modera: ..."
           }),
         )
         .default([]),

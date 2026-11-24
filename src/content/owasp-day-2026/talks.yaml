@@ -157,19 +157,35 @@
         photo: ./speakers/javier-gelos.jpeg
 
 - id: panel
-  # A definir: contenido del panel y panelistas. El panel se anuncia de a una persona: dejar la charla
-  # en `published: false` (la agenda sigue mostrando "Panel de ciberdelito") y agregar cada panelista con
-  # `published: true` cuando se confirme (reemplazando `speakers: []` de abajo). Ejemplo:
-  #   - name: "Ana"
-  #     lastName: "Pérez"
-  #     role: "Cargo · Empresa"
-  #     linkedin: "https://www.linkedin.com/in/..."
-  #     photo: ./speakers/ana-perez.jpg
-  #     published: true
-  # Cuando esté el panel completo, se puede poner `published: true` en la charla (y agregar `abstract`).
-  published: false
+  # Panelistas confirmados (mail "Kickoff panel Ciberdelitos", 24/11/2026). Quien modera lleva `moderator: true`:
+  # en la agenda figura aparte ("Modera: ..."). Sin `abstract`: la agenda no muestra "Ver resumen".
+  published: true
   title: Panel de ciberdelito
-  speakers: []
+  speakers:
+      - name: "María Graciana"
+        lastName: "Abelenda"
+        role: "Abogada · Redactora de la Ley N.º 20.327 de ciberdelitos"
+        linkedin: "https://www.linkedin.com/in/ma-graciana-abelenda-84b240203/"
+        photo: ./speakers/graciana-abelenda.jpg
+      - name: "Winston"
+        lastName: "Rodríguez"
+        role: "Comisario · Unidad de Cibercrimen, Policía Nacional"
+      - name: "Gerardo"
+        lastName: "Canedo"
+        role: "Cybersecurity Senior Consultant · Grant Thornton, OWASP UY"
+        linkedin: "https://www.linkedin.com/in/gcanedo/"
+        photo: ./speakers/gerardo-canedo.jpg
+      - name: "Joaquín"
+        lastName: "Cabrera"
+        role: "Gerente del CERT · CERTuy, Agesic"
+        linkedin: "https://www.linkedin.com/in/cabrerajoaquin/"
+        photo: ./speakers/joaquin-cabrera.jpg
+      - name: "Macarena"
+        lastName: "Fariña"
+        role: "Moderadora · Counsel, Guyer & Regules"
+        linkedin: "https://www.linkedin.com/in/mar%C3%ADa-macarena-fari%C3%B1a-cruellas-17169148/"
+        photo: ./speakers/macarena-farina.jpg
+        moderator: true
 
 - id: "6"
   published: true

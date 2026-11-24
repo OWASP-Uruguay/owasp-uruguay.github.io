@@ -74,7 +74,7 @@ callForSpeakers:
 speakers:
   title: Voces de la *comunidad*
   note: "" #"Oradores de ejemplo: la grilla se anuncia cuando cierre la selección."
-  moreTile: true
+  moreTile: false   # tarjeta "Más oradores próximamente": la grilla ya está completa
   moreTitle: Más oradores *próximamente*
   moreText: Estamos armando la grilla completa.
   moreLink:
