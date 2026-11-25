@@ -3,9 +3,9 @@
 // Cada charla de talks.yaml se publica con `published: true`. Una charla sin publicar muestra en la agenda
 // solo el texto genérico de agenda.yaml (ej. "Charla 2 / TBD") y nada de ella llega al HTML.
 // Cada orador hereda el estado de su charla, salvo que tenga su propio `published` (sirve para el panel,
-// donde se anuncian de a uno). `all` publica todo (sections.talks en event.yaml, o SHOW_HIDDEN en local).
+// donde se anuncian de a uno). `moderator: true` marca a quien modera el panel: en la agenda va aparte. `all` publica todo (sections.talks en event.yaml, o SHOW_HIDDEN en local).
 
-export interface Person { name: string; lastName?: string; published?: boolean }
+export interface Person { name: string; lastName?: string; published?: boolean; moderator?: boolean }
 export interface Talk { title: string; language?: string; abstract?: string; published?: boolean; speakers: Person[] }
 export interface Session { title: string; by?: string; talk?: string }
 export interface ShownSession { title: string; by?: string; talk?: Talk }
@@ -27,8 +27,11 @@ export const visibleSpeakers = <T extends Person>(talk: { published?: boolean; s
 
 export function resolveSession(session: Session, talk: Talk | undefined, all = false): ShownSession {
   if (!talk) return { title: session.title, by: session.by };
-  const names = visibleSpeakers(talk, all).map(fullName);
-  const by = names.length ? joinNames(names) : session.by;
+  const shown = visibleSpeakers(talk, all);
+  const names = joinNames(shown.filter((p) => !p.moderator).map(fullName));
+  const mods = joinNames(shown.filter((p) => p.moderator).map(fullName));
+  // Panel: "A, B y C · Modera: D". Sin nadie publicado queda el texto genérico de agenda.yaml.
+  const by = [names, mods && `Modera: ${mods}`].filter(Boolean).join(' · ') || session.by;
   if (!isPublished(talk, all)) return { title: session.title, by };
   return { title: talk.title, by, talk };
 }

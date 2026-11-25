@@ -44,6 +44,13 @@
 .topics li { border: 1px solid #ccc; border-radius: var(--radius-pill); padding: 4px 12px; font-size: .85rem; }
 .cta-card__deadline { font-weight: 700; color: var(--c-black); }
 
+/* ---------- CTF ---------- */
+.ctf__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(28px, 5vw, 80px); align-items: start; }
+.ctf__inner p:not(.lead) { color: #333; }
+.ctf .section-title .hl-blue { white-space: nowrap; }  /* "la IA" no se corta en dos líneas */
+.ctf .ctf__when { margin-top: 28px; padding: 14px 18px; border-left: 6px solid var(--c-yellow); background: var(--c-paper); color: var(--c-black); font-weight: 600; }
+@media (max-width: 900px) { .ctf__inner { grid-template-columns: 1fr; } }
+
 /* ---------- Código de conducta ---------- */
 .conduct__inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(28px, 5vw, 80px); align-items: start; }
 @media (max-width: 900px) { .conduct__inner { grid-template-columns: 1fr; } }

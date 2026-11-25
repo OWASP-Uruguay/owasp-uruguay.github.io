@@ -105,6 +105,7 @@ const owaspDayTalks = defineCollection({
             photo: z.string().regex(/^\.\/speakers\/[\w-]+\.(jpe?g|png|webp)$/, 'Usá ./speakers/nombre.jpg').optional(),
             color: z.enum(['yellow', 'blue']).optional(),
             published: z.boolean().optional(),   // sin esto hereda el de la charla; sirve para el panel
+            moderator: z.boolean().optional(),   // modera el panel: en la agenda figura como "Modera: ..."
           }),
         )
         .default([]),
@@ -156,6 +157,7 @@ const owaspDay = defineCollection({
       speakers: z.boolean().default(false),
       agenda: z.boolean().default(false),
       talks: z.boolean().default(false),   // detalle de cada charla en la agenda (título, oradores, resumen)
+      ctf: z.boolean().default(false),      // desafío TILIA (Tilsor)
       sponsors: z.boolean().default(false),
       faq: z.boolean().default(false),
     }),
@@ -192,6 +194,7 @@ const owaspDay = defineCollection({
       lat: z.number(),                  // coordenadas del marcador del mapa
       lon: z.number(),
     }),
+    ctf: z.object({ eyebrow: z.string(), title: z.string(), lead: z.string(), text: z.string(), when: z.string() }),
     faq: z.object({ intro: z.string().optional() }),
   }),
 });

@@ -73,7 +73,7 @@ test('los botones del evento coinciden con la fecha y event.yaml', () => {
 test('las secciones apagadas no están en el HTML publicado', () => {
   const html = pages.map(read).join('\n');
   assert.ok(!html.includes('class="dev-hidden"'), 'hay secciones marcadas como ocultas: ¿SHOW_HIDDEN definida?');
-  const ids = { cfs: 'cfs', speakers: 'oradores', agenda: 'agenda', sponsors: 'sponsors', faq: 'faq' } as const;
+  const ids = { cfs: 'cfs', speakers: 'oradores', agenda: 'agenda', ctf: 'ctf', sponsors: 'sponsors', faq: 'faq' } as const;
   for (const [name, id] of Object.entries(ids)) {
     if (event.sections[name]) continue;
     assert.ok(!html.includes(`id="${id}"`), `la sección ${name} está apagada pero aparece`);

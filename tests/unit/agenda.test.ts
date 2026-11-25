@@ -45,6 +45,14 @@ test('panel: charla sin publicar con panelistas anunciados de a uno', () => {
   assert.deepEqual(resolveSession(session, sinNadie), { title: 'Panel de ciberdelito', by: 'Panelistas: TBD' });
 });
 
+test('panel: quien modera va aparte en la agenda', () => {
+  const session = { title: 'Panel de ciberdelito', by: 'Panelistas: TBD', talk: 'panel' };
+  const mod = { name: 'Eva', lastName: 'Gil', moderator: true };
+  const panel = talk({ title: 'Panel de ciberdelito', abstract: undefined, published: true, speakers: [ana, luis, mod] });
+  assert.equal(resolveSession(session, panel).by, 'Ana Pérez y Luis · Modera: Eva Gil');
+  assert.equal(resolveSession(session, talk({ speakers: [{ ...mod, published: true }] })).by, 'Modera: Eva Gil');
+});
+
 test('joinNames', () => {
   assert.equal(joinNames([]), '');
   assert.equal(joinNames(['A']), 'A');
