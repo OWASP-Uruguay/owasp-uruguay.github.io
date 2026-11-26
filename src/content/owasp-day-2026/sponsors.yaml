@@ -50,3 +50,7 @@
   name: ISACA Montevideo Chapter
   logo: ./sponsors/isaca.png
   url: https://engage.isaca.org/montevideochapter/home
+- tier: comunidad
+  name: CUTI
+  logo: ./sponsors/cuti.png
+  url: https://cuti.org.uy/
